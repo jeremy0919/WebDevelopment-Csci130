@@ -1,0 +1,63 @@
+table {
+	text-align: center;
+	border-collapse: collapse;
+	background-color: lightcoral;
+}
+tr {
+	border-style: dashed;
+	color: black;
+}
+td {
+	border-style: dashed;
+	color: black;
+}
+th {
+	color: black;
+}
+h1{
+	text-align:center;
+}
+* {
+	font-family: sans-serif;
+	
+}
+h3{
+	color: black;
+}
+h4 {
+	color: black;
+}
+body {
+	color: black;
+	list-style-position: inside;
+	font-family: sans-serif;
+	background-color: palegoldenrod;
+	display: inline;
+	justify-content: center;
+	align-items: center;
+}
+.references {
+	
+	color:seagreen;
+
+}
+.semesters {
+	color: crimson !important;
+	
+}
+.Hobbies {
+	color: darkslateblue;
+	
+}
+.paragraph{
+	text-align:left;
+}
+.intro{
+	text-align:center;
+}
+li {
+	text-align: left;
+}
+
+
+/*px means pixel*/
