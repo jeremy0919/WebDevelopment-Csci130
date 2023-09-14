@@ -6,24 +6,32 @@
 <body>
     <form action="/action_page.php">
         <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br><br>
+        <input type="text" id="fname" name="fname" pattern = "\w"><br><br>
         <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br><br>
+        <input type="text" id="lname" name="lname" pattern = "\w"><br><br>
         <label for="city">City:</label>
-        <input type="text" id="city" name="city"><br><br>
+        <input type="text" id="city" name="city" pattern = "\w"><br><br>
         <label for="State">State:</label>
-        <input type="text" id="state" name="state"><br><br>
-
+        <select name="State" id = state>
+            <option value = "california">California</option>
+            <option value = "flordia">Flordia</option>
+            <option value = "Washington"> Washington</option>
+            <option value = "Texas"> Texas</option>
+            <option value = "Arizona"> Arizona</option>
+        </select><br><br>
+        <label for="Zip Code">Zip:</label>
+        <input type="text" id="Zip" name="Zip" pattern = "\d[0-9]{5}" placeholder="xxxxx"><br><br>
+        
         <label for="DOB">Date of birth:</label>
-        <input type="text" id="DOB" name="DOB" pattern="\d{4,4} required"><br><br>
+        <input type="text" id="DOB" name="DOB" pattern="required"><br><br>
         
         <p>use line 18 to parse regular expressions accordingly</p>
 
         <label for="Pnumb">Phone Number:</label>
-        <input type="text" id="Pnumb" name="Pnumb"><br><br>
+        <input type="text" id="Pnumb" name="Pnumb" placeholder="x-xxx-xxx-xxxx" pattern="\d{10}"><br><br>
 
         <label for="CCN">Credit Card Number:</label>
-        <input type="text" id="CCN" name="CCN"><br><br>
+        <input type="text" id="CCN" name="CCN" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="\d{16}"><br><br>
         <label for="M-Y">Experiation Date:</label>
         <input type="text" id="M-Y" name="M-Y"><br><br>
         <label for="SecNumb">Security Number:</label>
