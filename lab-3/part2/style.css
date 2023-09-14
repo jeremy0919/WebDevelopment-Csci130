@@ -22,8 +22,13 @@ body {
 p{
 	background-color:white;
 }
-img {
+img.Bull {
 	width: 100px;
 	height: auto;
 	float: right;
+}
+img{
+	width:300px;
+	height:auto;
+	float:inline-start;
 }
