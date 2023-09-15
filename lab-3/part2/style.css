@@ -3,12 +3,17 @@
 	color: white;
 	font-size: 10px;
 	background-color: white;
-	width: 40%;
+	width: 48%;
+	
 }
 * {
 	font-family: sans-serif;
 	/*background-color: dodgerblue;*/
 
+}
+.pages li{
+	display:inline;
+	padding-right: 4%;
 }
 .header {
 	font-size: 10px;
