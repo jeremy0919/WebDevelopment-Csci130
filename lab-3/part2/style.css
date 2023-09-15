@@ -13,7 +13,7 @@
 }
 .pages li{
 	display:inline;
-	padding-right: 4%;
+	padding-right: 2%;
 }
 .header {
 	font-size: 10px;
@@ -21,6 +21,7 @@
 	background-color: #b1102b;
 }
 body {
+	position: relative;
 	background-color: #13284c;
 }
 
@@ -28,20 +29,16 @@ p{
 	background-color:white;
 }
 .p1{
+	column-count: 1;
 	align-items: center;
 }
 .p2{
-	align-items: left;
-}
-.p3{
-	align-items: right;
+	column-count: 2;
 }
 .p4{
-	align-items: left;
+	column-count: 2;
 }
-.p5{
-	align-items: right;
-}
+
 img.Bull {
 	width: 100px;
 	height: auto;
