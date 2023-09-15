@@ -27,6 +27,21 @@ body {
 p{
 	background-color:white;
 }
+.p1{
+	align-items: center;
+}
+.p2{
+	align-items: left;
+}
+.p3{
+	align-items: right;
+}
+.p4{
+	align-items: left;
+}
+.p5{
+	align-items: right;
+}
 img.Bull {
 	width: 100px;
 	height: auto;
