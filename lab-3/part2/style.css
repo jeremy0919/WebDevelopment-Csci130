@@ -13,6 +13,7 @@
 }
 li{
 	font: size 10px;
+	list-style-position: inside
 }
 .pages li{
 	display:inline;
@@ -32,14 +33,30 @@ p{
 	background-color:white;
 }
 .p1{
+	column-gap: 10px;
 	column-count: 1;
 	align-items: center;
+	text-align: center;
+}
+.p2 p{
+	margin: 0;
 }
 .p2{
+	column-gap: 10px;
+	text-align: center;
+
 	column-count: 2;
+
+}
+.p4 p{
+	margin: 0;
 }
 .p4{
+	column-gap: 10px;
+
+	text-align: center;
 	column-count: 2;
+	
 }
 
 img.Bull {
@@ -50,5 +67,5 @@ img.Bull {
 img{
 	width: 250px;
 	height:auto;
-	padding: 1px;
+	padding: 3px;
 }
