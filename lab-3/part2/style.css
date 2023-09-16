@@ -3,13 +3,16 @@
 	color: white;
 	font-size: 10px;
 	background-color: white;
-	width: 48%;
+	width: 52%;
 	
 }
 * {
 	font-family: sans-serif;
 	/*background-color: dodgerblue;*/
 
+}
+li{
+	font: size 10px;
 }
 .pages li{
 	display:inline;
@@ -45,7 +48,7 @@ img.Bull {
 	float: right;
 }
 img{
-	width:300px;
+	width: 250px;
 	height:auto;
-	float:inline-start;
+	padding: 1px;
 }
