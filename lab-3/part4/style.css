@@ -6,6 +6,10 @@ body{
 	0%   {left:0px; top:0px;}
 	100%  {left:100%;}
   }
+  @keyframes test2	 {
+	0%   {left:90%; top: 40px;}
+	100%  {left:0%; top: 40px;}
+  }
   .box{
 	background-color: white;
 	height: 25px;
@@ -17,4 +21,33 @@ body{
 
 	position: relative;
 	animation-iteration-count: infinite;
+}
+.box2{
+	background-color: white;
+	height: 25px;
+	border-radius: 50px;
+	width: 75px;
+	border: 15px solid white;
+	animation-name: test2;
+	animation-duration: 26s;
+
+	position: relative;
+	animation-iteration-count: infinite;
+}
+.ground{
+	background-color: greenyellow;
+	
+	height: 100px;
+	width:100%;
+	position: absolute;
+	bottom: 0;
+	padding-left: 0px;
+}
+.triangle{
+	background-color: gray;
+	height:0;
+	width:0;
+	position:relative;
+	bottom: -300px;
+	border-width: 50px;
 }
