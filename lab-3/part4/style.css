@@ -3,7 +3,7 @@ body{
 }
 
 @keyframes test	 {
-	0%   {left:0px; top:0px;}
+	0% {top:0px; left:0%}
 	100%  {left:100%;}
   }
   @keyframes test2	 {
@@ -34,6 +34,17 @@ body{
 	position: relative;
 	animation-iteration-count: infinite;
 }
+.box:hover{
+	animation-name: enlarge;
+	animation-duration: 5s;
+
+}
+@keyframes enlarge	 {
+	0%   {	height: 25px;
+		border-radius: 50px;
+		width: 75px;}
+	100%  {height:50px; border-radius: 100px; width:150px;}
+  }
 .ground{
 	background-color: greenyellow;
 	
@@ -49,6 +60,7 @@ body{
     border-width: 200px 200px 200px 200px;
     height: 0px;
     width: 0px;
+	margin-left: 30%;
 }
 .tree{
 	border-color: brown;
@@ -58,5 +70,99 @@ body{
 	border-width: 10px;
 	position: absolute;
 	bottom: 100px;
+	margin-left: 15%;
+}
+.treeTop{
+	border-color: green;
+	border-style: solid;
+	background-color: green;
+	height: 30px;
+	border-radius: 50px;
+	width: 75px;
+	border: 15px solid green;
+	position: absolute;
+	bottom: 150px;
+	margin-left: 11%;
+}
+.treeTop1{
+	border-color: green;
+	border-style: solid;
+	background-color: green;
+	height: 45px;
+	border-radius: 20px;
+	width: 20px;
+	border: 15px solid green;
+	position: absolute;
+	bottom: 150px;
+	margin-left: 13%;
+}
 
+.tree2{
+	border-color: brown;
+	border-style: solid;
+	height:50px;
+	width:0;
+	border-width: 10px;
+	position: absolute;
+	bottom: 100px;
+	margin-left: 45%;
+}
+.treeTop3{
+	border-color: green;
+	border-style: solid;
+	background-color: green;
+	height: 30px;
+	border-radius: 50px;
+	width: 75px;
+	border: 15px solid green;
+	position: absolute;
+	bottom: 150px;
+	margin-left: 41%;
+}
+.treeTop2{
+	border-color: green;
+	border-style: solid;
+	background-color: green;
+	height: 45px;
+	border-radius: 20px;
+	width: 20px;
+	border: 15px solid green;
+	position: absolute;
+	bottom: 150px;
+	margin-left: 45%;
+}
+
+.tree3{
+	border-color: brown;
+	border-style: solid;
+	height:50px;
+	width:0;
+	border-width: 10px;
+	position: absolute;
+	bottom: 100px;
+	margin-left: 65%;
+}
+.treeTop5{
+	border-color: green;
+	border-style: solid;
+	background-color: green;
+	height: 30px;
+	border-radius: 50px;
+	width: 75px;
+	border: 15px solid green;
+	position: absolute;
+	bottom: 150px;
+	margin-left: 62%;
+}
+.treeTop4{
+	border-color: green;
+	border-style: solid;
+	background-color: green;
+	height: 45px;
+	border-radius: 20px;
+	width: 20px;
+	border: 15px solid green;
+	position: absolute;
+	bottom: 150px;
+	margin-left: 64%;
 }
