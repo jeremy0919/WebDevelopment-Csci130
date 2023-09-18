@@ -44,10 +44,19 @@ body{
 	padding-left: 0px;
 }
 .triangle{
-	background-color: gray;
-	height:0;
+    border-color: aquamarine aquamarine gray aquamarine;
+    border-style: solid;
+    border-width: 200px 200px 200px 200px;
+    height: 0px;
+    width: 0px;
+}
+.tree{
+	border-color: brown;
+	border-style: solid;
+	height:50px;
 	width:0;
-	position:relative;
-	bottom: -300px;
-	border-width: 50px;
+	border-width: 10px;
+	position: absolute;
+	bottom: 100px;
+
 }
