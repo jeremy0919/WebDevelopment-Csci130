@@ -23,20 +23,23 @@
                 const body = document.body,
                 tbl1 = document.createElement('table');
                 tbl1.style.width = '100px';
-                tbl1.style.border = '1px solid black';
+         
                 tbl1.style.borderCollapse = 'collapse';
+                td.style.border = '1px solid black';
                 for (let i = 0; i < N; i++) {
-                const tr = tbl1.insertRow();
-                for (let j = 0; j < 2; j++) {
-                    const td = tr.insertCell();
-                    if(j ==0){   td.appendChild(document.createTextNode(i+1));
-                    td.style.border = '1px solid black';}
-                    else{
-                        td.appendChild(document.createTextNode(arr[i+1]));
-                    td.style.border = '1px solid black';
+                    const tr = tbl1.insertRow();
+                    for (let j = 0; j < 2; j++) {
+                        const td = tr.insertCell();
+                        if(j ==0){  
+                            td.appendChild(document.createTextNode(i+1));
+                            td.style.border = '1px solid black';
+                        }
+                        else{
+                            td.appendChild(document.createTextNode(arr[i+1]));
+                            td.style.border = '1px solid black';
+                        }
                     }
-    }
-  }
+                }
   body.appendChild(tbl1);
 }
 
