@@ -21,13 +21,13 @@
             }
             function tableCreate() {
                 const body = document.body,
-                tbl1 = document.createElement('table');
-                tbl1.style.width = '100px';
+                Table1 = document.createElement('table');
+                Table1.style.width = '100px';
          
-                tbl1.style.borderCollapse = 'collapse';
-                tbl1.style.border = '1px solid black';
+                Table1.style.borderCollapse = 'collapse';
+                Table1.style.border = '1px solid black';
                 for (let i = 0; i < N; i++) {
-                    const tr = tbl1.insertRow();
+                    const tr = Table1.insertRow();
                     for (let j = 0; j < 2; j++) {
                         const td = tr.insertCell();
                         if(j ==0){  
@@ -40,7 +40,7 @@
                         }
                     }
                 }
-            body.appendChild(tbl1);
+            body.appendChild(Table1);
             }
 
 tableCreate();
