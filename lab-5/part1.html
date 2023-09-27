@@ -18,37 +18,41 @@
         var output = 0;
         var previous =0;
         var current =0;
+        var lastfunct = "";
         var input = "";
         }
         function display(event){
             
-          /*  if(current == "plus"){
-                output = output+previous;
+            if(lastfunct == "plus"){
+                plus(1);
             }
-            if(current == "minus"){
-                output = output - previous;
+            if(lastfunct == "minus"){
+                plus(1);
             }
-            */
-           let x = parseInt(input);
-            alert(x);
+            lastfunct = "";
+            alert(output);
         }
         function plus(event){
-            current = "plus";
-           
+            if(event!=1){
+                lastfunct = "plus";
                 input = input+ "+";
-
-            output = previous + output;
+            }
+            output = Number(previous) + output;
+            previous ="";
             paragraph.textContent = input;
         }
         function minus(event){
+            if(event!=1){
             input = input + "-";
-            current = "minus"
-            output = output - previous;
+            lastfunct = "minus"
+            }
+            output = output - Number(previous);
+            previous = "";
             paragraph.textContent = input;
         }
         function six(event){
             input = input +6;
-            previous = "6";
+            previous = previous+"6";
             paragraph.textContent = input;
         }
         function one(event){
@@ -58,7 +62,7 @@
         }
         function two(event){
             input = input +2;
-            previous = prevuous +"2";
+            previous = previous +"2";
             paragraph.textContent = input;
         }
         function three(event){
@@ -73,27 +77,27 @@
         }
         function five(event){
             input = input +5;
-            previous = 5;
+            previous = previous+"5";
             paragraph.textContent = input;
         }
         function seven(event){
             input = input +7;
-            previous = 7;
+            previous = previous+"7";
             paragraph.textContent = input;
         }
         function eight(event){
             input = input +8;
-            previous = 8;
+            previous = previous+"8";
             paragraph.textContent = input;
         }
         function nine(event){
             input = input +9;
-            previous = 9;
+            previous = previous+"9";
             paragraph.textContent = input;
         }
         function zero(event){
             input = input +0;
-            previous = 0;
+            previous = previous+"0";
             paragraph.textContent = input;
         }
     </script>
@@ -112,24 +116,24 @@
     <button id = "equals" onclick="display(event)">=</button>
     <br><br>
     <div class = "col1">
-        <button id = "one" onclick="display(event)">1</button>
-        <button id = "two" onclick="display(event)">2</button>
-        <button id = "three" onclick="display(event)">3</button>
+        <button id = "one" onclick="one(event)">1</button>
+        <button id = "two" onclick="two(event)">2</button>
+        <button id = "three" onclick="three(event)">3</button>
     </div> 
     <br><br>
 <div class = "col2">
-    <button id = "four" onclick="display(event)">4</button>
-    <button id = "five" onclick="display(event)">5</button>
+    <button id = "four" onclick="four(event)">4</button>
+    <button id = "five" onclick="five(event)">5</button>
     <button id = "six" onclick="six(event)">6</button>
 </div>   
 <br><br>
 <div class = "col3">
-    <button id = "seven" onclick="display(event)">7</button>
-    <button id = "eight" onclick="display(event)">8</button>
-    <button id = "nine" onclick="display(event)">9</button>
+    <button id = "seven" onclick="seven(event)">7</button>
+    <button id = "eight" onclick="eight(event)">8</button>
+    <button id = "nine" onclick="nine(event)">9</button>
 </div> 
 <br><br>
-<button id = "zero" onclick="display(event)">0</button>
+<button id = "zero" onclick="zero(event)">0</button>
     </div>
     </body>
 </html5>
