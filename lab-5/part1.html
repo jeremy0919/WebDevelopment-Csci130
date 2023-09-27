@@ -21,25 +21,77 @@
         var input = "";
         }
         function display(event){
-           output= output +current
-           output = output+previous;
+            
+            if(current == "plus"){
+                output = output+previous;
+            }
+            if(current == "minus"){
+                output = output - previous;
+            }
             alert(output);
         }
         function plus(event){
-            input = input+ "+";
-            current = "+"
+            current = "plus";
+           
+                input = input+ "+";
+
             output = previous + output;
             paragraph.textContent = input;
         }
         function minus(event){
-            input = input+ "-";
-            current = "-"
+            input = input + "-";
+            current = "minus"
             output = output - previous;
             paragraph.textContent = input;
         }
         function six(event){
             input = input +6;
-            previous = 6;
+            previous = "6";
+            paragraph.textContent = input;
+        }
+        function one(event){
+            input = input +1;
+            previous = previous+"1"; // need to both keep track of value but also allow for values over 10
+            paragraph.textContent = input;
+        }
+        function two(event){
+            input = input +2;
+            previous = prevuous +"2";
+            paragraph.textContent = input;
+        }
+        function three(event){
+            input = input +3;
+            previous = previous +"3";
+            paragraph.textContent = input;
+        }
+        function four(event){
+            input = input +4;
+            previous = previous +"4";
+            paragraph.textContent = input;
+        }
+        function five(event){
+            input = input +5;
+            previous = 5;
+            paragraph.textContent = input;
+        }
+        function seven(event){
+            input = input +7;
+            previous = 7;
+            paragraph.textContent = input;
+        }
+        function eight(event){
+            input = input +8;
+            previous = 8;
+            paragraph.textContent = input;
+        }
+        function nine(event){
+            input = input +9;
+            previous = 9;
+            paragraph.textContent = input;
+        }
+        function zero(event){
+            input = input +0;
+            previous = 0;
             paragraph.textContent = input;
         }
     </script>
