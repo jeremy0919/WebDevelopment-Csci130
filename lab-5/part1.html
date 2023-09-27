@@ -20,34 +20,48 @@
         var previous =0;
         var current =0;
         var lastfunct = "x";
+        var lastval = "";
         var input = "";
         }
         function display(event){
-            if(lastfunct == "plus"){
-                plus(1);
-            }
-            if(lastfunct == "minus"){
-                minus(1);
-            }
-            if(lastfunct == "multiply"){
-           //     multiply(1);
-            }
+            OnAction(event);
             lastfunct = "";
             alert(output);
         }
         function multiply(event){
+            if(event == 1){
+                alert(previous);
+                alert(output);
+                output = Number(previous) * output; // needs to be fixed
+                
+            }
             if(event!=1){
+                OnAction(event);
                 lastfunct = "multiply";
                 input = input+ "*";
             }
           
-            output = Number(previous) * output;
+           
             
             previous ="";
             paragraph.textContent = input;
         }
+        function OnAction(event){
+            if(lastfunct!="x"){
+                if(lastfunct == "plus"){
+                    plus(1);
+                }
+                if(lastfunct == "minus"){
+                    minus(1);
+                }
+                if(lastfunct == "multiply"){
+                    multiply(1);
+                }
+            }
+        }
         function plus(event){
             if(event!=1){
+                OnAction(event);
                 lastfunct = "plus";
                 input = input+ "+";
             }
@@ -62,6 +76,7 @@
             output = output - Number(previous);
             }
             if(event!=1){
+            OnAction(event);
             input = input + "-";
             lastfunct = "minus"
             }
