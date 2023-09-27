@@ -21,16 +21,19 @@
         var input = "";
         }
         function display(event){
-            event.preventDefault();
+           output= output +current
+           output = output+previous;
             alert(output);
         }
         function plus(event){
             input = input+ "+";
+            current = "+"
             output = previous + output;
             paragraph.textContent = input;
         }
         function minus(event){
             input = input+ "-";
+            current = "-"
             output = output - previous;
             paragraph.textContent = input;
         }
