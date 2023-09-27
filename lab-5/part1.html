@@ -11,6 +11,7 @@
         var output = 0;
         var previous =0;
         var current =0;
+        var lastfunct = "x";
         var input = "";
         let val = document.getElementById("plus");
         window.onload=function(){
@@ -18,86 +19,135 @@
         var output = 0;
         var previous =0;
         var current =0;
-        var lastfunct = "";
+        var lastfunct = "x";
         var input = "";
         }
         function display(event){
-            
             if(lastfunct == "plus"){
                 plus(1);
             }
             if(lastfunct == "minus"){
-                plus(1);
+                minus(1);
+            }
+            if(lastfunct == "multiply"){
+           //     multiply(1);
             }
             lastfunct = "";
             alert(output);
+        }
+        function multiply(event){
+            if(event!=1){
+                lastfunct = "multiply";
+                input = input+ "*";
+            }
+          
+            output = Number(previous) * output;
+            
+            previous ="";
+            paragraph.textContent = input;
         }
         function plus(event){
             if(event!=1){
                 lastfunct = "plus";
                 input = input+ "+";
             }
+           
             output = Number(previous) + output;
+            
             previous ="";
             paragraph.textContent = input;
         }
         function minus(event){
+            if(lastfunct !="x"){
+            output = output - Number(previous);
+            }
             if(event!=1){
             input = input + "-";
             lastfunct = "minus"
             }
-            output = output - Number(previous);
+
             previous = "";
             paragraph.textContent = input;
         }
         function six(event){
             input = input +6;
             previous = previous+"6";
+            if(lastfunct == "x"){
+                output = Number(previous);
+             
+            }
             paragraph.textContent = input;
         }
         function one(event){
             input = input +1;
             previous = previous+"1"; // need to both keep track of value but also allow for values over 10
+            if(lastfunct == "x"){
+                output =  Number(previous);
+            }
             paragraph.textContent = input;
         }
         function two(event){
             input = input +2;
             previous = previous +"2";
+            if(lastfunct == "x"){
+                output = Number(previous);
+            }
             paragraph.textContent = input;
         }
         function three(event){
             input = input +3;
             previous = previous +"3";
+            if(lastfunct == "x"){
+                output =  Number(previous);
+            }
             paragraph.textContent = input;
         }
         function four(event){
             input = input +4;
             previous = previous +"4";
+            if(lastfunct == "x"){
+                output =  Number(previous);
+            }
             paragraph.textContent = input;
         }
         function five(event){
             input = input +5;
             previous = previous+"5";
+            if(lastfunct == "x"){
+                output =  Number(previous);
+            }
             paragraph.textContent = input;
         }
         function seven(event){
             input = input +7;
             previous = previous+"7";
+            if(lastfunct == "x"){
+                output = Number(previous);
+            }
             paragraph.textContent = input;
         }
         function eight(event){
             input = input +8;
             previous = previous+"8";
+            if(lastfunct == "x"){
+                output =  Number(previous);
+            }
             paragraph.textContent = input;
         }
         function nine(event){
             input = input +9;
             previous = previous+"9";
+            if(lastfunct == "x"){
+                output =  Number(previous);
+            }
             paragraph.textContent = input;
         }
         function zero(event){
             input = input +0;
             previous = previous+"0";
+            if(lastfunct == "x"){
+                output = Number(previous);
+            }
             paragraph.textContent = input;
         }
     </script>
@@ -108,7 +158,7 @@
     <br><br>
     <button id = "plus" onclick="plus(event)" >+</button>
     <button id = "minus" onclick="minus(event)">-</button>
-     <button id = "multiply" onclick="display(event)">*</button>
+     <button id = "multiply" onclick="multiply(event)">*</button>
      <button id = "divide" onclick="display(event)">/</button>
     <br><br>
     <button id = "switch" onclick="display(event)">+/-</button>
