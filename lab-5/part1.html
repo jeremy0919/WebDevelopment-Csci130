@@ -1,0 +1,78 @@
+<html5> 
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title> part 4</title>
+    </head>
+    <body>
+
+    <script>
+        //use output to keep track of total
+        
+        var output = 0;
+        var previous =0;
+        var current =0;
+        var input = "";
+        let val = document.getElementById("plus");
+        window.onload=function(){
+        paragraph = document.querySelector("p");
+        var output = 0;
+        var previous =0;
+        var current =0;
+        var input = "";
+        }
+        function display(event){
+            event.preventDefault();
+            alert(output);
+        }
+        function plus(event){
+            input = input+ "+";
+            output = previous + output;
+            paragraph.textContent = input;
+        }
+        function minus(event){
+            input = input+ "-";
+            output = output - previous;
+            paragraph.textContent = input;
+        }
+        function six(event){
+            input = input +6;
+            previous = 6;
+            paragraph.textContent = input;
+        }
+    </script>
+    <div class = "calculator">
+    <p></p>
+    <br>
+    <p1></p1>
+    <br><br>
+    <button id = "plus" onclick="plus(event)" >+</button>
+    <button id = "minus" onclick="minus(event)">-</button>
+     <button id = "multiply" onclick="display(event)">*</button>
+     <button id = "divide" onclick="display(event)">/</button>
+    <br><br>
+    <button id = "switch" onclick="display(event)">+/-</button>
+    <button id = "clear" onclick="display(event)">clear</button>
+    <button id = "equals" onclick="display(event)">=</button>
+    <br><br>
+    <div class = "col1">
+        <button id = "one" onclick="display(event)">1</button>
+        <button id = "two" onclick="display(event)">2</button>
+        <button id = "three" onclick="display(event)">3</button>
+    </div> 
+    <br><br>
+<div class = "col2">
+    <button id = "four" onclick="display(event)">4</button>
+    <button id = "five" onclick="display(event)">5</button>
+    <button id = "six" onclick="six(event)">6</button>
+</div>   
+<br><br>
+<div class = "col3">
+    <button id = "seven" onclick="display(event)">7</button>
+    <button id = "eight" onclick="display(event)">8</button>
+    <button id = "nine" onclick="display(event)">9</button>
+</div> 
+<br><br>
+<button id = "zero" onclick="display(event)">0</button>
+    </div>
+    </body>
+</html5>

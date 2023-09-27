@@ -1,0 +1,41 @@
+<html5> 
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title> part 1</title>
+    </head>
+    <body>
+
+    <script>
+        /*          
+            */
+
+        window.onload=function(){
+        var Output = 10;
+        
+        button = document.querySelector("input");
+        button.addEventListener("click", doThings);
+         }
+        function doThings(){
+            if(button.value === "minus"){
+                alert("-");
+            }
+            if(button.value === "plus"){
+                alert("+");
+            }
+        }
+    </script>
+        <form>
+            <input type ="button" id = "minus" value = "minus"/> 
+            <input type ="button" id = "plus" value = "plus"/>
+        
+            <input type ="button" id = "multiply" value = "multiply"/>
+            <input type ="button" id = "divide" value = "divide"/>
+            <input type ="button" id = "sqrt" value = "sqrt"/>
+            <input type ="button" id = "+/-" value = "swap"/>
+            <input type ="button" id = "Enter" value = "Enter"/>
+            <input type ="button" id = "ce" value = "ce"/>
+            <input type ="button" id = "one" value = "one"/>
+            <input type ="button" id = "two" value = "two"/>
+        </form>
+    </body>
+</html5>
