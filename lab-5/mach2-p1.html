@@ -1,41 +1,46 @@
 <html5> 
     <head>
         <link rel="stylesheet" href="style.css">
-        <title> part 1</title>
+        <title> part 2</title>
     </head>
     <body>
 
     <script>
-        /*          
-            */
-
-        window.onload=function(){
-        var Output = 10;
-        
-        button = document.querySelector("input");
-        button.addEventListener("click", doThings);
-         }
-        function doThings(){
-            if(button.value === "minus"){
-                alert("-");
-            }
-            if(button.value === "plus"){
-                alert("+");
-            }
+ function matrix(m1,n1,m2,n2){ // figure out how to get data from form
+            tableCreate(m1,n1);
+            tableCreate(m2,n2);
         }
+        function tableCreate(N,M) {
+                const body = document.body,
+                Table1 = document.createElement('table');
+                Table1.style.width = '100px';
+         
+                Table1.style.borderCollapse = 'collapse';
+                Table1.style.border = '1px solid black';
+                for (let i = 0; i < N; i++) {
+                    const tr = Table1.insertRow();
+                    for (let j = 0; j < M; j++) {
+                        const td = tr.insertCell();
+                        if(j ==0){  
+                            td.appendChild(document.createTextNode());
+                            td.style.border = '1px solid black';
+                        }
+                        else{
+                            td.appendChild(document.createTextNode());
+                            td.style.border = '1px solid black';
+                        }
+                    }
+                }
+            body.appendChild(Table1);
+            }
     </script>
-        <form>
-            <input type ="button" id = "minus" value = "minus"/> 
-            <input type ="button" id = "plus" value = "plus"/>
-        
-            <input type ="button" id = "multiply" value = "multiply"/>
-            <input type ="button" id = "divide" value = "divide"/>
-            <input type ="button" id = "sqrt" value = "sqrt"/>
-            <input type ="button" id = "+/-" value = "swap"/>
-            <input type ="button" id = "Enter" value = "Enter"/>
-            <input type ="button" id = "ce" value = "ce"/>
-            <input type ="button" id = "one" value = "one"/>
-            <input type ="button" id = "two" value = "two"/>
-        </form>
+   
+   <form>
+    <input type="text" id="m1" value="m1">
+    <input type="text" id="n1" value="n1">
+    <input type="text" id="m2" value="m2">
+    <input type="text" id="n2" value="n2">
+</form>
+<button id = "submit" onclick="matrix(m1,n1,m2,n2)">submit</button>
     </body>
 </html5>
