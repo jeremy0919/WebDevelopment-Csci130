@@ -36,13 +36,10 @@
                 
             }
             if(event!=1){
-                OnAction(event);
+              //  OnAction(event);
                 lastfunct = "multiply";
                 input = input+ "*";
-            }
-          
-           
-            
+            }  
             previous ="";
             paragraph.textContent = input;
         }
@@ -57,7 +54,49 @@
                 if(lastfunct == "multiply"){
                     multiply(1);
                 }
+                if(lastfunct == "divide"){
+                    divide(1);
+                }
             }
+        }
+
+        function root(event){
+
+            output = Math.sqrt(output);
+            input = output;
+            previous ="";
+            paragraph.textContent = input;
+        }
+
+        function sign(event){// needs to be able to modify input sign use search maybe?
+            previous = previous*-1;
+            let temp = "-";
+            temp = temp+input;
+            input = temp;
+            paragraph.textContent = input;
+        }
+        function clear(){
+         output = 0;
+         previous =0;
+         current =0;
+         lastfunct = "x";
+         lastval = "";
+         input = "";
+            paragraph.textContent = input;
+        }
+        function divide(event){
+            if(event == 1){
+
+                output = output/ Number(previous); //needs to be tested
+                
+            }
+            if(event!=1){
+              //  OnAction(event);
+                lastfunct = "divide";
+                input = input+ "/";
+            }  
+            previous ="";
+            paragraph.textContent = input;
         }
         function plus(event){
             if(event!=1){
@@ -72,15 +111,15 @@
             paragraph.textContent = input;
         }
         function minus(event){
-            if(lastfunct !="x"){
-            output = output - Number(previous);
-            }
+
             if(event!=1){
             OnAction(event);
             input = input + "-";
             lastfunct = "minus"
             }
-
+            if(lastfunct !="x"){
+            output = output - Number(previous);
+            }
             previous = "";
             paragraph.textContent = input;
         }
@@ -174,9 +213,9 @@
     <button id = "plus" onclick="plus(event)" >+</button>
     <button id = "minus" onclick="minus(event)">-</button>
      <button id = "multiply" onclick="multiply(event)">*</button>
-     <button id = "divide" onclick="display(event)">/</button>
+     <button id = "divide" onclick="divide(event)">/</button>
     <br><br>
-    <button id = "switch" onclick="display(event)">+/-</button>
+    <button id = "switch" onclick="sign(event)">+/-</button>
     <button id = "clear" onclick="display(event)">clear</button>
     <button id = "equals" onclick="display(event)">=</button>
     <br><br>
