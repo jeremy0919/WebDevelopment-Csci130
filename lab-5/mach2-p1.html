@@ -6,27 +6,32 @@
     <body>
 
     <script>
- function matrix(m1,n1,m2,n2){ // figure out how to get data from form
-            tableCreate(m1,n1);
-            tableCreate(m2,n2);
+ function matrix(){ // figure out how to get data from form
+    var m1 = document.getElementById("m1").value;
+    var m2 = document.getElementById("m2").value;
+    var n1 = document.getElementById("n1").value;
+    var n2 = document.getElementById("n2").value;
+            tableCreate(m1,n1, "table1"); // tables created still need to modify values in tables and matrix multiply
+            tableCreate(m2,n2, "table2");
         }
-        function tableCreate(N,M) {
+        function tableCreate(N,M, name) {
                 const body = document.body,
                 Table1 = document.createElement('table');
                 Table1.style.width = '100px';
          
                 Table1.style.borderCollapse = 'collapse';
                 Table1.style.border = '1px solid black';
+                
                 for (let i = 0; i < N; i++) {
                     const tr = Table1.insertRow();
                     for (let j = 0; j < M; j++) {
                         const td = tr.insertCell();
                         if(j ==0){  
-                            td.appendChild(document.createTextNode());
+                            td.appendChild(document.createTextNode(i));
                             td.style.border = '1px solid black';
                         }
                         else{
-                            td.appendChild(document.createTextNode());
+                            td.appendChild(document.createTextNode(j));
                             td.style.border = '1px solid black';
                         }
                     }
@@ -36,11 +41,11 @@
     </script>
    
    <form>
-    <input type="text" id="m1" value="m1">
-    <input type="text" id="n1" value="n1">
-    <input type="text" id="m2" value="m2">
-    <input type="text" id="n2" value="n2">
+    <input type="text" id="m1" value="1">
+    <input type="text" id="n1" value="2">
+    <input type="text" id="m2" value="2">
+    <input type="text" id="n2" value="3">
 </form>
-<button id = "submit" onclick="matrix(m1,n1,m2,n2)">submit</button>
+<button id = "submit" onclick="matrix()">submit</button> 
     </body>
 </html5>
