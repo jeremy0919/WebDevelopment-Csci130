@@ -6,37 +6,47 @@
     <body>
 
     <script>
- function matrix(){ // figure out how to get data from form
+ function matrixMultiply(){
+    let length =document.getElementById("m1").value; //length
+    let hight = document.getElementById("n2").value;
+
+ }
+ function FinalMatrix(x,y){
+
+ }
+ function matrix(){ 
     var m1 = document.getElementById("m1").value;
     var m2 = document.getElementById("m2").value;
     var n1 = document.getElementById("n1").value;
     var n2 = document.getElementById("n2").value;
             tableCreate(m1,n1, "table1"); // tables created still need to modify values in tables and matrix multiply
+           
             tableCreate(m2,n2, "table2");
         }
         function tableCreate(N,M, name) {
                 const body = document.body,
-                Table1 = document.createElement('table');
-                Table1.style.width = '100px';
+                name = document.createElement('table');
+                name.style.width = '100px';
          
-                Table1.style.borderCollapse = 'collapse';
-                Table1.style.border = '1px solid black';
+                name.style.borderCollapse = 'collapse';
+                name.style.border = '1px solid black';
                 
                 for (let i = 0; i < N; i++) {
                     const tr = Table1.insertRow();
                     for (let j = 0; j < M; j++) {
                         const td = tr.insertCell();
                         if(j ==0){  //dont need this part
-                            td.appendChild(document.createTextNode(i));
+                            td.appendChild(document.createElement("input"));
                             td.style.border = '1px solid black';
                         }
                         else{
-                            td.appendChild(document.createTextNode(j));
+                            td.appendChild(document.createElement("input"));
                             td.style.border = '1px solid black';
                         }
+                        
                     }
                 }
-            body.appendChild(Table1);
+            body.appendChild(name);
             }
     </script>
    
@@ -47,5 +57,7 @@
     <input type="text" id="n2" value="3">
 </form>
 <button id = "submit" onclick="matrix()">submit</button> 
+
+<button id = "mult" onclick="matrixMultiply()"> submit2</button>
     </body>
 </html5>
