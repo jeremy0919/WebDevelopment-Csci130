@@ -429,7 +429,23 @@ var n2 = document.getElementById("n2").value;
     document.getElementById("ismatrix1").style.display = "block";
     document.getElementById("ismatrix2").style.display = "block";
     document.getElementById("ismatrix3").style.display = "block";
+    const button = document.createElement('button')
+
+    // Set the button text to 'Can you click me?'
+    button.innerText = 'Can you click me?'
+
+    button.id = 'mainButton'
+
+    // Attach the "click" event to your button
+    button.addEventListener('click', () => {
+      // When there is a "click"
+      // it shows an alert in the browser
+      alert('Oh, you clicked me!')
+    })
+
+    document.body.appendChild(button)
 }
+
 function tableCreate(N,M, name) {
 if(name == "table1"){
         const body = document.body,
