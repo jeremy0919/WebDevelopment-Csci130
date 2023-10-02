@@ -429,24 +429,38 @@ var n2 = document.getElementById("n2").value;
     document.getElementById("ismatrix1").style.display = "block";
     document.getElementById("ismatrix2").style.display = "block";
     document.getElementById("ismatrix3").style.display = "block";
-    const button = document.createElement('button')
-
-    // Set the button text to 'Can you click me?'
-    button.innerText = 'Can you click me?'
-
-    button.id = 'mainButton'
-
-    // Attach the "click" event to your button
-    button.addEventListener('click', () => {
-      // When there is a "click"
-      // it shows an alert in the browser
-      alert('Oh, you clicked me!')
-    })
-
-    document.body.appendChild(button)
 }
 
-function tableCreate(N,M, name) {
+function transpose(matrix,length,width,name){
+    let resultMatrix = new Array(width);
+    for (let i = 0; i < width; i++) {
+    resultMatrix[i] = new Array(length);
+    }
+    for(let i =0; i<length; i++){
+        for(let j=0; j<width;j++){
+            resultmatrix[i][j].value = matrix[j][i].value; // needs to be tested
+        }
+    }// need to learn how to delete old patrix
+    /*var removeTab = document.getElementById('table1'); // should be able to use name otherwise if statements
+
+var parentEl = removeTab.parentElement;
+
+parentEl.removeChild(removeTab);
+*/ // use this
+tableCreate(length,width,name);
+}
+function trace(matrix,length,width,name){
+    let sum =0;
+    for(let i =0; i<length; ++i){
+        for(let j =0; j<width; ++j){
+            if(i==j){
+                sum += matrix[i][j];
+            }
+        }
+    }
+    alert("The trace of %s is %d",name, sum); //might need to adjust string to alert or create string abobe and alert premade string
+}
+function tableCreate(N,M, name) { // add length width matrix and name to transpose/trace
 if(name == "table1"){
         const body = document.body,
         Table1 = document.createElement('table');
@@ -468,6 +482,29 @@ if(name == "table1"){
         }
     body.appendChild(Table1);
     Table1.id = "table1";
+    const button1 = document.createElement('button')
+
+    button1.innerText = 'Transpose'
+
+    button1.id = 'button1'
+
+    button1.addEventListener('click', () => {
+        transpose()
+    })
+
+    document.body.appendChild(button1)
+    const button2 = document.createElement('button')
+
+    button2.innerText = 'Trace'
+
+    button2.id = 'button2'
+
+    button2.addEventListener('click', () => {
+        Trace()
+    })
+
+    document.body.appendChild(button2)
+
     }
                 else {
         const body = document.body,
@@ -490,5 +527,29 @@ if(name == "table1"){
                 }
     body.appendChild(Table2);
     Table2.id = "table2";
+    const button3 = document.createElement('button')
+
+    button3.innerText = 'Transpose'
+
+    button3.id = 'button3'
+
+    // Attach the "click" event to your button
+    button3.addEventListener('click', () => {
+        transpose()
+    })
+
+    document.body.appendChild(button3)
+    const button4 = document.createElement('button')
+
+    button4.innerText = 'Trace'
+
+    button4.id = 'button4'
+
+    button4.addEventListener('click', () => {
+        Trace()
+    })
+
+    document.body.appendChild(button4)
+
     }
     }
