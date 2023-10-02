@@ -71,6 +71,16 @@ function sign(event){// not a lot of stupidity checks
     input = input+previous;
     paragraph.textContent = input;
 }
+function decimal(event){
+    input = input+".";
+    paragraph.textContent = input;
+    if(previous!=0){
+    previous = "."+previous;
+    }
+    else{
+        previous = ".";
+    }
+}
 function clearcalc(event){
     output = 0;
     previous =0;
@@ -114,9 +124,11 @@ function minus(event){
     input = input + "-";
     lastfunct = "minus"
     }
-    if(lastfunct !="x"){
+    if(event == 1){
     output = output - Number(previous);
+
     }
+
     previous = "";
     paragraph.textContent = input;
 }
@@ -351,14 +363,18 @@ function tableCreate(N,M) {
 function matrixMultiply(){
 let length = document.getElementById("m1").value;
 let height = document.getElementById("n2").value;
-
+let length1 = document.getElementById("m1").value;
+let height1 = document.getElementById("n1").value;
+let length2 = document.getElementById("m2").value;
+let height2 = document.getElementById("n2").value;
+if(length==height){
 let matrix1 = [];
 let table1 = document.getElementById("table1");
-for (let i = 0; i < length; i++) {
+for (let i = 0; i < length1; i++) {
 let row = [];
-for (let j = 0; j < length; j++) {
+for (let j = 0; j < height1; j++) {
     let cell = table1.rows[i].cells[j];
-    let inputValue = cell.querySelector('input').value; // uses quert selector to get value from input, without it returns nan
+    let inputValue = cell.querySelector('input').value; 
     row.push(parseFloat(inputValue)); 
 }
 matrix1.push(row);
@@ -366,9 +382,9 @@ matrix1.push(row);
 
 let matrix2 = [];
 let table2 = document.getElementById("table2");
-for (let i = 0; i < length; i++) {
+for (let i = 0; i < length2; i++) {
 let row = [];
-for (let j = 0; j < height; j++) {
+for (let j = 0; j < height2; j++) {
     let cell = table2.rows[i].cells[j];
     let inputValue = cell.querySelector('input').value;
     row.push(parseFloat(inputValue));
@@ -394,6 +410,8 @@ for (let j = 0; j < height; ++j) {
 }
 }
 table3create(resultMatrix,length,height);
+}
+else(alert("cannot multiply"))
 }
 function table3create(resultMatrix,length,height){
   
@@ -438,16 +456,42 @@ function transpose(matrix,length,width,name){
     }
     for(let i =0; i<length; i++){
         for(let j=0; j<width;j++){
-            resultmatrix[i][j].value = matrix[j][i].value; // needs to be tested
+            resultMatrix[j][i]= matrix[i][j]; // needs to be tested
         }
     }// need to learn how to delete old patrix
-    /*var removeTab = document.getElementById('table1'); // should be able to use name otherwise if statements
 
-var parentEl = removeTab.parentElement;
+    var removeTab = document.getElementById(name); 
+    var parentEl = removeTab.parentElement;
+    parentEl.removeChild(removeTab);
+    if(name == "table1"){
+        var removeTab1 = document.getElementById('button1'); 
+        var parentEl1 = removeTab1.parentElement;
+        parentEl1.removeChild(removeTab1);
+        var removeTab2 = document.getElementById('button2'); 
+        var parentEl2 = removeTab2.parentElement;
+        parentEl2.removeChild(removeTab2);
+        let temp1 =document.getElementById("m1").value;
+        let temp2 = document.getElementById("n1").value;
+ 
+        document.getElementById("m1").value = temp2;
+        document.getElementById("n1").value = temp1;
 
-parentEl.removeChild(removeTab);
-*/ // use this
-tableCreate(length,width,name);
+    }
+    else if(name == "table2"){
+        var removeTab1 = document.getElementById('button3'); 
+        var parentEl1 = removeTab1.parentElement;
+        parentEl1.removeChild(removeTab1);
+        var removeTab2 = document.getElementById('button4'); 
+        var parentEl2 = removeTab2.parentElement;
+        parentEl2.removeChild(removeTab2);
+        let temp1 =document.getElementById("m2").value;
+        let temp2 = document.getElementById("n2").value;
+
+        document.getElementById("m2").value = temp2;
+        document.getElementById("n2").value = temp1;
+
+    }
+tableCreate1(resultMatrix,length,width,name);
 }
 function trace(matrix,length,width,name){
     let sum =0;
@@ -468,7 +512,7 @@ if(name == "table1"){
  
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
-        
+     
         for (let i = 0; i < N; i++) {
             const tr = Table1.insertRow();
             for (let j = 0; j < M; j++) {
@@ -489,7 +533,20 @@ if(name == "table1"){
     button1.id = 'button1'
 
     button1.addEventListener('click', () => {
-        transpose()
+        let length = document.getElementById("m1").value;;
+        let width = document.getElementById("n1").value;;
+        let matrix1 = [];
+        let table1 = document.getElementById("table1");
+        for (let i = 0; i < length; i++) {
+        let row = [];
+        for (let j = 0; j < width; j++) {
+            let cell = table1.rows[i].cells[j];
+            let inputValue = cell.querySelector('input').value; // uses quert selector to get value from input, without it returns nan
+            row.push(parseFloat(inputValue)); 
+        }
+        matrix1.push(row);
+        }
+        transpose(matrix1,length,width,name)
     })
 
     document.body.appendChild(button1)
@@ -500,13 +557,26 @@ if(name == "table1"){
     button2.id = 'button2'
 
     button2.addEventListener('click', () => {
-        Trace()
+        let length = N;
+        let width = M;
+        let matrix1 = [];
+    let table1 = document.getElementById("table1");
+    for (let i = 0; i < length; i++) {
+    let row = [];
+    for (let j = 0; j < width; j++) {
+        let cell = table1.rows[i].cells[j];
+        let inputValue = cell.querySelector('input').value; // uses quert selector to get value from input, without it returns nan
+        row.push(parseFloat(inputValue)); 
+    }
+    matrix1.push(row);
+    }
+        trace(matrix1,length,width,name)
     })
 
     document.body.appendChild(button2)
 
     }
-                else {
+    else {
         const body = document.body,
         Table2 = document.createElement('table');
         Table2.style.width = '100px';
@@ -535,7 +605,20 @@ if(name == "table1"){
 
     // Attach the "click" event to your button
     button3.addEventListener('click', () => {
-        transpose()
+        let length = document.getElementById("m2").value;;
+        let width = document.getElementById("n2").value;;
+        let matrix1 = [];
+    let Table2 = document.getElementById("table2");
+    for (let i = 0; i < length; i++) {
+        let row = [];
+    for (let j = 0; j < width; j++) {
+        let cell = Table2.rows[i].cells[j];
+        let inputValue = cell.querySelector('input').value; // uses quert selector to get value from input, without it returns nan
+        row.push(parseFloat(inputValue)); 
+    }
+    matrix1.push(row);
+    }
+        transpose(matrix1,length,width,name)
     })
 
     document.body.appendChild(button3)
@@ -546,10 +629,126 @@ if(name == "table1"){
     button4.id = 'button4'
 
     button4.addEventListener('click', () => {
-        Trace()
+        let length = N;
+        let width = M;
+        let matrix1 = [];
+let table1 = document.getElementById("table2");
+for (let i = 0; i < length; i++) {
+let row = [];
+for (let j = 0; j < width; j++) {
+    let cell = table1.rows[i].cells[j];
+    let inputValue = cell.querySelector('input').value; // uses quert selector to get value from input, without it returns nan
+    row.push(parseFloat(inputValue)); 
+}
+matrix1.push(row);
+}
+        trace(matrix1,length,width,name)
     })
 
     document.body.appendChild(button4)
 
     }
     }
+
+    function tableCreate1(matrix,M,N, name) { // add length width matrix and name to transpose/trace
+        if(name == "table1"){
+                const body = document.body,
+                Table1 = document.createElement('table');
+                Table1.style.width = '100px';
+         
+                Table1.style.borderCollapse = 'collapse';
+                Table1.style.border = '1px solid black';
+                
+                for (let i = 0; i < N; i++) {
+                    const tr = Table1.insertRow();
+                    for (let j = 0; j < M; j++) {   
+                        const td = tr.insertCell();
+                        
+                            td.appendChild(document.createElement("input")).value = matrix[i][j];
+                  
+                          
+                            td.style.border = '1px solid black';
+                        
+                    }
+                }
+            body.appendChild(Table1);
+            Table1.id = "table1";
+            const button1 = document.createElement('button')
+        
+            button1.innerText = 'Transpose'
+        
+            button1.id = 'button1'
+        
+            button1.addEventListener('click', () => {
+                let length = N;
+                let width = M;
+                transpose(matrix,length,width,name)
+            })
+        
+            document.body.appendChild(button1)
+            const button2 = document.createElement('button')
+        
+            button2.innerText = 'Trace'
+        
+            button2.id = 'button2'
+        
+            button2.addEventListener('click', () => {
+                let length = N;
+                let width = M;
+                trace(matrix,length,width,name)
+            })
+        
+            document.body.appendChild(button2)
+        
+            }
+                        else {
+                const body = document.body,
+                Table2 = document.createElement('table');
+                Table2.style.width = '100px';
+         
+                Table2.style.borderCollapse = 'collapse';
+                Table2.style.border = '1px solid black';
+                
+                for (let i = 0; i < N; i++) {
+                    const tr = Table2.insertRow();
+                    for (let j = 0; j < M; j++) {
+                        const td = tr.insertCell();
+        
+                        td.appendChild(document.createElement("input")).value = matrix[i][j];
+                        td.style.border = '1px solid black';
+                        td.nodeValue = matrix[i][j];
+                        
+            }
+                        }
+            body.appendChild(Table2);
+            Table2.id = "table2";
+            const button3 = document.createElement('button')
+        
+            button3.innerText = 'Transpose'
+        
+            button3.id = 'button3'
+        
+            // Attach the "click" event to your button
+            button3.addEventListener('click', () => {
+                let length = N;
+                let width = M;
+                transpose(matrix,length,width,name)
+            })
+        
+            document.body.appendChild(button3)
+            const button4 = document.createElement('button')
+        
+            button4.innerText = 'Trace'
+        
+            button4.id = 'button4'
+        
+            button4.addEventListener('click', () => {
+                let length = N;
+                let width = M;
+                trace(matrix,length,width,name)
+            })
+        
+            document.body.appendChild(button4)
+        
+            }
+            }
