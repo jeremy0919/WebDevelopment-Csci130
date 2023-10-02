@@ -1,20 +1,7 @@
-.calculator{
-    border:2px solid black;
-    float:left;
-    height:auto;
-}
-.col1 {
-    border:2px solid red; 
-    float: left;
-}
-.col2 {
-    border:2px solid green;
-    float:left;
-     
-}
-.col3 {
-    border:2px solid brown;
-    float:left;
+
+table{
+    border-color:black;
+    border: 1px solid black;
 }
 .mat{
     margin-top: 100px;

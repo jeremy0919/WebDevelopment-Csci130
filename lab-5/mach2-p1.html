@@ -12,7 +12,7 @@
         isMatrixCalled = false;
          }
  function matrixMultiply(){
-    let length = document.getElementById("m1").value;
+    let length = document.getElementById("m1").value; 
     let height = document.getElementById("n2").value;
 
     let matrix1 = [];
@@ -79,18 +79,18 @@
  function FinalMatrix(x,y){
 
  }
- function matrix(){ 
-    var m1 = document.getElementById("m1").value;
-    var m2 = document.getElementById("m2").value;
-    var n1 = document.getElementById("n1").value;
-    var n2 = document.getElementById("n2").value;
+    function matrix(){ 
+        var m1 = document.getElementById("m1").value;
+        var m2 = document.getElementById("m2").value;
+        var n1 = document.getElementById("n1").value;
+        var n2 = document.getElementById("n2").value;
             tableCreate(m1,n1, "table1"); // tables created still need to modify values in tables and matrix multiply
            
             tableCreate(m2,n2, "table2");
-isMatrixCalled = true;
-        }
+            isMatrixCalled = true;
+    }
         function tableCreate(N,M, name) {
-if(name == "table1"){
+            if(name == "table1"){
                 const body = document.body,
                 Table1 = document.createElement('table');
                 Table1.style.width = '100px';
@@ -102,9 +102,9 @@ if(name == "table1"){
                     const tr = Table1.insertRow();
                     for (let j = 0; j < M; j++) {
                         const td = tr.insertCell();
-                        
-                            td.appendChild(document.createElement("input"));
-
+ 
+                           td.appendChild(document.createElement("input"));
+                         
                             td.style.border = '1px solid black';
                         
                     }
@@ -112,7 +112,7 @@ if(name == "table1"){
             body.appendChild(Table1);
             Table1.id = "table1";
             }
-                        else {
+            else {
                 const body = document.body,
                 Table2 = document.createElement('table');
                 Table2.style.width = '100px';
@@ -126,11 +126,11 @@ if(name == "table1"){
                         const td = tr.insertCell();
  
                             td.appendChild(document.createElement("input"));
-
+                       
                             td.style.border = '1px solid black';
                         
-            }
-                        }
+                    }
+                }
             body.appendChild(Table2);
             Table2.id = "table2";
             }
