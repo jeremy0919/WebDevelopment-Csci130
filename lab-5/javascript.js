@@ -446,16 +446,17 @@ var m1 = document.getElementById("m1").value;
 var m2 = document.getElementById("m2").value;
 var n1 = document.getElementById("n1").value;
 var n2 = document.getElementById("n2").value;
-if(m1 == null){
+
+if(m1 == ""){
 alert("missing value height1")
 }
-else if(m2 == null){
+else if(m2 == ""){
     alert("missing value height2")
 }
-else if(n1 == null){
+else if(n1 == ""){
     alert("missing value length1")
 }
-else if(n2 == null){
+else if(n2 == ""){
     alert("missing value length2")
 }
 else{
