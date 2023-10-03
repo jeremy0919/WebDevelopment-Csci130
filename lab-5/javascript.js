@@ -66,10 +66,13 @@ function root(event){
 
 function sign(event){// not a lot of stupidity checks
     let temp = previous.length;
-    input = input.slice(0,-length);
+    input = input.slice(0,-temp);
     previous = previous*-1;
     input = input+previous;
     paragraph.textContent = input;
+    if(lastfunct == "x"){
+        output = previous;
+    }
 }
 function decimal(event){
     input = input+".";
@@ -397,9 +400,9 @@ resultMatrix[i] = new Array(length2);
 for (let i = 0; i < height1; ++i) {
 for (let j = 0; j < length1; ++j) {
     let sum = 0;
-    for (let k = 0; k < length2; ++k) {
+    for (let k = 0; k < height2; ++k) {
     
-        sum += matrix1[i][j] * matrix2[k][j];
+        sum += matrix1[i][k] * matrix2[k][j];
     }
 
     resultMatrix[i][j] = sum;
@@ -410,7 +413,7 @@ for (let j = 0; j < length1; ++j) {
     var parentEl1 = removeTab1.parentElement;
         parentEl1.removeChild(removeTab1);
     }
-table3create(resultMatrix,length1,height1);
+table3create(resultMatrix,length2,height1);
 }
 else(alert("cannot multiply"))
 }
@@ -443,6 +446,47 @@ var m1 = document.getElementById("m1").value;
 var m2 = document.getElementById("m2").value;
 var n1 = document.getElementById("n1").value;
 var n2 = document.getElementById("n2").value;
+if(m1 == null){
+alert("missing value height1")
+}
+else if(m2 == null){
+    alert("missing value height2")
+}
+else if(n1 == null){
+    alert("missing value length1")
+}
+else if(n2 == null){
+    alert("missing value length2")
+}
+else{
+var removeTab1 = document.getElementById('table1'); 
+if(removeTab1!=null){
+var parentEl1 = removeTab1.parentElement;
+    parentEl1.removeChild(removeTab1);
+}
+var removeTab1 = document.getElementById('table2'); 
+if(removeTab1!=null){
+var parentEl1 = removeTab1.parentElement;
+    parentEl1.removeChild(removeTab1);
+}var removeTab1 = document.getElementById('button1'); 
+if(removeTab1!=null){
+var parentEl1 = removeTab1.parentElement;
+    parentEl1.removeChild(removeTab1);
+}
+var removeTab1 = document.getElementById('button2'); 
+if(removeTab1!=null){
+var parentEl1 = removeTab1.parentElement;
+    parentEl1.removeChild(removeTab1);
+}var removeTab1 = document.getElementById('button3'); 
+if(removeTab1!=null){
+var parentEl1 = removeTab1.parentElement;
+    parentEl1.removeChild(removeTab1);
+}
+var removeTab1 = document.getElementById('button4'); 
+if(removeTab1!=null){
+var parentEl1 = removeTab1.parentElement;
+    parentEl1.removeChild(removeTab1);
+}
     tableCreate(m1,n1, "table1"); // tables created still need to modify values in tables and matrix multiply
    
     tableCreate(m2,n2, "table2");
@@ -450,7 +494,7 @@ var n2 = document.getElementById("n2").value;
     document.getElementById("ismatrix2").style.display = "block";
     document.getElementById("ismatrix3").style.display = "block";
 }
-
+}
 function transpose(matrix,length,width,name){
     let resultMatrix = new Array(width);
     for (let i = 0; i < width; i++) {
