@@ -245,8 +245,7 @@ function tableCreate(N,M) {
 
 
     function matrixAddition(){
-        let length = document.getElementById("m1").value;
-        let height = document.getElementById("n2").value;
+
         let l1 = document.getElementById("m1").value;
         let l2 = document.getElementById("m2").value;
         let w1 = document.getElementById("n1").value;
@@ -255,9 +254,9 @@ function tableCreate(N,M) {
            
         let matrix1 = [];
         let table1 = document.getElementById("table1");
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < l1; i++) {
         let row = [];
-        for (let j = 0; j < length; j++) {
+        for (let j = 0; j < w1; j++) {
             let cell = table1.rows[i].cells[j];
             let inputValue = cell.querySelector('input').value; 
             row.push(parseFloat(inputValue)); 
@@ -267,9 +266,9 @@ function tableCreate(N,M) {
         
         let matrix2 = [];
         let table2 = document.getElementById("table2");
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < l2; i++) {
         let row = [];
-        for (let j = 0; j < height; j++) {
+        for (let j = 0; j < w2; j++) {
             let cell = table2.rows[i].cells[j];
             let inputValue = cell.querySelector('input').value;
             row.push(parseFloat(inputValue));
@@ -278,13 +277,13 @@ function tableCreate(N,M) {
         }
         
         
-        let resultMatrix = new Array(length);
-        for (let i = 0; i < length; i++) {
-        resultMatrix[i] = new Array(height);
+        let resultMatrix = new Array(l2);
+        for (let i = 0; i < l2; i++) {
+        resultMatrix[i] = new Array(w1);
         }
         
-        for (let i = 0; i < length; ++i) {
-        for (let j = 0; j < height; ++j) { // should work needs to be tested
+        for (let i = 0; i < l2; ++i) {
+        for (let j = 0; j < w1; ++j) { // should work needs to be tested
            
           
             
@@ -294,7 +293,7 @@ function tableCreate(N,M) {
            
         }
         }
-        table3create(resultMatrix,length,height);
+        table3create(resultMatrix,l2,w1);
 
     }
     else{
@@ -303,8 +302,7 @@ function tableCreate(N,M) {
         
     }
     function matrixSubtraction(){
-        let length = document.getElementById("m1").value;
-        let height = document.getElementById("n2").value;
+     
         let l1 = document.getElementById("m1").value;
         let l2 = document.getElementById("m2").value;
         let w1 = document.getElementById("n1").value;
@@ -313,9 +311,9 @@ function tableCreate(N,M) {
            
         let matrix1 = [];
         let table1 = document.getElementById("table1");
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < l1; i++) {
         let row = [];
-        for (let j = 0; j < length; j++) {
+        for (let j = 0; j < w1; j++) {
             let cell = table1.rows[i].cells[j];
             let inputValue = cell.querySelector('input').value; // uses quert selector to get value from input, without it returns nan
             row.push(parseFloat(inputValue)); 
@@ -325,9 +323,9 @@ function tableCreate(N,M) {
         
         let matrix2 = [];
         let table2 = document.getElementById("table2");
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < l2; i++) {
         let row = [];
-        for (let j = 0; j < height; j++) {
+        for (let j = 0; j < w2; j++) {
             let cell = table2.rows[i].cells[j];
             let inputValue = cell.querySelector('input').value;
             row.push(parseFloat(inputValue));
@@ -336,13 +334,13 @@ function tableCreate(N,M) {
         }
         
         
-        let resultMatrix = new Array(length);
-        for (let i = 0; i < length; i++) {
-        resultMatrix[i] = new Array(height);
+        let resultMatrix = new Array(l2);
+        for (let i = 0; i < l2; i++) {
+        resultMatrix[i] = new Array(w1);
         }
         
-        for (let i = 0; i < length; ++i) {
-        for (let j = 0; j < height; ++j) { // should work needs to be tested
+        for (let i = 0; i < l1; ++i) {
+        for (let j = 0; j < w1; ++j) { // should work needs to be tested
            
           
             
@@ -352,7 +350,7 @@ function tableCreate(N,M) {
            
         }
         }
-        table3create(resultMatrix,length,height);
+        table3create(resultMatrix,l1,w1);
 
     }
     else{
@@ -361,18 +359,16 @@ function tableCreate(N,M) {
         
     }
 function matrixMultiply(){
-let length = document.getElementById("m1").value;
-let height = document.getElementById("n2").value;
-let length1 = document.getElementById("m1").value;
-let height1 = document.getElementById("n1").value;
-let length2 = document.getElementById("m2").value;
-let height2 = document.getElementById("n2").value;
-if(length==height){
+let height1 = document.getElementById("m1").value;
+let length1 = document.getElementById("n1").value;
+let height2 = document.getElementById("m2").value;
+let length2 = document.getElementById("n2").value;
+if(length1==height2){
 let matrix1 = [];
 let table1 = document.getElementById("table1");
-for (let i = 0; i < length1; i++) {
+for (let i = 0; i < height1; i++) {
 let row = [];
-for (let j = 0; j < height1; j++) {
+for (let j = 0; j < length1; j++) {
     let cell = table1.rows[i].cells[j];
     let inputValue = cell.querySelector('input').value; 
     row.push(parseFloat(inputValue)); 
@@ -382,9 +378,9 @@ matrix1.push(row);
 
 let matrix2 = [];
 let table2 = document.getElementById("table2");
-for (let i = 0; i < length2; i++) {
+for (let i = 0; i < height2; i++) {
 let row = [];
-for (let j = 0; j < height2; j++) {
+for (let j = 0; j < length2; j++) {
     let cell = table2.rows[i].cells[j];
     let inputValue = cell.querySelector('input').value;
     row.push(parseFloat(inputValue));
@@ -393,23 +389,28 @@ matrix2.push(row);
 }
 
 
-let resultMatrix = new Array(length);
-for (let i = 0; i < length; i++) {
-resultMatrix[i] = new Array(height);
+let resultMatrix = new Array(length1);
+for (let i = 0; i < length1; i++) {
+resultMatrix[i] = new Array(length2);
 }
 
-for (let i = 0; i < length; ++i) {
-for (let j = 0; j < height; ++j) {
+for (let i = 0; i < height1; ++i) {
+for (let j = 0; j < length1; ++j) {
     let sum = 0;
-    for (let k = 0; k < length; ++k) {
+    for (let k = 0; k < length2; ++k) {
     
-        sum += matrix1[i][k] * matrix2[k][j];
+        sum += matrix1[i][j] * matrix2[k][j];
     }
 
     resultMatrix[i][j] = sum;
 }
 }
-table3create(resultMatrix,length,height);
+    var removeTab1 = document.getElementById('table3'); 
+    if(removeTab1!=null){
+    var parentEl1 = removeTab1.parentElement;
+        parentEl1.removeChild(removeTab1);
+    }
+table3create(resultMatrix,length1,height1);
 }
 else(alert("cannot multiply"))
 }
@@ -418,13 +419,13 @@ function table3create(resultMatrix,length,height){
 const body = document.body,
         Table3 = document.createElement('table');
         Table3.style.width = '100px';
- 
+        Table3.style.textAlign = "left";
         Table3.style.borderCollapse = 'collapse';
         Table3.style.border = '1px solid black';
         
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < height; i++) {
             const tr = Table3.insertRow();
-            for (let j = 0; j < height; j++) {
+            for (let j = 0; j < length; j++) {
                 const td = tr.insertCell();
 
                     td.appendChild(document.createTextNode(resultMatrix[i][j]));
@@ -432,6 +433,7 @@ const body = document.body,
                 
             }
         }
+        Table3.id="table3";
     body.appendChild(Table3);
 }
 
@@ -509,7 +511,7 @@ if(name == "table1"){
         const body = document.body,
         Table1 = document.createElement('table');
         Table1.style.width = '100px';
- 
+        Table1.style.textAlign = "left";
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
      
@@ -580,7 +582,7 @@ if(name == "table1"){
         const body = document.body,
         Table2 = document.createElement('table');
         Table2.style.width = '100px';
- 
+        Table2.style.textAlign = "left";
         Table2.style.borderCollapse = 'collapse';
         Table2.style.border = '1px solid black';
         
@@ -655,7 +657,7 @@ matrix1.push(row);
                 const body = document.body,
                 Table1 = document.createElement('table');
                 Table1.style.width = '100px';
-         
+                Table1.style.textAlign = "left";
                 Table1.style.borderCollapse = 'collapse';
                 Table1.style.border = '1px solid black';
                 
@@ -705,7 +707,7 @@ matrix1.push(row);
                 const body = document.body,
                 Table2 = document.createElement('table');
                 Table2.style.width = '100px';
-         
+                Table2.style.textAlign = "left";
                 Table2.style.borderCollapse = 'collapse';
                 Table2.style.border = '1px solid black';
                 
