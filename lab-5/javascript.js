@@ -559,14 +559,20 @@ function trace(matrix,length,width,name){
             }
         }
     }
-    alert( sum);
+    if(name == "table1"){
+        name = "Matrix 1";
+    }
+    if(name == "table2"){
+        name = "Matrix 2";
+    }
+    alert("the trace of " +name+" is " +sum);
 }
 function tableCreate(N,M, name) { // add length width matrix and name to transpose/trace
 if(name == "table1"){
         const body = document.body,
         Table1 = document.createElement('table');
         Table1.style.width = '100px';
-        Table1.style.textAlign = "left";
+        Table1.style.alignSelf = "left";
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
      
@@ -637,7 +643,7 @@ if(name == "table1"){
         const body = document.body,
         Table2 = document.createElement('table');
         Table2.style.width = '100px';
-        Table2.style.textAlign = "left";
+        Table2.style.alignSelf = "left";
         Table2.style.borderCollapse = 'collapse';
         Table2.style.border = '1px solid black';
         
