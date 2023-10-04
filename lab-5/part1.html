@@ -18,14 +18,13 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2"> <button id = "clearcalc" onclick="clearcalc(event)">clear</button></td>
             <td> <button id = "equals" onclick="display(event)">=</button></td>
             <td> <button id = "decimal" onclick="decimal(event)">.</button></td>
     </tr>
         <tr>
     <td>  <button id = "multiply" onclick="multiply(event)">*</button></td>
     <td>  <button id = "divide" onclick="divide(event)">/</button></td>
-    <td colspan="2">  <button id = "sqrt" onclick="root(event)">sqrt</button></td>
+    <td colspan="2"> <button id = "clearcalc" onclick="clearcalc(event)">clear</button></td>
     </tr>
 
 <tr>
@@ -52,7 +51,8 @@
 </tr>
 <tr>
     <td><button id = "zero" onclick="zero(event)">0</button></td>
-    <td> <button id = "switch" onclick="sign(event)">+/-</button></td>
+    <td colspan="2"> <button id = "switch" onclick="sign(event)">+/-</button></td>
+    <td style = "padding-right: 1px;" colspan="1">  <button id = "sqrt" onclick="root(event)">sqrt</button></td>
 </tr>
 
 </table>

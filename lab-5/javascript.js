@@ -296,6 +296,11 @@ function tableCreate(N,M) {
            
         }
         }
+        var removeTab1 = document.getElementById('table3'); 
+        if(removeTab1!=null){
+        var parentEl1 = removeTab1.parentElement;
+            parentEl1.removeChild(removeTab1);
+        }
         table3create(resultMatrix,l2,w1);
 
     }
@@ -352,6 +357,11 @@ function tableCreate(N,M) {
         
            
         }
+        }
+        var removeTab1 = document.getElementById('table3'); 
+        if(removeTab1!=null){
+        var parentEl1 = removeTab1.parentElement;
+            parentEl1.removeChild(removeTab1);
         }
         table3create(resultMatrix,l1,w1);
 
@@ -549,7 +559,7 @@ function trace(matrix,length,width,name){
             }
         }
     }
-    alert("The trace of %s is %d",name, sum); //might need to adjust string to alert or create string abobe and alert premade string
+    alert( sum);
 }
 function tableCreate(N,M, name) { // add length width matrix and name to transpose/trace
 if(name == "table1"){
