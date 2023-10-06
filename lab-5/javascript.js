@@ -229,6 +229,8 @@ function tableCreate(N,M) {
  
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
+        Table1.style.paddingRight= '500px';
+        Table1.style.alignContent = 'left';
         for (let i = 0; i < N; i++) {
             const tr = Table1.insertRow();
             for (let j = 0; j < M; j++) {
@@ -435,7 +437,8 @@ const body = document.body,
         Table3.style.textAlign = "left";
         Table3.style.borderCollapse = 'collapse';
         Table3.style.border = '1px solid black';
-        
+        Table3.style.paddingRIght= '50%';
+        Table3.style.alignContent = 'left';
         for (let i = 0; i < height; i++) {
             const tr = Table3.insertRow();
             for (let j = 0; j < length; j++) {
@@ -575,7 +578,8 @@ if(name == "table1"){
         Table1.style.alignSelf = "left";
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
-     
+        Table1.style.paddingRIght= '50%';
+        Table1.style.alignContent ="left";
         for (let i = 0; i < N; i++) {
             const tr = Table1.insertRow();
             for (let j = 0; j < M; j++) {
@@ -646,7 +650,6 @@ if(name == "table1"){
         Table2.style.alignSelf = "left";
         Table2.style.borderCollapse = 'collapse';
         Table2.style.border = '1px solid black';
-        
         for (let i = 0; i < N; i++) {
             const tr = Table2.insertRow();
             for (let j = 0; j < M; j++) {
@@ -721,7 +724,7 @@ matrix1.push(row);
                 Table1.style.textAlign = "left";
                 Table1.style.borderCollapse = 'collapse';
                 Table1.style.border = '1px solid black';
-                
+                Table1.style.paddingRIght= '50%';
                 for (let i = 0; i < N; i++) {
                     const tr = Table1.insertRow();
                     for (let j = 0; j < M; j++) {   
@@ -771,7 +774,7 @@ matrix1.push(row);
                 Table2.style.textAlign = "left";
                 Table2.style.borderCollapse = 'collapse';
                 Table2.style.border = '1px solid black';
-                
+                Table2.style.paddingRIght= '50%';
                 for (let i = 0; i < N; i++) {
                     const tr = Table2.insertRow();
                     for (let j = 0; j < M; j++) {

@@ -3,8 +3,9 @@ table{
     border-color:black;
     border: 1px solid black;
     border-collapse: collapse;
-
+    
 }
+
 .mat{
     margin-top: 100px;
     float:left;
