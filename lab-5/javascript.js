@@ -229,7 +229,7 @@ function tableCreate(N,M) {
  
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
-        Table1.style.paddingRight= '500px';
+        Table1.style.marginRight= '500px';
         Table1.style.alignContent = 'left';
         for (let i = 0; i < N; i++) {
             const tr = Table1.insertRow();
@@ -437,7 +437,7 @@ const body = document.body,
         Table3.style.textAlign = "left";
         Table3.style.borderCollapse = 'collapse';
         Table3.style.border = '1px solid black';
-        Table3.style.paddingRIght= '50%';
+        Table3.style.marginRight= '50%';
         Table3.style.alignContent = 'left';
         for (let i = 0; i < height; i++) {
             const tr = Table3.insertRow();
@@ -578,7 +578,7 @@ if(name == "table1"){
         Table1.style.alignSelf = "left";
         Table1.style.borderCollapse = 'collapse';
         Table1.style.border = '1px solid black';
-        Table1.style.paddingRIght= '50%';
+        Table1.style.marginRight= '50%';
         Table1.style.alignContent ="left";
         for (let i = 0; i < N; i++) {
             const tr = Table1.insertRow();
@@ -650,6 +650,7 @@ if(name == "table1"){
         Table2.style.alignSelf = "left";
         Table2.style.borderCollapse = 'collapse';
         Table2.style.border = '1px solid black';
+        Table2.style.marginRight= '500px';
         for (let i = 0; i < N; i++) {
             const tr = Table2.insertRow();
             for (let j = 0; j < M; j++) {
