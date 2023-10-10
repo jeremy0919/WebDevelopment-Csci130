@@ -3,7 +3,10 @@ function drawCanvas(formula){
     let temp1 = formula.indexOf('x');
   //  let temp2 = formula.find('y');
     let temp3 = formula.length;
-    let m = formula[temp1-1];
+    var m =1;
+    if(temp1!=-1){
+    m = formula[temp1-1];
+    }
     let exp = formula.indexOf('^');
     let pow = 0;
     if(exp!=-1){
@@ -11,7 +14,8 @@ function drawCanvas(formula){
     }
     //https://canvasjs.com/docs/charts/basics-of-creating-html5-chart/labels-index-labels/
    // let temp4 = formula[temp2-1];
-    let b =formula[temp3-1]
+   let b =0;
+    b =formula[temp3-1]
     var ctx = c.getContext("2d");
     ctx.moveTo(0, 200);
     ctx.lineTo(200, 200);
@@ -105,6 +109,7 @@ function formCreation(){
 
   document.getElementsByTagName("body")[0]
   .appendChild(form);
+  document.getElementsByClassName("test")[0].appendChild(form);
 }
 
 /*    <form action="">
