@@ -82,7 +82,7 @@ function formCreation(){
 
   var form = document.createElement("form");
   form.setAttribute("method", "post");
-
+  form.setAttribute("id","form1");
   var firstName = document.createElement("input");
   firstName.setAttribute("type", "text");
   firstName.setAttribute("name", "firstName");
