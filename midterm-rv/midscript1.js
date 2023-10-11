@@ -45,25 +45,26 @@ class Car {
   class info { // creates class
     constructor(name, lname,age) { // constructs class based off of info
       this.name = name;
-      this.info = lname;
+      this.lname = lname;
       this.age = age;
     }
   }
-
-  class data{ // wrong
-    constructor(name,lname,age){
-      name = document.getElementById('Fname').value;
-      lname = document.getElementById('Lname').value;
-      age = document.getElementById('Age').value;
+//super calls parent class 
+  class MoreInfo extends info{
+    constructor(id, name, lname, age){
+      super(name, lname, age);
+      this.id = id;
     }
+    getFullInfo(){
+      return this.id +" "+ this.name + " "+ this.lname + " " + this.age;
+    }
+
   }
 
 
 function dataRetrieval(){
-    thisPerson = new info( document.getElementById('Fname').value,document.getElementById('Lname').value,document.getElementById('Age').value ); // creates new instance of class
-    alert(thisPerson.name);
-    alert(thisPerson.info);
-    alert(thisPerson.age);
+  const more = new MoreInfo("id 10:", document.getElementById("Fname").value, document.getElementById("Lname").value, document.getElementById("Age").value);
+  console.log(more.getFullInfo());
 }
 
 
@@ -107,8 +108,7 @@ function formCreation(){
   form.appendChild(lastname);
   form.appendChild(age);
 
-  document.getElementsByTagName("body")[0]
-  .appendChild(form);
+  document.getElementsByTagName("body")[0].appendChild(form);
   document.getElementsByClassName("test")[0].appendChild(form);
 }
 
