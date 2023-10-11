@@ -103,13 +103,20 @@ function formCreation(){
   age.setAttribute("placeholder", "age");
   age.setAttribute("id", "Age");
   age.setAttribute("value", my_data.num);
-
+  alert(age.value);
   form.appendChild(firstName);
   form.appendChild(lastname);
   form.appendChild(age);
 
   document.getElementsByTagName("body")[0].appendChild(form);
   document.getElementsByClassName("test")[0].appendChild(form);
+
+  var button = document.createElement("input");
+  button.setAttribute("type","button");
+  button.setAttribute("id","but1");
+  button.setAttribute("value","but1");
+  button.setAttribute("onclick","dataRetrieval();");
+  document.getElementsByClassName("test")[0].appendChild(button);
 }
 
 /*    <form action="">

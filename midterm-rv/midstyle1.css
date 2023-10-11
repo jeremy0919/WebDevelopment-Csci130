@@ -3,3 +3,10 @@ form{
     color: red;
     padding-left:20%;
 }
+input[type = "button"]{
+background-color: lightblue;
+color: black;
+width:20%;
+border: 2px solid black;
+margin-left:30%;
+}
