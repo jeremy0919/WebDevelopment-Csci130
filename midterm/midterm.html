@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+    <header>
+      
+        <script>
+        function output(n){
+            console.log(Factorial1(n));
+        }
+        function Factorial1(n){
+            function Factorial(n){
+                if(n>=0){
+                return(n*Factorial(n-1));
+            }
+        }   
+        console.log(Factorial(n));
+        }
+        
+        function Factorial2(n){
+            let factArray = new Array(n);
+            for(let i =0; i<n;++i){
+                factArray[i] = Factorial(i);
+            }
+            function Factorial(n){
+                if(n>=0){
+                return(n*Factorial(n-1));
+            }
+        }
+        }
+        
+        function ReverseArray(arr){
+            let x = arr.length();
+            let count = x;
+            let outArray = new Array(x);
+            for(let i =0; i<x;++i){
+                outArray[i] = arr[count];
+                count = count-1;
+            }
+        
+        }
+        
+        function Factorial3(n){
+            let table = document.createElement("TABLE");
+            let tablehead = document.createElement("thead");
+            let tr1 = document.createElement("trow");
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            let in1 = document.createElement("input");
+            in1.setAttribute("type", "text");
+            in1.setAttribute("value","index" );
+            let in2 = document.createElement("input");
+            in2.setAttribute("type", "text");
+            in2.setAttribute("value", "factorial");
+            td1.appendChild(in1);
+            td2.appendChild(in2);
+            tr1.appendChild(td1);
+            tr1.appendChild(td2);
+            tablehead.appendChild(tr1);
+            table.appendChild(tablehead);
+            let tablebody = document.createElement("tbody");
+            table.appendChild(tablebody);
+          //  table.style.c
+            let x = 1;
+            for(let i =1; i<=n;++i){
+                x = x*i;
+                let tr = document.createElement("trow");
+                tablebody.appendChild(tr); 
+                for(let j =0; j<2; ++j){
+                    let td = document.createElement("td");
+                //    let td2= document.createElement("td");
+                    let input = document.createElement("INPUT");
+                    input.setAttribute("type", "text");
+                    let input2 = document.createElement("INPUT");
+                    input2.setAttribute("type", "text");
+                    if(j ==0){
+                    input.setAttribute("value",i );
+                    }
+                    if(j == 1){
+                        input2.setAttribute("value", x );
+                    }
+                    td.appendChild(input);
+                    td.appendChild(input2);
+                    tr.appendChild(td); 
+                 //   tr.appendChild(td2); 
+                }
+                tablebody.appendChild(tr);
+        
+                
+            }
+            document.getElementsByClassName("table")[0].appendChild(table);
+        }</script>
+    
+    </header>
+    <body>
+        <form>
+            <input type="text" value = 6 id="text1">
+            <input type="button" value="ok" onclick="Factorial1(document.getElementById('text1').value)">
+<br>
+            <input type="text" value = 6 id="text2">
+            <input type="button" value="table 1" onclick="Factorial3(document.getElementById('text2').value)">
+            <br>
+            <input type="text" placeholder="type in array" id="text3">
+            <input type="button" value="factorial2" onclick="reverseArray(document.getElementById('text3').value)">
+
+        </form>
+
+    </body>
+<div class = table>
+
+</div>
+
+</html>
