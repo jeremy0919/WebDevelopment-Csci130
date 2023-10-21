@@ -25,7 +25,11 @@ function createTable(){
             input.setAttribute("height", "40");
        
             input.setAttribute("width", "40");
-            
+            var x =i;
+            var y =j;
+            if(i<3){
+              td.setAttribute("onclick","MovePiece(x.value,y.value)")
+            }
             if(i%2==0){
                 if(j%2 ==0){
            // input.setAttribute("value",i );
@@ -67,4 +71,7 @@ function createTable(){
         
     }
     document.getElementsByClassName("table")[0].appendChild(table);
+}
+function MovePiece(x,y){
+  alert(x + " " + y);
 }
