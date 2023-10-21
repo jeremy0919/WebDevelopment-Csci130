@@ -25,11 +25,7 @@ function createTable(){
             input.setAttribute("height", "40");
        
             input.setAttribute("width", "40");
-            var x =i;
-            var y =j;
-            if(i<3){
-              td.setAttribute("onclick","MovePiece(x.value,y.value)")
-            }
+
             if(i%2==0){
                 if(j%2 ==0){
            // input.setAttribute("value",i );
@@ -62,7 +58,44 @@ function createTable(){
                     td.style.width = "40px";
                 }
             }
-          
+            if(i<=2&& td.style.backgroundColor=="black"){
+              var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+              svg.setAttribute("width", "40");
+              svg.setAttribute("height", "40");
+  
+              var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              circle.setAttribute("cx", "20");
+              circle.setAttribute("cy", "20");
+              circle.setAttribute("r", "15");
+              circle.setAttribute("stroke", "black");
+              circle.setAttribute("stroke-width", "3");
+              circle.setAttribute("fill", "blue");
+  
+              svg.appendChild(circle);
+              td.appendChild(svg);
+              td.addEventListener('click', function() {
+                MovePiece(i, j);
+              });
+            }
+            if(i>=7&&td.style.backgroundColor=="black"){
+              var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+              svg.setAttribute("width", "40");
+              svg.setAttribute("height", "40");
+  
+              var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              circle.setAttribute("cx", "20");
+              circle.setAttribute("cy", "20");
+              circle.setAttribute("r", "15");
+              circle.setAttribute("stroke", "black");
+              circle.setAttribute("stroke-width", "3");
+              circle.setAttribute("fill", "blue");
+  
+              svg.appendChild(circle);
+              td.appendChild(svg);
+              td.addEventListener('click', function() {
+                MovePiece(i, j);
+              });
+            }
             tr.appendChild(td); 
          //   tr.appendChild(td2); 
         }
