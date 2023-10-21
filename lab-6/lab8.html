@@ -1,19 +1,42 @@
-<html5> 
-    <head>
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Parsing Example</title>
+    <script>
+function generate(){
     var httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = function(){
         if(httpRequest.readyState == XMLHttpRequest.DONE){
+            alert(httpRequest.status);
             if(httpRequest.status === 200){
-                data = JSON.parse(httpRequest.responseText);
-                // do stuff here
+                var data = JSON.parse(httpRequest.responseText);
+                var json_html = "";
+              
+                for(var i = 0; i < data.pokemon.length; i++) {
+                    var pokemon = data.pokemon[i];
+                    json_html += "<h2>" + pokemon.name + "</h2>";
+                    alert(pokemon.name);
+                    json_html += "<p>Evolution: " + pokemon.evolution + "</p>";
+                    json_html += "<p>Shiny Color: " + pokemon["shiny-color"] + "</p>";
+                    json_html += "<p>Average Size: " + pokemon.averageSize + "</p>";
+                    json_html += "<p>Type: " + pokemon.type + "</p>";
+                    json_html += "<p>Weak To: " + pokemon.weakTo + "</p>";
+                    json_html += "<p>Can Evolve: " + pokemon.canEvolve + "</p>";
+                    json_html += "<img src='" + pokemon.img + "' alt='" + pokemon.name + "'><br>";
+                }
+                document.getElementById("json-container").innerHTML = json_html;
             }
         }
     };
-    httpRequest.open('GET',path,true) // path = local path
+
+    httpRequest.open('GET',"lab-6/class.json",true) // path = local path
     httpRequest.send();
-</script>
-    </head>
-    <body>
-    </body>
-</html5>
+}
+    </script>
+</head>
+<body>
+
+    <div id="json-container"></div>
+    <input type="button" value="Press button to display Generate Pokemon JSON representation" onclick="generate()">
+</body>
+</html>

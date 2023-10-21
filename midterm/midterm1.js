@@ -84,3 +84,33 @@ function Factorial3(n){
     }
     document.getElementsByClassName("table")[0].appendChild(table);
 }
+
+/*
+
+<html5> 
+    <head>
+<script>
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function(){
+        if(httpRequest.readyState == XMLHttpRequest.DONE){
+            if(httpRequest.status === 200){
+                data = JSON.parse(httpRequest.responseText);
+                // do stuff here
+            }
+        }
+    };
+    let path = "lab-6\class.json";
+    httpRequest.open('GET',path,true) // path = local path
+    httpRequest.send();
+</script>
+    </head>
+    <body>
+        <form>
+            <input type="button" value="Press button to display Generate Pokemon JSON representation">
+            <input type="button" value="Press button to display a pokemon">
+            <input type="button" value="Previous">
+            <input type="button" value="Next">
+        </form>
+    </body>
+</html5>
+*/
