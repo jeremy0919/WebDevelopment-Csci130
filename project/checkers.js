@@ -106,5 +106,7 @@ function createTable(){
     document.getElementsByClassName("table")[0].appendChild(table);
 }
 function MovePiece(x,y){
-  alert(x + " " + y);
+    if(x==y){
+
+    }
 }
