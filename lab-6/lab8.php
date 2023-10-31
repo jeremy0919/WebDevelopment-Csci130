@@ -1,6 +1,32 @@
 <?php
-  //  include("newPokemon.html");
+// Read the existing JSON file
+$json_file = 'class.json';
+$json_data = file_get_contents($json_file);
+$pokemon_list = json_decode($json_data, true);
 
+// Get data from the form
+$new_pokemon = [
+    'name' => $_POST['Pokemon'],
+    'evolution' => $_POST['evolution'],
+    'shinyColor' => $_POST['shinyColor'],
+    'averageSize' => $_POST['averageSize'],
+    'type' => $_POST['type'],
+    'weakTo' => $_POST['weakTo'],
+    'canEvolve' => $_POST['canEvolve'],
+    'img' => 'mon.jpg',
+];
+
+// Add the new Pokemon to the list
+$pokemon_list['pokemon'][] = $new_pokemon;
+
+// Encode the updated data back to JSON
+$updated_json = json_encode($pokemon_list, JSON_PRETTY_PRINT);
+
+// Write the updated JSON data back to the file
+file_put_contents($json_file, $updated_json);
+
+// Redirect back to the HTML page
+header('Location: index.html');
 ?>
 
 
@@ -129,22 +155,22 @@ fs.readFile('class.json', 'utf8', (err, data) => {
     <input type="button" value="previous" onclick="previous()">
     <input type="button" value="next" onclick="next()">
 
-    <form>
+    <form action="insert_pokemon.php" method="post">
         <label>Pokemon:</label>
-        <input type="text" name ="Pokemon"> <br>
+        <input type="text" name="Pokemon"> <br>
         <label>evolution:</label>
-        <input type="text" name ="evolution"> <br>
+        <input type="text" name="evolution"> <br>
         <label>shinyColor:</label>
-        <input type="text" name ="shinyColor"> <br>
+        <input type="text" name="shinyColor"> <br>
         <label>averageSize:</label>
-        <input type="text" name ="averageSize"> <br>
+        <input type="text" name="averageSize"> <br>
         <label>type:</label>
-        <input type="text" name ="type"> <br>
+        <input type="text" name="type"> <br>
         <label>weakTo:</label>
-        <input type="text" name ="weakTo"> <br>
+        <input type="text" name="weakTo"> <br>
         <label>canEvolve:</label>
-        <input type="text" name ="canEvolve"> <br>
-        <input type="submit" name ="submit" value ="insert new pokemon"><br>
+        <input type="text" name="canEvolve"> <br>
+        <input type="submit" name="submit" value="Insert new pokemon"><br>
     </form>
     <input type ="button" value ="insert" onclick="insertItem()">
 </body>
