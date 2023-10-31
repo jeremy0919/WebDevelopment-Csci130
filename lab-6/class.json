@@ -1,10 +1,11 @@
-{"pokemon":[
-    {"name":"charmander", "evolution": "1", "shiny-color":"gold", "averageSize":"20kg", "type":"fire", "weakTo":"water", "canEvolve":"yes", "img":"imglink"},
-    {"name":"charmealon", "evolution": "2", "shiny-color":"gold", "averageSize":"20kg", "type":"fire", "weakTo":"water", "canEvolve":"yes", "img":"imglink"},
-    {"name":"charizard", "evolution": "3", "shiny-color":"black", "averageSize":"20kg", "type":"fire", "weakTo":"water", "canEvolve":"no", "img":"imglink"},
-    {"name":"squirtle", "evolution": "1", "shiny-color":"teal", "averageSize":"20kg", "type":"water", "weakTo":"grass", "canEvolve":"yes", "img":"imglink"},
-    {"name":"warturtle", "evolution": "2", "shiny-color":"gold", "averageSize":"20kg", "type":"water", "weakTo":"grass", "canEvolve":"yes", "img":"imglink"},
-    {"name":"blastoise", "evolution": "3", "shiny-color":"purple", "averageSize":"20kg", "type":"water", "weakTo":"grass", "canEvolve":"no", "img":"imglink"}
+{
+"pokemon":[
+    {"name":"charmander", "evolution": "1", "shinyColor":"gold", "averageSize":"20kg", "type":"fire", "weakTo":"water", "canEvolve":"yes", "img":"char.png"},
+    {"name":"charmealon", "evolution": "2", "shinyColor":"gold", "averageSize":"26kg", "type":"fire", "weakTo":"water", "canEvolve":"yes", "img":"charmealon.png"},
+    {"name":"charizard", "evolution": "3", "shinyColor":"black", "averageSize":"48kg", "type":"fire", "weakTo":"water", "canEvolve":"no", "img":"charizard.png"},
+    {"name":"squirtle", "evolution": "1", "shinyColor":"teal", "averageSize":"12kg", "type":"water", "weakTo":"grass", "canEvolve":"yes", "img":"squirtle.jpg"},
+    {"name":"warturtle", "evolution": "2", "shinyColor":"gold", "averageSize":"233kg", "type":"water", "weakTo":"grass", "canEvolve":"yes", "img":"wartortle.jpg"},
+    {"name":"blastoise", "evolution": "3", "shinyColor":"purple", "averageSize":"47kg", "type":"water", "weakTo":"grass", "canEvolve":"no", "img":"blastoise.jpg"}
 
 
 ]}
