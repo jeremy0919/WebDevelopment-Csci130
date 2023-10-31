@@ -53,6 +53,7 @@ function generate(){
     httpRequest.open('GET',"class.json",true) // path = local path
     httpRequest.send();
 }
+/*
 function insertItem(){
     const fs = require('fs'); // Node.js file system module
 
@@ -95,7 +96,7 @@ fs.readFile('class.json', 'utf8', (err, data) => {
     });
 });
 
-}
+}*/
     function previous(){
         if(x>0){
             x = x-1;
@@ -172,7 +173,6 @@ fs.readFile('class.json', 'utf8', (err, data) => {
         <input type="text" name="canEvolve"> <br>
         <input type="submit" name="submit" value="Insert new pokemon"><br>
     </form>
-    <input type ="button" value ="insert" onclick="insertItem()">
 </body>
 </html>
 
