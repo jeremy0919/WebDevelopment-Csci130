@@ -1,32 +1,5 @@
 <?php
-// Read the existing JSON file
-$json_file = 'class.json';
-$json_data = file_get_contents($json_file);
-$pokemon_list = json_decode($json_data, true);
 
-// Get data from the form
-$new_pokemon = [
-    'name' => $_POST['Pokemon'],
-    'evolution' => $_POST['evolution'],
-    'shinyColor' => $_POST['shinyColor'],
-    'averageSize' => $_POST['averageSize'],
-    'type' => $_POST['type'],
-    'weakTo' => $_POST['weakTo'],
-    'canEvolve' => $_POST['canEvolve'],
-    'img' => 'mon.jpg',
-];
-
-// Add the new Pokemon to the list
-$pokemon_list['pokemon'][] = $new_pokemon;
-
-// Encode the updated data back to JSON
-$updated_json = json_encode($pokemon_list, JSON_PRETTY_PRINT);
-
-// Write the updated JSON data back to the file
-file_put_contents($json_file, $updated_json);
-
-// Redirect back to the HTML page
-header('Location: lab8.php');
 ?>
 
 
@@ -36,7 +9,17 @@ header('Location: lab8.php');
     <link rel="stylesheet" href="style.css">
     <title>JSON Parsing Example</title>
     <script>
-        var x =0;
+Object.size = function(obj) {
+  var s = 0,
+    key;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) s++;
+  }
+  return s;
+}; 
+// Get the size of an object
+var size =5;
+var x =0;
 function generate(){
     var httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = function(){
@@ -98,17 +81,18 @@ fs.readFile('class.json', 'utf8', (err, data) => {
 
 }*/
     function previous(){
+        
         if(x>0){
             x = x-1;
             generate1(x);
         }
         else{
-            x=5;
+            x=size;
             generate1(x)
         }
     }
-    function next(){
-        if(x<5){
+    function next(){ // add size instead of hardcode 5
+        if(x<size){
             x = x+1;
             generate1(x);
         }
@@ -145,6 +129,66 @@ fs.readFile('class.json', 'utf8', (err, data) => {
     httpRequest.open('GET',"class.json",true) // path = local path
     httpRequest.send();
 }
+
+function generateE(i){
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function(){
+        if(httpRequest.readyState === XMLHttpRequest.DONE){
+      //      alert(httpRequest.status);
+            if(httpRequest.status === 200){
+                var data = JSON.parse(httpRequest.responseText); // object
+                var pokemon = data.pokemon[i];
+                    let f = document.createElement('form');
+                    f.setAttribute("id",x+"form");
+                   // let d1 = document.createElement('input')
+                    let d1 = document.createTextNode(pokemon.name);
+                    let d2 = document.createTextNode(pokemon.evolution);
+                    let d3 = document.createTextNode(pokemon.shinyColor);
+                    let d4 = document.createTextNode(pokemon.averageSize);
+                    let d5 = document.createTextNode(pokemon.type);
+                    let d6 = document.createTextNode(pokemon.weakTo);
+                    let d7 = document.createTextNode(pokemon.canEvolve);
+                    f.appendChild(d1);
+                    f.appendChild(d2);
+                    f.appendChild(d3);
+                    f.appendChild(d4);
+                    f.appendChild(d5);
+                    f.appendChild(d6);
+                    f.appendChild(d7);
+                    body =document.getElementById("temp");
+                    body.appendChild(f);
+                    let but = document.createElement("button");
+                    but.setAttribute("value","edit");
+                    but.setAttribute("onclick","edit()"); 
+                    body.appendChild(but);
+                    function edit(){ // needs fixing but general idea, remove information and replace with input
+                        body.removeChild(f);
+                        newF = document.createElement('form');
+                        let d1 = document.createElement('input');
+                        let d2 =document.createElement('input');
+                        let d3 = document.createElement('input');
+                        let d4 = document.createElement('input');
+                        let d5 = document.createElement('input');
+                        let d6 = document.createElement('input');
+                        let d7 = document.createElement('input');
+                        f.appendChild(d1);
+                        f.appendChild(d2);
+                        f.appendChild(d3);
+                        f.appendChild(d4);
+                        f.appendChild(d5);
+                        f.appendChild(d6);
+                        f.appendChild(d7);
+                        body =document.getElementById("temp");
+                        body.appendChild(f);
+                        }
+            }
+        }
+    };
+    httpRequest.open('GET',"class.json",true) // path = local path
+    httpRequest.send();
+}
+
+
     </script>
 </head>
 <body>
@@ -155,24 +199,11 @@ fs.readFile('class.json', 'utf8', (err, data) => {
     <div id="json-container1"></div>
     <input type="button" value="previous" onclick="previous()">
     <input type="button" value="next" onclick="next()">
-
-    <form action="insert_pokemon.php" method="post">
-        <label>Pokemon:</label>
-        <input type="text" name="Pokemon"> <br>
-        <label>evolution:</label>
-        <input type="text" name="evolution"> <br>
-        <label>shinyColor:</label>
-        <input type="text" name="shinyColor"> <br>
-        <label>averageSize:</label>
-        <input type="text" name="averageSize"> <br>
-        <label>type:</label>
-        <input type="text" name="type"> <br>
-        <label>weakTo:</label>
-        <input type="text" name="weakTo"> <br>
-        <label>canEvolve:</label>
-        <input type="text" name="canEvolve"> <br>
-        <input type="submit" name="submit" value="Insert new pokemon"><br>
-    </form>
+   
+    <a href = database.php>insert New Pokemon</a>
+    <div id ="temp"></div>
+    <input type ="button" value ="test" onclick="generateE(x)">
+    
 </body>
 </html>
 
