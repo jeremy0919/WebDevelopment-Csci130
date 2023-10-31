@@ -26,7 +26,7 @@ $updated_json = json_encode($pokemon_list, JSON_PRETTY_PRINT);
 file_put_contents($json_file, $updated_json);
 
 // Redirect back to the HTML page
-header('Location: index.html');
+header('Location: lab8.php');
 ?>
 
 
