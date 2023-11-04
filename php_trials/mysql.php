@@ -1,6 +1,11 @@
 <?php
     include("databaseT.php");
 
+    $sql = "INSERT INTO `pokemon` (`id`, `name`, `type`, `ShinyColor`, `stage`, `CanEvolve`, `size`, `weakTo`) 
+    VALUES (NULL, 'charmeleon', 'fire', 'gold', '2', '1', '22', 'water');"
+
+    mysqli_close($connection,$sql);
+
 ?>
 
 <!DOCTYPE html>
