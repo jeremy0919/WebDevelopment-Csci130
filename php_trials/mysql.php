@@ -1,6 +1,7 @@
 <?php
 
     include("databaseT.php");
+
     if(isset($_POST['submit'])){
         if($_POST['Pokemon'] != null){
     
@@ -59,27 +60,104 @@
 
 }
 
-if(isset($_POST["submit1"]) && $_POST["submit1"] != null){
-    if(isset($_POST["find"]) && $_POST["find"] != null){
-        $find =$_POST["find"];
-        $sql = "SELECT * FROM pokemon WHERE pokemon = $find";
-        $result = mysqli_query($connection,$sql);
-        if(mysqli_num_rows($result)> 0){
-            $row = mysqli_fetch_array($result);
-            echo $row["name"] . "<br>";
-            echo $row["type"] . "<br>";
-            echo $row["ShinyColor"] . "<br>";
-            echo $row["stage"] . "<br>";
-            echo $row["CanEvolve"] . "<br>";
-            echo $row["size"] . "<br>";
-            echo $row["weakTo"] . "<br>";
+
+if(isset($_POST["submit1"])){
+
+    if(isset($_POST["Find"]) && $_POST["Find"] != null){
+        $find = $_POST["Find"];
+        if ($connection->ping()) {
+        // Create a prepared statement
+        $stmt = $connection->prepare("SELECT * FROM pokemon WHERE name = ?");
+        
+        // Bind parameters
+        $stmt->bind_param("s", $find);
+
+        // Execute query
+        $stmt->execute();
+
+        // Get the result
+        $result = $stmt->get_result();
+        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+        echo '<tr>';
+        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
+        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+        echo '</tr>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
+            echo '<td><form method="post" action="edit.php">';
+            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
+            echo '<input type="submit" name="edit" value="Edit">';
+            echo '</form></td>';
+
+            echo '</tr>';
         }
+        echo '</table>';
+        
+
+        // Close statement
+        $stmt->close();
+    }
+    else{
+        echo("connection is closed");
+    }
+    echo '<input type="submit" name="submit3" value="edit"> ';
     }
 }
-if(isset( $_POST["changes"]) && $_POST["changes"] != null){
-//for taking value from js table and putting in sql table
+if (isset($_POST["submit2"]) && $_POST["submit2"] != null) {
+    if ($connection->ping()) {
+        // Query the database to retrieve all records
+        $sql = "SELECT * FROM pokemon";
+        $result = mysqli_query($connection, $sql);
+
+        if ($result) {
+            // Add inline style for the table
+            echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+            echo '<td style="border: 1px solid black;">' . "type" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "size" . "kg".'</td>';
+            echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+            echo '</tr>';
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Add inline styles for table cells (optional)
+                echo '<tr>';
+                echo '<td style="border: 1px solid black;">' . $row["name"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["type"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["ShinyColor"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["stage"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["CanEvolve"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["size"] . "kg".'</td>';
+                echo '<td style="border: 1px solid black;">' . $row["weakTo"] . '</td>';
+ 
+                echo '</tr>';
+            }
+
+            echo '</table>';
+        } else {
+            echo "Query failed: " . mysqli_error($connection);
+        }
+    } else {
+        echo "Connection is closed";
+    }
+
 }
-mysqli_close($connection);
+
 //make button for edit, edit takes values and stores in input boxes, save updates values using index.
 ?>
 
@@ -89,41 +167,47 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .table-with-border {
+            border: 2px solid black;
+            }
+        </style>
     <script> // creates tables
-function tableCreate(N,M) {
-        const body = document.body,
-        Table1 = document.createElement('table');
-        Table1.style.width = '100px';
-        Table1.setAttribute("id","Tab1")
-        Table1.style.borderCollapse = 'collapse';
-        Table1.style.border = '1px solid black';
-        Table1.style.marginRight= '500px';
-        Table1.style.alignContent = 'left';
-        for (let i = 0; i < N; i++) {
-            const tr = Table1.insertRow();
-            for (let j = 0; j < M; j++) {
-                const td = tr.insertCell();
-                if(j ==0){  
-                    td.appendChild(document.createTextNode()); // decide how I want to store name
-                    td.style.border = '1px solid black';
-                }
-                else{
-                    td.appendChild(document.createTextNode());
-                    td.style.border = '1px solid black';
-                }
+function tableCreate() {
+    const body = document.body;
+    const Table1 = document.createElement('table');
+    Table1.style.width = '100px';
+    Table1.setAttribute("id", "Tab1");
+    Table1.style.borderCollapse = 'collapse';
+    Table1.style.border = '1px solid black';
+    Table1.style.marginRight = '500px';
+    Table1.style.alignContent = 'left';
+    for (let i = 0; i < 2; i++) {
+        const tr = Table1.insertRow();
+        for (let j = 0; j < 8; j++) {
+            const td = tr.insertCell();
+            if (j == 0) {
+                td.appendChild(document.createTextNode("Some Text")); // Provide some text content
+                td.style.border = '1px solid black';
+            } else {
+                td.appendChild(document.createTextNode("Some Text")); // Provide some text content
+                td.style.border = '1px solid black';
             }
         }
-    body.appendChild(Table1);
-    let button= document.createElement("button");
-    button.setAttribute("type","button");
-    button.setAttribute("id","edi")
-    button.setAttribute("name","edit");
-    button.setAttribute("value","edit")
-    body.appendChild(button);
     }
+    let form2 = document.getElementsByClassName("form2");
+    body.appendChild(Table1);
+    let button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute("id", "edi");
+    button.setAttribute("name", "edit");
+    button.setAttribute("value", "edit");
+
+    body.appendChild(button);
+}
 
 
-    function tableCreateI(M,N) { // input table
+function tableCreateI(M,N) { // input table
         let removeTab1 = document.getElementById("Tab1")
         if(removeTab1!=null){
 var parentEl1 = removeTab1.parentElement;
@@ -185,9 +269,17 @@ var parentEl1 = removeTab1.parentElement;
         <input type="text" name="canEvolve"> <br>
         <input type="submit" name="submit" value="Insert new pokemon"><br>
        
-        <label>Find pokemon</label>
+     
+    </form>
+
+    <form action="mysql.php" method="post" class = "form2">
+    <label>Find pokemon</label>
         <input type="text" name="Find"><br>
         <input type="submit" name="submit1" value="Find pokemon"><br>
+    </form>
+
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="submit2" value="outputDatabase"><br>
     </form>
 </body>
 </html>
