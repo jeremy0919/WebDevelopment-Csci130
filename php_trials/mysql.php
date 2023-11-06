@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+    if (!isset($_SESSION['x'])) {
+        $_SESSION['x'] = 0; // Initial value
+    }
     include("databaseT.php");
 
     if(isset($_POST['submit'])){
@@ -158,6 +161,219 @@ if (isset($_POST["submit2"]) && $_POST["submit2"] != null) {
 
 }
 
+if (isset($_POST["display"]) && $_POST["display"] != null) {
+        echo("The current index is:" . $x = $_SESSION['x']. "<br>");
+        $sql = "SELECT COUNT(*) AS row_count FROM pokemon";
+
+        $stmt = $connection->prepare($sql);
+    
+        // Execute the query
+        $stmt->execute();
+    
+        // Get the result
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $rowCount = $row['row_count'];
+    
+            echo "Number of pokemon in the 'pokemon' table: $rowCount" . "<br>";
+        } else {
+            echo "No data available.";
+        }
+}
+if (isset($_POST["previous"]) && $_POST["previous"] != null) {
+    if ($connection->ping()) {
+        $_SESSION['x'] =  $_SESSION['x']-1; 
+        $x = $_SESSION['x'];
+        // Query the database to retrieve all records
+        $sql = "SELECT * FROM pokemon";
+        $result = mysqli_query($connection, $sql);
+        $stmt = $connection->prepare("SELECT * FROM pokemon WHERE id = ?");
+        
+        // Bind parameters
+        $stmt->bind_param("s", $x);
+
+        // Execute query
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+        echo '<tr>';
+        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
+        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+        echo '</tr>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
+            echo '<td><form method="post" action="edit.php">';
+            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
+            echo '<input type="submit" name="edit" value="Edit">';
+            echo '</form></td>';
+
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+}
+if (isset($_POST["next"]) && $_POST["next"] != null) {
+    if ($connection->ping()) {
+        // Query the database to retrieve all records
+        $_SESSION['x'] =  $_SESSION['x']+1; 
+        $x = $_SESSION['x'];
+        $stmt = $connection->prepare("SELECT * FROM pokemon WHERE id = ?");
+        
+        // Bind parameters
+        $stmt->bind_param("s", $x);
+
+        // Execute query
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+        echo '<tr>';
+        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
+        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+        echo '</tr>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
+            echo '<td><form method="post" action="edit.php">';
+            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
+            echo '<input type="submit" name="edit" value="Edit">';
+            echo '</form></td>';
+
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+}
+if (isset($_POST["first"]) && $_POST["first"] != null) {
+    if ($connection->ping()) {
+        $_SESSION['x'] =  1; 
+        // Query the database to retrieve all records
+        $x = $_SESSION['x'];
+        $stmt = $connection->prepare("SELECT * FROM pokemon WHERE id = ?");
+        
+        // Bind parameters
+        $stmt->bind_param("s", $x);
+
+        // Execute query
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+        echo '<tr>';
+        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
+        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+        echo '</tr>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
+            echo '<td><form method="post" action="edit.php">';
+            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
+            echo '<input type="submit" name="edit" value="Edit">';
+            echo '</form></td>';
+
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+}
+
+if (isset($_POST["delete"]) && $_POST["delete"] != null) {
+    if (isset($_POST["delname"]) && $_POST["delname"] != null) {
+        $delname = $_POST["delname"];
+
+        $sql = "DELETE FROM pokemon WHERE name = ?";
+
+        $stmt = $connection->prepare($sql);
+
+        // Bind parameters
+        $stmt->bind_param("s", $delname); // Assuming 'id' is an integer
+
+        // Execute the DELETE query
+        if ($stmt->execute()) {
+            echo "The pokemon $delname has been deleted.";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+    }
+} 
+
+
+if (isset($_POST["last"]) && $_POST["last"] != null) {
+    if ($connection->ping()) {
+        // Query the database to retrieve all records
+        $_SESSION['x'] =  $_SESSION['x']+1; 
+        $x = $_SESSION['x'];
+        $stmt = $connection->prepare("SELECT * FROM pokemon WHERE id = ?");
+        
+        // Bind parameters
+        $stmt->bind_param("s", $x);
+
+        // Execute query
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+        echo '<tr>';
+        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
+        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+        echo '</tr>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
+            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
+            echo '<td><form method="post" action="edit.php">';
+            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
+            echo '<input type="submit" name="edit" value="Edit">';
+            echo '</form></td>';
+
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+}
 //make button for edit, edit takes values and stores in input boxes, save updates values using index.
 ?>
 
@@ -172,84 +388,7 @@ if (isset($_POST["submit2"]) && $_POST["submit2"] != null) {
             border: 2px solid black;
             }
         </style>
-    <script> // creates tables
-function tableCreate() {
-    const body = document.body;
-    const Table1 = document.createElement('table');
-    Table1.style.width = '100px';
-    Table1.setAttribute("id", "Tab1");
-    Table1.style.borderCollapse = 'collapse';
-    Table1.style.border = '1px solid black';
-    Table1.style.marginRight = '500px';
-    Table1.style.alignContent = 'left';
-    for (let i = 0; i < 2; i++) {
-        const tr = Table1.insertRow();
-        for (let j = 0; j < 8; j++) {
-            const td = tr.insertCell();
-            if (j == 0) {
-                td.appendChild(document.createTextNode("Some Text")); // Provide some text content
-                td.style.border = '1px solid black';
-            } else {
-                td.appendChild(document.createTextNode("Some Text")); // Provide some text content
-                td.style.border = '1px solid black';
-            }
-        }
-    }
-    let form2 = document.getElementsByClassName("form2");
-    body.appendChild(Table1);
-    let button = document.createElement("button");
-    button.setAttribute("type", "button");
-    button.setAttribute("id", "edi");
-    button.setAttribute("name", "edit");
-    button.setAttribute("value", "edit");
-
-    body.appendChild(button);
-}
-
-
-function tableCreateI(M,N) { // input table
-        let removeTab1 = document.getElementById("Tab1")
-        if(removeTab1!=null){
-var parentEl1 = removeTab1.parentElement;
-    parentEl1.removeChild(removeTab1);
-}
- removeTab1 = document.getElementById("edit")
-        if(removeTab1!=null){
-var parentEl1 = removeTab1.parentElement;
-    parentEl1.removeChild(removeTab1);
-}
-        const body = document.body,
-        Table1 = document.createElement('table');
-        Table1.style.width = '100px';
-        Table1.setAttribute("id","Tab1")
-        Table1.style.borderCollapse = 'collapse';
-        Table1.style.border = '1px solid black';
-        Table1.style.marginRight= '500px';
-        Table1.style.alignContent = 'left';
-        for (let i = 0; i < N; i++) {
-            const tr = Table1.insertRow();
-            
-                const td = tr.insertCell();
-               
-                    td.appendChild(document.createElement("input")); // decide how I want to store name
-                    td.style.border = '1px solid black';
-                
-            
-                    td.appendChild(document.createElement("input"));
-                    
-                    td.style.border = '1px solid black';
-                
-            
-        }
-    body.appendChild(Table1);
-    let button= document.createElement("button");
-    button.setAttribute("type","submit");
-    button.setAttribute("name","Changes");
-    button.setAttribute("value","submitChanges")
-    body.appendChild(button);
-    }
-    
-    </script> 
+  
 </head>
 <body>
     <form action="mysql.php" method="post">
@@ -280,6 +419,25 @@ var parentEl1 = removeTab1.parentElement;
 
     <form action="mysql.php" method="post" class = "form3">
         <input type="submit" name="submit2" value="outputDatabase"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="previous" value="previous"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="next" value="next"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="first" value="first"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="last" value="last"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="display" value="display"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="text" name="delname"><br>
+        <input type="submit" name="delete" value="delete"><br>
     </form>
 </body>
 </html>
