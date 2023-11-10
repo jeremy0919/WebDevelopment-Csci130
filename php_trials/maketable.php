@@ -20,7 +20,7 @@ $sql = "CREATE TABLE Pokedex (
 )";
 
 if ($connection->query($sql) === TRUE) {
-    echo "Table MyGuests created successfully";
+    echo "Table Pokedex created successfully";
   } else {
     echo "Error creating table: " . $connection->error;
   }
