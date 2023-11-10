@@ -1,4 +1,6 @@
-<?php
+<?php // change to calling javascript for table creation treat database as object
+// use path to picture
+// hardcode in database creation and what not
 session_start();
     if (!isset($_SESSION['x'])) {
         $_SESSION['x'] = 0; // Initial value
@@ -80,33 +82,7 @@ if(isset($_POST["submit1"])){
 
         // Get the result
         $result = $stmt->get_result();
-        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
-        echo '<tr>';
-        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
-        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
-        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
-        echo '</tr>';
-        while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
-            echo '<td><form method="post" action="edit.php">';
-            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
-            echo '<input type="submit" name="edit" value="Edit">';
-            echo '</form></td>';
-
-            echo '</tr>';
-        }
-        echo '</table>';
+        table($result);
         
 
         // Close statement
@@ -120,12 +96,12 @@ if(isset($_POST["submit1"])){
 }
 if (isset($_POST["submit2"]) && $_POST["submit2"] != null) {
     if ($connection->ping()) {
-        // Query the database to retrieve all records
+    
         $sql = "SELECT * FROM pokemon";
         $result = mysqli_query($connection, $sql);
 
         if ($result) {
-            // Add inline style for the table
+           
             echo '<table style="border: 2px solid black; border-collapse: collapse;">';
             echo '<tr>';
             echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
@@ -138,7 +114,7 @@ if (isset($_POST["submit2"]) && $_POST["submit2"] != null) {
             echo '</tr>';
 
             while ($row = mysqli_fetch_assoc($result)) {
-                // Add inline styles for table cells (optional)
+             
                 echo '<tr>';
                 echo '<td style="border: 1px solid black;">' . $row["name"] . '</td>';
                 echo '<td style="border: 1px solid black;">' . $row["type"] . '</td>';
@@ -160,7 +136,123 @@ if (isset($_POST["submit2"]) && $_POST["submit2"] != null) {
     }
 
 }
+function table($result){
+    if ($result) {
+    echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+    echo '<tr>';
+    echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+    echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
+    echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+    echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+    echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+    echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
+    echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+    echo '</tr>';
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr>';
+        echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
+        echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
+        echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
+        echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
+        echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
+        echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
+        echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
+        echo '<td><form method="post" action="edit.php">';
+        echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
+        echo '<input type="submit" name="edit" value="Edit">';
+        echo '</form></td>';
 
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+}
+if(isset($_POST["sort1"])&& $_POST["sort1"] != null) {
+
+    if ($connection->ping()) {
+       
+        $sql = "SELECT * FROM pokemon ORDER BY name"; 
+        $result = mysqli_query($connection, $sql);
+
+        if ($result) {
+           
+            echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+            echo '<td style="border: 1px solid black;">' . "type" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "size" . "kg".'</td>';
+            echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+            echo '</tr>';
+
+            while ($row = mysqli_fetch_assoc($result)) {
+             
+                echo '<tr>';
+                echo '<td style="border: 1px solid black;">' . $row["name"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["type"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["ShinyColor"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["stage"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["CanEvolve"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["size"] . "kg".'</td>';
+                echo '<td style="border: 1px solid black;">' . $row["weakTo"] . '</td>';
+ 
+                echo '</tr>';
+            }
+
+            echo '</table>';
+        } else {
+            echo "Query failed: " . mysqli_error($connection);
+        }
+    } else {
+        echo "Connection is closed";
+    }
+
+}
+if(isset($_POST["sort2"])&& $_POST["sort2"] != null) {
+
+    if ($connection->ping()) {
+       
+        $sql = "SELECT * FROM pokemon ORDER BY id"; 
+        $result = mysqli_query($connection, $sql);
+
+        if ($result) {
+           
+            echo '<table style="border: 2px solid black; border-collapse: collapse;">';
+            echo '<tr>';
+            echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
+            echo '<td style="border: 1px solid black;">' . "type" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
+            echo '<td style="border: 1px solid black;">'  . "size" . "kg".'</td>';
+            echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
+            echo '</tr>';
+
+            while ($row = mysqli_fetch_assoc($result)) {
+             
+                echo '<tr>';
+                echo '<td style="border: 1px solid black;">' . $row["name"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["type"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["ShinyColor"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["stage"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["CanEvolve"] . '</td>';
+                echo '<td style="border: 1px solid black;">' . $row["size"] . "kg".'</td>';
+                echo '<td style="border: 1px solid black;">' . $row["weakTo"] . '</td>';
+ 
+                echo '</tr>';
+            }
+
+            echo '</table>';
+        } else {
+            echo "Query failed: " . mysqli_error($connection);
+        }
+    } else {
+        echo "Connection is closed";
+    }
+
+}
 if (isset($_POST["display"]) && $_POST["display"] != null) {
         echo("The current index is:" . $x = $_SESSION['x']. "<br>");
         $sql = "SELECT COUNT(*) AS row_count FROM pokemon";
@@ -197,33 +289,7 @@ if (isset($_POST["previous"]) && $_POST["previous"] != null) {
         // Execute query
         $stmt->execute();
         $result = $stmt->get_result();
-        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
-        echo '<tr>';
-        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
-        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
-        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
-        echo '</tr>';
-        while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
-            echo '<td><form method="post" action="edit.php">';
-            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
-            echo '<input type="submit" name="edit" value="Edit">';
-            echo '</form></td>';
-
-            echo '</tr>';
-        }
-        echo '</table>';
+        table($result);
     }
 }
 if (isset($_POST["next"]) && $_POST["next"] != null) {
@@ -239,33 +305,7 @@ if (isset($_POST["next"]) && $_POST["next"] != null) {
         // Execute query
         $stmt->execute();
         $result = $stmt->get_result();
-        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
-        echo '<tr>';
-        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
-        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
-        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
-        echo '</tr>';
-        while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
-            echo '<td><form method="post" action="edit.php">';
-            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
-            echo '<input type="submit" name="edit" value="Edit">';
-            echo '</form></td>';
-
-            echo '</tr>';
-        }
-        echo '</table>';
+        table($result);
     }
 }
 if (isset($_POST["first"]) && $_POST["first"] != null) {
@@ -281,33 +321,7 @@ if (isset($_POST["first"]) && $_POST["first"] != null) {
         // Execute query
         $stmt->execute();
         $result = $stmt->get_result();
-        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
-        echo '<tr>';
-        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
-        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
-        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
-        echo '</tr>';
-        while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
-            echo '<td><form method="post" action="edit.php">';
-            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
-            echo '<input type="submit" name="edit" value="Edit">';
-            echo '</form></td>';
-
-            echo '</tr>';
-        }
-        echo '</table>';
+        table($result);
     }
 }
 
@@ -320,7 +334,7 @@ if (isset($_POST["delete"]) && $_POST["delete"] != null) {
         $stmt = $connection->prepare($sql);
 
         // Bind parameters
-        $stmt->bind_param("s", $delname); // Assuming 'id' is an integer
+        $stmt->bind_param("s", $delname);
 
         // Execute the DELETE query
         if ($stmt->execute()) {
@@ -334,47 +348,20 @@ if (isset($_POST["delete"]) && $_POST["delete"] != null) {
 
 if (isset($_POST["last"]) && $_POST["last"] != null) {
     if ($connection->ping()) {
-        // Query the database to retrieve all records
-        $_SESSION['x'] =  $_SESSION['x']+1; 
+
+      //  $_SESSION['x'] =  $_SESSION['x']; 
         $x = $_SESSION['x'];
         $stmt = $connection->prepare("SELECT * FROM pokemon WHERE id = ?");
         
         // Bind parameters
         $stmt->bind_param("s", $x);
 
-        // Execute query
+        
         $stmt->execute();
         $result = $stmt->get_result();
-        echo '<table style="border: 2px solid black; border-collapse: collapse;">';
-        echo '<tr>';
-        echo '<td style="border: 1px solid black;">'  . "name" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "type" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "ShinyColor" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "stage" . '</td>';
-        echo '<td style="border: 1px solid black;">'  . "CanEvolve" . '</td>';
-        echo '<td style="border: 1px solid black;">' . "size" ."kg". '</td>';
-        echo '<td style="border: 1px solid black;">'  . "weakTo" . '</td>';
-        echo '</tr>';
-        while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<td style="border: 1px solid black;">'  . $row["name"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["type"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["ShinyColor"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["stage"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["CanEvolve"] . '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["size"] ."kg". '</td>';
-            echo '<td style="border: 1px solid black;">'  . $row["weakTo"] . '</td>';
-            echo '<td><form method="post" action="edit.php">';
-            echo '<input type="hidden" name="id" value="' . $row["id"] . '">';
-            echo '<input type="submit" name="edit" value="Edit">';
-            echo '</form></td>';
-
-            echo '</tr>';
-        }
-        echo '</table>';
+        table($result);
     }
 }
-//make button for edit, edit takes values and stores in input boxes, save updates values using index.
 ?>
 
 <!DOCTYPE html>
@@ -438,6 +425,14 @@ if (isset($_POST["last"]) && $_POST["last"] != null) {
     <form action="mysql.php" method="post" class = "form3">
         <input type="text" name="delname"><br>
         <input type="submit" name="delete" value="delete"><br>
+    </form>
+
+
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="sort1" value="Sort by name"><br>
+    </form>
+    <form action="mysql.php" method="post" class = "form3">
+        <input type="submit" name="sort2" value="Sort by id"><br>
     </form>
 </body>
 </html>
