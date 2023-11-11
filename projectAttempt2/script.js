@@ -1,262 +1,128 @@
+
+
 function display1(){
     fetch('fetch.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
   })
-  .catch(error => console.error('Error:', error));
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
+
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }
 
 function sortN(){
 
     fetch('sortN.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
   })
-  .catch(error => console.error('Error:', error));
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
+
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }
 
 
 function sortI(){
 
     fetch('sortI.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
   })
-  .catch(error => console.error('Error:', error));
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
+
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }
 
 
 
-function first(){
+function first1(){
 
-    fetch('First.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
+    fetch('first.php')
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
   })
-  .catch(error => console.error('Error:', error));
-}
-function next(){
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
 
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
+}
+
+
+function next1(){
     fetch('next.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
   })
-  .catch(error => console.error('Error:', error));
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
+
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }
-function previous(){
-
+function previous1(){
     fetch('previous.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
   })
-  .catch(error => console.error('Error:', error));
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
+
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }
 
 function find() {
     fetch('find.php')
-        .then(response => response.json())
-        .then(data => {
-            // Create a table element
-            const table = document.createElement('table');
-            table.border = '1';
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+  })
+  .then(data => {
+      // Create a table element
+      const table = createTable(data);
 
-            // Create table header
-            const headerRow = table.insertRow();
-            const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo', 'edit'];
-
-            columns.forEach(columnName => {
-                const th = document.createElement('th');
-                th.innerHTML = columnName;
-                headerRow.appendChild(th);
-            });
-
-            // Create table rows
-            data.forEach(rowData => {
-                const row = table.insertRow();
-                const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-                columnNames.forEach(columnName => {
-                    const cell = row.insertCell();
-                    cell.innerHTML = rowData[columnName];
-                });
-
-                // Add Edit button to each row
-                const editCell = row.insertCell();
-                const editButton = document.createElement('button');
-                editButton.innerHTML = 'Edit';
-                editButton.onclick = function () {
-                    // Call the PHP edit script with the row data
-                    editFunction(rowData.id);
-                };
-                editCell.appendChild(editButton);
-            });
-
-            // Append the table to the body or another HTML element
-            document.body.appendChild(table);
-        })
-        .catch(error => console.error('Error:', error));
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }
 
 // Function to handle the edit action
@@ -279,4 +145,61 @@ function editFunction(id) {
         formContainer.innerHTML = formHTML;
     })
     .catch(error => console.error('Error:', error));
+}
+function last1(){
+ 
+  fetch('last.php')
+  .then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    // Create a table element
+    const table = createTable(data);
+
+    // Replace the existing table content or append it to a specific container element
+    replaceTableContent(table);
+})
+}
+
+
+
+
+function createTable(data) {
+  // Create a table element
+  const table = document.createElement('table');
+ // table.setAttribute("id","table-container");
+  table.border = '1';
+
+  // Create table header
+  const headerRow = table.insertRow();
+  const columns = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
+
+  columns.forEach(columnName => {
+      const th = document.createElement('th');
+      th.innerHTML = columnName;
+      headerRow.appendChild(th);
+  });
+
+  // Create table rows
+  data.forEach(rowData => {
+      const row = table.insertRow();
+      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
+
+      columnNames.forEach(columnName => {
+          const cell = row.insertCell();
+          cell.innerHTML = rowData[columnName];
+      });
+  });
+
+  return table;
+}
+
+function replaceTableContent(newTable) {
+  // Replace the existing table content or append it to a specific container element
+  const container = document.getElementById('table-container'); // Replace 'table-container' with your actual container ID
+  container.innerHTML = '';
+  container.appendChild(newTable);
 }

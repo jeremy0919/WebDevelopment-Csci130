@@ -3,9 +3,9 @@
 // hardcode in database creation and what not
 session_start();
     if (!isset($_SESSION['x'])) {
-        $_SESSION['x'] = 0; // Initial value
+        $_SESSION['x'] = 1; // Initial value
     }
-    include("databaseT.php");
+   include("databaseT.php");
 
 ?>
 
@@ -25,6 +25,7 @@ session_start();
        </script>
 </head>
 <body>
+    <div id="table-container"></div>
     <form action="mysql.php" method="post">
     <label>Pokemon:</label>
         <input type="text" name="Pokemon"> <br>
@@ -44,27 +45,26 @@ session_start();
        
      
     </form>
-
+    <form>
+        <input type="button" name="first" value="first" onclick="first1()"><br>
+    </form>
     <form action="find.php" method="post" class = "form2">
     <label>Find pokemon</label>
         <input type="text" name="Find"><br>
-        <input type= type="button" name="submit1" value="Find pokemon" onclick="find()"><br>
+        <input type="button" name="submit1" value="Find pokemon" onclick="find()"><br>
     </form>
-
     <form >
         <input type="button" name="submit2" value="outputDatabase" onclick="display1()"><br>
     </form>
     <form>
-        <input type="button" name="previous" value="previous" onclick="previous()"><br>
+        <input type="button" name="previous" value="previous" onclick="previous1()"><br>
     </form>
-    <form action="next.php" method="post" class = "form3">
-        <input type="submit" name="next" value="next" onclick="next()"><br>
+    <form>
+        <input type="button"  value="next" onclick="next1()"><br>
     </form>
-    <form action="first.php" method="post" class = "form3">
-        <input type="button" name="first" value="first" onclick="first()"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input  type="button" name="last" value="last"><br>
+
+    <form>
+        <input  type="button" name="last" value="last" onclick="last1()"><br>
     </form>
     <form action="mysql.php" method="post" class = "form3">
         <input type="submit" name="display" value="display"><br>
@@ -77,10 +77,10 @@ session_start();
 
 
     <form >
-        <input type="submit" name="sort1" value="Sort by name" onclick="sortN()"><br>
+        <input type="button" name="sort1" value="Sort by name" onclick="sortN()"><br>
     </form>
     <form>
-        <input type="submit" name="sort2" value="Sort by id" onclick="sortI()"><br>
+        <input type="button" name="sort2" value="Sort by id" onclick="sortI()"><br>
     </form>
 </body>
 </html>

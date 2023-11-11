@@ -363,6 +363,7 @@ if (isset($_POST["last"]) && $_POST["last"] != null) {
         table($result);
     }
 }
+header("Location: main.php"); 
 ?>
 
 <!DOCTYPE html>

@@ -3,6 +3,13 @@ $db_server_name = "localhost";
 $db_username = "root";
 $db_password = "";
 $db_name = "pokemon1";
+session_start();
+if (!isset($_SESSION['x'])) {
+    $_SESSION['x'] = 1; // Initial value
+}
+
+$find = 1;
+$_SESSION['x'] = $find;
 
 // Try to establish a connection
 $connection = new mysqli($db_server_name, $db_username, $db_password, $db_name);
@@ -12,9 +19,14 @@ if ($connection->connect_error) {
 }
 
 $sql = "SELECT * FROM Pokedex WHERE id = ?";
-        // Bind parameters
-        $find = 0;
-        $stmt->bind_param("i", $find);
+$stmt = $connection->prepare($sql);
+
+if ($stmt === false) {
+    die("Error in preparing statement: " . $connection->error);
+}
+
+     
+        $stmt->bind_param("s", $find);
 
         // Execute query
         $stmt->execute();
@@ -30,9 +42,9 @@ $sql = "SELECT * FROM Pokedex WHERE id = ?";
                 $data[] = $row;
             }
         }
-        json_encode($data);
+        echo json_encode($data);
 
 
 $connection->close();
-header("Location: main.php"); 
+
 ?>

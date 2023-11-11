@@ -4,19 +4,24 @@ $db_username = "root";
 $db_password = "";
 $db_name = "pokemon1";
 session_start();
-$x = $_SESSION['x'] ;
-$x = $x+1;
+if (!isset($_SESSION['x'])) {
+    $_SESSION['x'] = 1; // Initial value
+}
+
+$x = $_SESSION['x'];
+$x = $x + 1;
 $_SESSION['x'] = $x;
 $connection = new mysqli($db_server_name, $db_username, $db_password, $db_name);
 
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
-echo($x);
+
 $sql = "SELECT * FROM Pokedex WHERE id = ?";
+$stmt = $connection->prepare($sql);
         // Bind parameters
        
-        $stmt->bind_param("i", $x);
+        $stmt->bind_param("s", $x);
 
         // Execute query
         $stmt->execute();
@@ -32,10 +37,8 @@ $sql = "SELECT * FROM Pokedex WHERE id = ?";
                 $data[] = $row;
             }
         }
-        json_encode($data);
-
-
+        echo json_encode($data);
 
 $connection->close();
-header("Location: main.php"); 
+
 ?>
