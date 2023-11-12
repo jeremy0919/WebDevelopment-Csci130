@@ -11,12 +11,6 @@ $connection = mysqli_connect($db_server_name, $db_username, $db_password, $db_na
 
 
 
-
-if ($connection) {
-    echo "You are connected";
-} else {
-    echo "You cannot connect";
-}
 ?>
 
 

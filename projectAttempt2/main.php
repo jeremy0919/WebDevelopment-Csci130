@@ -47,27 +47,21 @@ session_start();
     </form>
     <form>
         <input type="button" name="first" value="first" onclick="first1()"><br>
-    </form>
-    <form action="find.php" method="post" class = "form2">
+   
     <label>Find pokemon</label>
         <input type="text" name="Find"><br>
         <input type="button" name="submit1" value="Find pokemon" onclick="find()"><br>
-    </form>
-    <form >
+ 
         <input type="button" name="submit2" value="outputDatabase" onclick="display1()"><br>
-    </form>
-    <form>
+ 
         <input type="button" name="previous" value="previous" onclick="previous1()"><br>
-    </form>
-    <form>
+    
         <input type="button"  value="next" onclick="next1()"><br>
-    </form>
-
-    <form>
+    
         <input  type="button" name="last" value="last" onclick="last1()"><br>
     </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="display" value="display"><br>
+    <form>
+        <input type="button" name="display" value="display" onclick="displayIND()"><br>
     </form>
     
     <form action="delete.php" method="post" class = "form3">

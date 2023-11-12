@@ -1,21 +1,17 @@
 <?php
-$db_server_name = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_name = "pokemon1";
+
 session_start();
 if (!isset($_SESSION['x'])) {
     $_SESSION['x'] = 1; // Initial value
 } // need to update session to last
 
-$connection = new mysqli($db_server_name, $db_username, $db_password, $db_name);
-
+include("databaseT.php");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 
 // Query to get the last row
-$sql = "SELECT * FROM Pokedex ORDER BY id DESC LIMIT 1";
+$sql = "SELECT * FROM Pokedex1 ORDER BY id DESC LIMIT 1";
 
 $stmt = $connection->prepare($sql);
 
@@ -36,6 +32,7 @@ $stmt->close();
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;
+        $_SESSION['x'] = $row['id'];
     }
 }
 

@@ -1,8 +1,5 @@
 <?php
-$db_server_name = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_name = "pokemon1";
+
 session_start();
 if (!isset($_SESSION['x'])) {
     $_SESSION['x'] = 1; // Initial value
@@ -15,13 +12,12 @@ if($x<1){
 }
 $_SESSION['x'] = $x;
 
-$connection = new mysqli($db_server_name, $db_username, $db_password, $db_name);
-
+include("databaseT.php");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 
-$sql = "SELECT * FROM Pokedex WHERE id = ?";
+$sql = "SELECT * FROM Pokedex1 WHERE id = ?";
 $stmt = $connection->prepare($sql);
         // Bind parameters
        

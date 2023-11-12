@@ -106,6 +106,8 @@ function previous1(){
       // Replace the existing table content or append it to a specific container element
       replaceTableContent(table);
   })
+  const button = document.createElement("button");
+  button.onclick()//hmmmm
 }
 
 function find() {
@@ -202,4 +204,44 @@ function replaceTableContent(newTable) {
   const container = document.getElementById('table-container'); // Replace 'table-container' with your actual container ID
   container.innerHTML = '';
   container.appendChild(newTable);
+}
+
+
+function displayIND() {
+    fetch('display.php')
+    .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+  })
+  .then(data => {
+        const table = document.createElement('table');
+      // table.setAttribute("id","table-container");
+       table.border = '1';
+     
+       // Create table header
+       const headerRow = table.insertRow();
+       const columns = ['Num Pokemon', 'Current index'];
+     
+       columns.forEach(columnName => {
+           const th = document.createElement('th');
+           th.innerHTML = columnName;
+           headerRow.appendChild(th);
+       });
+     
+       // Create table rows
+       data.forEach(rowData => {
+           const row = table.insertRow();
+           const columnNames = ['Num Pokemon', 'Current index'];
+     
+           columnNames.forEach(columnName => {
+               const cell = row.insertCell();
+               cell.innerHTML = rowData[columnName];
+           });
+       });
+     
+      // Replace the existing table content or append it to a specific container element
+      replaceTableContent(table);
+  })
 }

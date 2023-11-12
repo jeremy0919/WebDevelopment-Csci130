@@ -1,19 +1,12 @@
 <?php
 
 
-$db_server_name = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_name = "pokemon1";
-
-// Try to establish a connection
-$connection = new mysqli($db_server_name, $db_username, $db_password, $db_name);
-
+include("databaseT.php");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 
-$sql = "SELECT * FROM pokedex ORDER BY id"; 
+$sql = "SELECT * FROM Pokedex1 ORDER BY id"; 
 $result = $connection->query($sql);
 
 $data = array();
