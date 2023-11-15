@@ -1,8 +1,8 @@
 <?php
 include("databaseT.php");
-
-if (isset($_POST["edit"])) {
-    $id = $_POST["id"];
+session_start();
+if (isset($_SESSION["x"])) {
+    $id = $_SESSION["x"];
 
     $sql = "SELECT * FROM Pokedex1 WHERE id = ?";
     $stmt = $connection->prepare($sql);

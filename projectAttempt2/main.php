@@ -1,6 +1,5 @@
-<?php // change to calling javascript for table creation treat database as object
-// use path to picture
-// hardcode in database creation and what not
+<?php //need save functionality
+// change insert button to not be mysql script
 session_start();
     if (!isset($_SESSION['x'])) {
         $_SESSION['x'] = 1; // Initial value
@@ -20,7 +19,7 @@ session_start();
             border: 2px solid black;
             }
         </style>
- <script src="script.js">
+ <script src="script4.js">
        
        </script>
 </head>
@@ -28,30 +27,28 @@ session_start();
     <div id="table-container"></div>
     <form action="mysql.php" method="post">
     <label>Pokemon:</label>
-        <input type="text" name="Pokemon"> <br>
+        <input type="text" name="Pokemon" id="InsPokemon"> <br>
         <label>evolution:</label>
-        <input type="text" name="evolution"> <br>
+        <input type="text" name="evolution" id="InsEvolution"> <br>
         <label>shinyColor:</label>
-        <input type="text" name="shinyColor"> <br>
+        <input type="text" name="shinyColor" id="insShinyColor"> <br>
         <label>averageSize:</label>
-        <input type="text" name="averageSize"> <br>
+        <input type="text" name="averageSize" id="InsAverageSize"> <br>
         <label>type:</label>
-        <input type="text" name="type"> <br>
+        <input type="text" name="type" id="InsType"> <br>
         <label>weakTo:</label>
-        <input type="text" name="weakTo"> <br>
+        <input type="text" name="weakTo" id="InsWeakTo"> <br>
         <label>canEvolve:</label>
-        <input type="text" name="canEvolve"> <br>
+        <input type="text" name="canEvolve" id="InsCanEvolve"> <br>
+        <label>image:</label>
+        <input type="blob" name="img" id="InsImage"> <br>
         <input type="submit" name="submit" value="Insert new pokemon"><br>
-       
+       <div id="save"></div>
      
     </form>
     <form>
         <input type="button" name="first" value="first" onclick="first1()"><br>
    
-    <label>Find pokemon</label>
-        <input type="text" name="Find"><br>
-        <input type="button" name="submit1" value="Find pokemon" onclick="find()"><br>
- 
         <input type="button" name="submit2" value="outputDatabase" onclick="display1()"><br>
  
         <input type="button" name="previous" value="previous" onclick="previous1()"><br>
@@ -59,16 +56,14 @@ session_start();
         <input type="button"  value="next" onclick="next1()"><br>
     
         <input  type="button" name="last" value="last" onclick="last1()"><br>
-    </form>
-    <form>
-        <input type="button" name="display" value="display" onclick="displayIND()"><br>
+
+        <input type="button" name="display" value="display" onclick="displayIND1()"><br>
     </form>
     
     <form action="delete.php" method="post" class = "form3">
         <input type="text" name="delname"><br>
         <input type="submit" name="delete" value="delete"><br>
     </form>
-
 
     <form >
         <input type="button" name="sort1" value="Sort by name" onclick="sortN()"><br>

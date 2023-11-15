@@ -52,20 +52,23 @@ session_start();
     else{
         echo("no evolution given");
     }
-    //if($_POST['img'] == null){
-      //  $img = "mon.img"; // figure out best way to add in image
-    //}
+    if($_POST['img'] == null){
+       $img = "mon.jpg"; // figure out best way to add in image
+    }
     if($_POST['canEvolve'] != null && $_POST['weakTo'] != null&& $_POST['type'] != null&& $_POST['averageSize'] != null&& $_POST['shinyColor'] != null&& $_POST['evolution'] != null && $_POST['Pokemon'] != null){
-    
-        $sql = "INSERT INTO `pokedex` (`id`, `name`, `type`, `ShinyColor`, `stage`, `CanEvolve`, `size`, `weakTo`) 
-        VALUES (NULL, '$pokemon', '$type', '$shinyColor', '$evolution', '$canEvolve', '$averageSize', '$weakTo');";
-    
+        $sql = "INSERT INTO `Pokedex1` (`id`, `name`, `type`, `ShinyColor`, `stage`, `CanEvolve`, `size`, `weakTo`, `image`) 
+        VALUES (NULL, '$pokemon', '$type', '$shinyColor', '$evolution', '$canEvolve', '$averageSize', '$weakTo', '$img')";
         mysqli_query($connection,$sql);
     
     }
 
 }
 
+if(isset($_POST["test1"])){
+    echo("is trying to work");
+    $img = "mon.jpg"; // figure out best way to add in image
+    echo "<img src='$img' alt='Pokemon Image'>";
+}
 
 if(isset($_POST["submit1"])){
 

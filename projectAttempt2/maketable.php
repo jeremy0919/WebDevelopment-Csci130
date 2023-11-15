@@ -1,7 +1,7 @@
 <?php
    include("databaseT.php");
 
-$sql = "CREATE TABLE Pokedex (
+$sql = "CREATE TABLE Pokedex1 (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(20) NOT NULL,
   type VARCHAR(20) NOT NULL,
@@ -14,7 +14,7 @@ $sql = "CREATE TABLE Pokedex (
 )";
 
 if ($connection->query($sql) === TRUE) {
-    echo "Table Pokedex created successfully";
+    echo "Table Pokedex1 created successfully";
   } else {
     echo "Error creating table: " . $connection->error;
   }

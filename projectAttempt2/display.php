@@ -1,8 +1,12 @@
 <?php
 include ("databaseT.php");
+session_start();
+if (!isset($_SESSION['x'])) {
+    $_SESSION['x'] = 1; // Initial value
+} // need to update session to last
 
-//echo("The current index is:" . $x = $_SESSION['x']. "<br>");
-$sql = "SELECT COUNT(*) AS row_count FROM pokedex";
+
+$sql = "SELECT COUNT(*) AS row_count FROM pokedex1";
 
 $stmt = $connection->prepare($sql);
 
@@ -20,6 +24,7 @@ if ($result->num_rows > 0) {
     $data[]=$_SESSION['x'];
 
 }
-json_encode($data);
+echo json_encode($data);
 
+$connection->close();
 ?>

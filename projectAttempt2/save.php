@@ -10,7 +10,7 @@ if (isset($_POST["save"])) {
     $CanEvolve = $_POST["CanEvolve"];
     $size = $_POST["size"];
     $weakTo = $_POST["weakTo"];
-
+    
     // Update the SQL query to include all the fields you want to update
     $sql = "UPDATE Pokedex1 SET name = ?, type = ?, ShinyColor = ?, stage = ?, CanEvolve = ?, size = ?, weakTo = ? WHERE id = ?";
 
