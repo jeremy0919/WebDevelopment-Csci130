@@ -1,10 +1,11 @@
-<?php //need save functionality
-// change insert button to not be mysql script
+<?php 
 session_start();
     if (!isset($_SESSION['x'])) {
         $_SESSION['x'] = 1; // Initial value
     }
    include("databaseT.php");
+//need to display image and rework image stuff
+// liekly need to rework sort options to not just sort table but sort data
 
 ?>
 
@@ -25,7 +26,7 @@ session_start();
 </head>
 <body>
     <div id="table-container"></div>
-    <form action="mysql.php" method="post">
+    <form>
     <label>Pokemon:</label>
         <input type="text" name="Pokemon" id="InsPokemon"> <br>
         <label>evolution:</label>
@@ -41,8 +42,8 @@ session_start();
         <label>canEvolve:</label>
         <input type="text" name="canEvolve" id="InsCanEvolve"> <br>
         <label>image:</label>
-        <input type="blob" name="img" id="InsImage"> <br>
-        <input type="submit" name="submit" value="Insert new pokemon"><br>
+        <li><input type="file" name="fileup" id="fileup"></li>
+        <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
        <div id="save"></div>
      
     </form>
@@ -71,5 +72,14 @@ session_start();
     <form>
         <input type="button" name="sort2" value="Sort by id" onclick="sortI()"><br>
     </form>
+
+    <form action="uploadfile.php" method="post" enctype="multipart/form-data">
+    <p>Select an image to upload:</p>
+	<ul>
+	<li><input type="file" name="fileup" id="fileup"></li>
+    <li><input type="submit" value="Upload Image" name="submit"></li>
+	</ul>
+</form>
+
 </body>
 </html>

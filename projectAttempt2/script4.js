@@ -35,7 +35,47 @@ function sortN(){
   })
 }
 
+function insert1() {
+    var pokemon = encodeURIComponent(document.getElementById('InsPokemon').value);
+    var evolution = encodeURIComponent(document.getElementById('InsEvolution').value);
+    var shinyColor = encodeURIComponent(document.getElementById('insShinyColor').value);
+    var averageSize = encodeURIComponent(document.getElementById('InsAverageSize').value);
+    var type = encodeURIComponent(document.getElementById('InsType').value);
+    var weakTo = encodeURIComponent(document.getElementById('InsWeakTo').value);
+    var canEvolve = encodeURIComponent(document.getElementById('InsCanEvolve').value);
+    var img = encodeURIComponent(document.getElementById('InsImage').value);
 
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Handle the response from the server
+            console.log(xhr.responseText);
+        }
+    };
+
+    var data = "Pokemon=" + pokemon +
+        "&evolution=" + evolution +
+        "&shinyColor=" + shinyColor +
+        "&averageSize=" + averageSize +
+        "&type=" + type +
+        "&weakTo=" + weakTo +
+        "&canEvolve=" + canEvolve +
+        "&img=" + img;
+
+    xhr.open("POST", "insert.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(data);
+
+    // Reset the form values
+    document.getElementById("InsPokemon").value = "";
+    document.getElementById("InsEvolution").value = "";
+    document.getElementById("insShinyColor").value = "";
+    document.getElementById("InsAverageSize").value = "";
+    document.getElementById("InsType").value = "";
+    document.getElementById("InsWeakTo").value = "";
+    document.getElementById("InsCanEvolve").value = "";
+    document.getElementById("InsImage").value = "";
+}
 function sortI(){
 
     fetch('sortI.php')
@@ -66,12 +106,18 @@ function first1(){
       return response.json();
   })
   .then(data => {
-      // Create a table element
-      const table = createTable(data);
+    data.forEach(rowData => {
+     //   const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo', 'image'];
 
-      // Replace the existing table content or append it to a specific container element
-      replaceTableContent(table);
-      makeEdit();
+        document.getElementById("InsPokemon").value = rowData['name'];
+        document.getElementById("InsEvolution").value = rowData['stage'];
+        document.getElementById("insShinyColor").value = rowData['ShinyColor'];
+        document.getElementById("InsAverageSize").value = rowData['size'];
+        document.getElementById("InsType").value = rowData['type'];
+        document.getElementById("InsWeakTo").value = rowData['weakTo'];
+        document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
+       // document.getElementById("InsImage").value = rowData['image'];
+    })
   })
 
 }
@@ -86,12 +132,18 @@ function next1(){
       return response.json();
   })
   .then(data => {
-      // Create a table element
-      const table = createTable(data);
+    data.forEach(rowData => {
+     //   const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo', 'image'];
 
-      // Replace the existing table content or append it to a specific container element
-      replaceTableContent(table);
-      makeEdit();
+        document.getElementById("InsPokemon").value = rowData['name'];
+        document.getElementById("InsEvolution").value = rowData['stage'];
+        document.getElementById("insShinyColor").value = rowData['ShinyColor'];
+        document.getElementById("InsAverageSize").value = rowData['size'];
+        document.getElementById("InsType").value = rowData['type'];
+        document.getElementById("InsWeakTo").value = rowData['weakTo'];
+        document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
+        document.getElementById("InsImage").value = rowData['image'];
+    })
   })
 
 }
@@ -104,14 +156,20 @@ function previous1(){
       return response.json();
   })
   .then(data => {
-      // Create a table element
-      const table = createTable(data);
+    data.forEach(rowData => {
+     //   const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo', 'image'];
 
-      // Replace the existing table content or append it to a specific container element
-      replaceTableContent(table);
-      makeEdit();
+        document.getElementById("InsPokemon").value = rowData['name'];
+        document.getElementById("InsEvolution").value = rowData['stage'];
+        document.getElementById("insShinyColor").value = rowData['ShinyColor'];
+        document.getElementById("InsAverageSize").value = rowData['size'];
+        document.getElementById("InsType").value = rowData['type'];
+        document.getElementById("InsWeakTo").value = rowData['weakTo'];
+        document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
+        document.getElementById("InsImage").value = rowData['image'];
+    })
   })
- 
+
 }
 function makeEdit(){
 
@@ -168,13 +226,20 @@ function last1(){
     return response.json();
 })
 .then(data => {
-    // Create a table element
-    const table = createTable(data);
+    data.forEach(rowData => {
+     //   const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo', 'image'];
 
-    // Replace the existing table content or append it to a specific container element
-    replaceTableContent(table);
-    makeEdit();
-})
+        document.getElementById("InsPokemon").value = rowData['name'];
+        document.getElementById("InsEvolution").value = rowData['stage'];
+        document.getElementById("insShinyColor").value = rowData['ShinyColor'];
+        document.getElementById("InsAverageSize").value = rowData['size'];
+        document.getElementById("InsType").value = rowData['type'];
+        document.getElementById("InsWeakTo").value = rowData['weakTo'];
+        document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
+        document.getElementById("InsImage").value = rowData['image'];
+    })
+  })
+
 }
 
 
