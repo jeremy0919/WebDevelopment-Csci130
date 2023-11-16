@@ -42,7 +42,7 @@ session_start();
         <label>canEvolve:</label>
         <input type="text" name="canEvolve" id="InsCanEvolve"> <br>
         <label>image:</label>
-        <li><input type="file" name="fileup" id="fileup"></li>
+        <li><input type="file" name="fileup" id="InsImage"></li>
         <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
        <div id="save"></div>
      

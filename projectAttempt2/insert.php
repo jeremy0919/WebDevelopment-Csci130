@@ -59,6 +59,7 @@ session_start();
         echo "<script>alert('no evolution given');</script>";
     
     }
+   
     $target_dir = "uploads/"; // you must create this directory in the folder where you have the PHP file
     $target_file = $target_dir . basename($_FILES["fileup"]["name"]);
     
@@ -66,7 +67,7 @@ session_start();
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     
     // Verify if the image file is an actual image or a fake image
-    if(isset(getimagesize($_FILES["fileup"]["tmp_name"]))){
+   
     $check = getimagesize($_FILES["fileup"]["tmp_name"]);
     if ($check !== false) {
         echo "<li>File is an image of type - " . $check["mime"] . ".</li>";
@@ -108,10 +109,9 @@ session_start();
         }
     }
     
-    }
     if (!isset($img)) {
         $img = "mon.jpg";
-    } // figure out best way to add in image
+    } 
    
     if($_POST['canEvolve'] != null && $_POST['weakTo'] != null&& $_POST['type'] != null&& $_POST['averageSize'] != null&& $_POST['shinyColor'] != null&& $_POST['evolution'] != null && $_POST['Pokemon'] != null){
     $stmt = $connection->prepare("SELECT * FROM Pokedex1 WHERE name = ?");

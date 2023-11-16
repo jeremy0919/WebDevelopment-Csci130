@@ -36,15 +36,21 @@ function sortN(){
 }
 
 function insert1() {
-    var pokemon = encodeURIComponent(document.getElementById('InsPokemon').value);
-    var evolution = encodeURIComponent(document.getElementById('InsEvolution').value);
-    var shinyColor = encodeURIComponent(document.getElementById('insShinyColor').value);
-    var averageSize = encodeURIComponent(document.getElementById('InsAverageSize').value);
-    var type = encodeURIComponent(document.getElementById('InsType').value);
-    var weakTo = encodeURIComponent(document.getElementById('InsWeakTo').value);
-    var canEvolve = encodeURIComponent(document.getElementById('InsCanEvolve').value);
-    var img = encodeURIComponent(document.getElementById('InsImage').value);
+    var formData = new FormData();
 
+    // Append text fields to the FormData object
+    formData.append('Pokemon', document.getElementById('InsPokemon').value);
+    formData.append('evolution', document.getElementById('InsEvolution').value);
+    formData.append('shinyColor', document.getElementById('insShinyColor').value);
+    formData.append('averageSize', document.getElementById('InsAverageSize').value);
+    formData.append('type', document.getElementById('InsType').value);
+    formData.append('weakTo', document.getElementById('InsWeakTo').value);
+    formData.append('canEvolve', document.getElementById('InsCanEvolve').value);
+    
+    // Append the image file to the FormData object
+    var imgInput = document.getElementById('fileup');
+    formData.append('fileup', imgInput.files[0]);
+    
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -52,19 +58,20 @@ function insert1() {
             console.log(xhr.responseText);
         }
     };
-
-    var data = "Pokemon=" + pokemon +
+    
+    xhr.open('POST', 'insert.php', true);
+   /* var data = "Pokemon=" + pokemon +
         "&evolution=" + evolution +
         "&shinyColor=" + shinyColor +
         "&averageSize=" + averageSize +
         "&type=" + type +
         "&weakTo=" + weakTo +
-        "&canEvolve=" + canEvolve +
-        "&img=" + img;
+        "&canEvolve=" + canEvolve+
+        "&fileup=" + img ;
 
-    xhr.open("POST", "insert.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(data);
+    xhr.open("POST", "insert.php", true);*/
+ //   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(formData);
 
     // Reset the form values
     document.getElementById("InsPokemon").value = "";
@@ -74,7 +81,6 @@ function insert1() {
     document.getElementById("InsType").value = "";
     document.getElementById("InsWeakTo").value = "";
     document.getElementById("InsCanEvolve").value = "";
-    document.getElementById("InsImage").value = "";
 }
 function sortI(){
 
