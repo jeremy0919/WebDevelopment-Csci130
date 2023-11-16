@@ -49,7 +49,8 @@ function insert1() {
     
     // Append the image file to the FormData object
     var imgInput = document.getElementById('fileup');
-    formData.append('fileup', imgInput.files[0]);
+    var file = imgInput.files[0];
+    formData.append('fileup', file);
     
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -60,6 +61,18 @@ function insert1() {
     };
     
     xhr.open('POST', 'insert.php', true);
+    xhr.send(formData);
+    
+    // Reset the form values
+    document.getElementById("InsPokemon").value = "";
+    document.getElementById("InsEvolution").value = "";
+    document.getElementById("insShinyColor").value = "";
+    document.getElementById("InsAverageSize").value = "";
+    document.getElementById("InsType").value = "";
+    document.getElementById("InsWeakTo").value = "";
+    document.getElementById("InsCanEvolve").value = "";
+    document.getElementById("displayIMG").src = "";
+    document.getElementById("fileup").value = null;
    /* var data = "Pokemon=" + pokemon +
         "&evolution=" + evolution +
         "&shinyColor=" + shinyColor +
@@ -69,7 +82,7 @@ function insert1() {
         "&canEvolve=" + canEvolve+
         "&fileup=" + img ;
 
-    xhr.open("POST", "insert.php", true);*/
+    xhr.open("POST", "insert.php", true);
  //   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(formData);
 
@@ -80,7 +93,7 @@ function insert1() {
     document.getElementById("InsAverageSize").value = "";
     document.getElementById("InsType").value = "";
     document.getElementById("InsWeakTo").value = "";
-    document.getElementById("InsCanEvolve").value = "";
+    document.getElementById("InsCanEvolve").value = "";*/
 }
 function sortI(){
 
@@ -122,7 +135,7 @@ function first1(){
         document.getElementById("InsType").value = rowData['type'];
         document.getElementById("InsWeakTo").value = rowData['weakTo'];
         document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
-       // document.getElementById("InsImage").value = rowData['image'];
+        document.getElementById("displayIMG").src = "uploads/"+rowData['image'];
     })
   })
 
@@ -148,7 +161,7 @@ function next1(){
         document.getElementById("InsType").value = rowData['type'];
         document.getElementById("InsWeakTo").value = rowData['weakTo'];
         document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
-        document.getElementById("InsImage").value = rowData['image'];
+        document.getElementById("displayIMG").src = "uploads/"+rowData['image'];
     })
   })
 
@@ -172,7 +185,7 @@ function previous1(){
         document.getElementById("InsType").value = rowData['type'];
         document.getElementById("InsWeakTo").value = rowData['weakTo'];
         document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
-        document.getElementById("InsImage").value = rowData['image'];
+        document.getElementById("displayIMG").src = "uploads/"+rowData['image'];
     })
   })
 
@@ -242,7 +255,9 @@ function last1(){
         document.getElementById("InsType").value = rowData['type'];
         document.getElementById("InsWeakTo").value = rowData['weakTo'];
         document.getElementById("InsCanEvolve").value = rowData['CanEvolve'];
-        document.getElementById("InsImage").value = rowData['image'];
+        console.log("Full Image URL:", "/uploads/" + rowData['image']);
+        document.getElementById("displayIMG").src = "uploads/"+rowData['image'];
+        
     })
   })
 
@@ -276,7 +291,7 @@ function createTable(data) {
         const cell = row.insertCell();
         if (columnName === 'image') {
             const img = document.createElement('img');
-            img.src = rowData[columnName]; 
+            img.src = 'uploads/' + rowData[columnName];
     
             img.alt = 'Pokemon Image';
             

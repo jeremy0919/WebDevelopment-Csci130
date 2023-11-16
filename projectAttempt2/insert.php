@@ -14,14 +14,14 @@ session_start();
     $pokemon = $_POST['Pokemon'] ;
     }
     else{
-        echo "<script>alert('no name input');</script>";
+        echo ("<script>alert('no name input');</script>");
     }
     if($_POST['evolution']!=null){
         $evolution = $_POST['evolution'] ;
     }
     else{
        
-        echo "<script>alert('no eveolution stage input');</script>";
+        echo ("<script>alert('no eveolution stage input');</script>");
     }
     if($_POST['shinyColor']!=null){
         $shinyColor = $_POST['shinyColor'] ;
@@ -29,37 +29,37 @@ session_start();
     else{
         
      
-        echo "<script>alert('no shiny color given');</script>";
+        echo ("<script>alert('no shiny color given');</script>");
     }
     if($_POST['averageSize']!=null){
         $averageSize = $_POST['averageSize'] ;
     }
     else{
-        echo "<script>alert('no average size given');</script>";
+        echo ("<script>alert('no average size given');</script>");
      
     }
     if($_POST['type']!=null){
         $type = $_POST['type'] ;
     }
     else{
-        echo "<script>alert('no type given');</script>";
+        echo ("<script>alert('no type given');</script>");
     
     }
     if($_POST['weakTo']!=null){
         $weakTo = $_POST['weakTo'] ;
     }
     else{
-        echo "<script>alert('no weakness given');</script>";
+        echo ("<script>alert('no weakness given');</script>");
    
     }
     if($_POST['canEvolve'] != null){
         $canEvolve = $_POST['canEvolve'] ;
     }
     else{
-        echo "<script>alert('no evolution given');</script>";
+        echo ("<script>alert('no evolution given');</script>");
     
     }
-   
+    if (isset($_FILES["fileup"])) {
     $target_dir = "uploads/"; // you must create this directory in the folder where you have the PHP file
     $target_file = $target_dir . basename($_FILES["fileup"]["name"]);
     
@@ -90,27 +90,30 @@ session_start();
     }
     
     // Verify certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png") {
-        echo "<li>Only jpg and png files are allowed for the upload.</li>";
-        $uploadOk = 0;
-    }
-    
-    // Verify if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "<li>The file was not uploaded.</li>";
     } else { // upload file
-        if (move_uploaded_file($_FILES["fileup"]["tmp_name"], $target_file)) {
+        $tempFile = $_FILES["fileup"]["tmp_name"];
+    
+        // Use a unique filename to avoid overwriting existing files
+        $uniqueFileName = uniqid() . "_" . basename($_FILES["fileup"]["name"]);
+    
+        $destination = $target_dir . $uniqueFileName;
+    
+        if (move_uploaded_file($tempFile, $destination)) {
             echo "<li>The file " . basename($_FILES["fileup"]["name"]) . " has been uploaded.</li>";
-            
+    
             // Set $img to the uploaded filename
-            $img = basename($_FILES["fileup"]["name"]);
+            $img = $uniqueFileName;
         } else {
             echo "<li>Error uploading your file.</li>";
         }
     }
     
+}
     if (!isset($img)) {
         $img = "mon.jpg";
+        echo ("<script>alert('no image given, stock image being used');</script>");
     } 
    
     if($_POST['canEvolve'] != null && $_POST['weakTo'] != null&& $_POST['type'] != null&& $_POST['averageSize'] != null&& $_POST['shinyColor'] != null&& $_POST['evolution'] != null && $_POST['Pokemon'] != null){
