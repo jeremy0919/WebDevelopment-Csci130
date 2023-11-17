@@ -15,11 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .table-with-border {
-            border: 2px solid black;
-            }
-        </style>
+         <link rel="stylesheet" type="text/css" href="style.css">
  <script src="script4.js">
        
        </script>
@@ -46,7 +42,7 @@ session_start();
         <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
      
     </form>
-    <img src = "uploads/mon.jpg" id ="displayIMG" style="height: 100px; width: auto;" >
+    <img src = "uploads/mon.jpg" id ="displayIMG" >
     <form>
         <input type="button" name="first" value="first" onclick="first1()"><br>
    
@@ -59,6 +55,10 @@ session_start();
         <input  type="button" name="last" value="last" onclick="last1()"><br>
 
         <input type="button" name="display" value="display" onclick="displayIND1()"><br>
+
+        <input type="button" name="sort1" value="Sort by name" onclick="sortN()"><br>
+
+        <input type="button" name="sort2" value="Sort by id" onclick="sortI()"><br>
     </form>
     
     <form action="delete.php" method="post" class = "form3">
@@ -66,12 +66,6 @@ session_start();
         <input type="submit" name="delete" value="delete"><br>
     </form>
 
-    <form >
-        <input type="button" name="sort1" value="Sort by name" onclick="sortN()"><br>
-    </form>
-    <form>
-        <input type="button" name="sort2" value="Sort by id" onclick="sortI()"><br>
-    </form>
 
 </body>
 </html>
