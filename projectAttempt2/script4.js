@@ -21,11 +21,28 @@ function sortN(){
 
     fetch('sortN.php')
     .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        // You can handle the response if needed
+        return response.text(); // or response.json() depending on what the PHP file returns
+    })
+    .then(data => {
+        // Handle the data returned by the PHP file if needed
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    })
+}
+    /*
+    .then(response => {
       if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
       }
       return response.json();
   })
+  
   .then(data => {
       // Create a table element
       const table = createTable(data);
@@ -33,7 +50,8 @@ function sortN(){
       // Replace the existing table content or append it to a specific container element
       replaceTableContent(table);
   })
-}
+  */
+
 
 function insert1() {
     var formData = new FormData();
@@ -99,11 +117,27 @@ function sortI(){
 
     fetch('sortI.php')
     .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        // You can handle the response if needed
+        return response.text(); // or response.json() depending on what the PHP file returns
+    })
+    .then(data => {
+        // Handle the data returned by the PHP file if needed
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    })
+    /*
+    .then(response => {
       if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
       }
       return response.json();
   })
+  
   .then(data => {
       // Create a table element
       const table = createTable(data);
@@ -111,6 +145,7 @@ function sortI(){
       // Replace the existing table content or append it to a specific container element
       replaceTableContent(table);
   })
+  */
 }
 
 

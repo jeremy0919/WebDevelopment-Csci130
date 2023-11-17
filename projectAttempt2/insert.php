@@ -84,7 +84,7 @@ session_start();
     }
     
     // Verify the file size
-    if ($_FILES["fileup"]["size"] > 500000) {
+    if ($_FILES["fileup"]["size"] > 5000000) {
         echo "<li>The file is too large.</li>";
         $uploadOk = 0;
     }

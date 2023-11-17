@@ -46,7 +46,7 @@ session_start();
         <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
      
     </form>
-    <img src = "uploads/mon.jpg" id ="displayIMG" >
+    <img src = "uploads/mon.jpg" id ="displayIMG" style="height: 100px; width: auto;" >
     <form>
         <input type="button" name="first" value="first" onclick="first1()"><br>
    
