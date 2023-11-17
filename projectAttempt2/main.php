@@ -15,13 +15,13 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-         <link rel="stylesheet" type="text/css" href="style.css">
+         <link rel="stylesheet" type="text/css" href="style1.css">
  <script src="script4.js">
        
        </script>
 </head>
 <body>
-    <div id="table-container"></div>
+  
     <form>
     <label>Pokemon:</label>
         <input type="text" name="Pokemon" id="InsPokemon"> <br>
@@ -42,7 +42,17 @@ session_start();
         <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
      
     </form>
-    <img src = "uploads/mon.jpg" id ="displayIMG" >
+ 
+
+    <div id="image-section">
+    <div id="table-container"></div>
+        <img src="uploads/mon.jpg" id="displayIMG">
+        
+        <form action="delete.php" method="post" class="form3">
+            <input type="text" name="delname"><br>
+            <input type="submit" name="delete" value="delete"><br>
+        </form>
+    </div>
     <form>
         <input type="button" name="first" value="first" onclick="first1()"><br>
    
@@ -61,10 +71,7 @@ session_start();
         <input type="button" name="sort2" value="Sort by id" onclick="sortI()"><br>
     </form>
     
-    <form action="delete.php" method="post" class = "form3">
-        <input type="text" name="delname"><br>
-        <input type="submit" name="delete" value="delete"><br>
-    </form>
+   
 
 
 </body>
