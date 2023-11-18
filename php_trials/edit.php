@@ -1,10 +1,10 @@
 <?php
 include("databaseT.php");
+session_start();
+if (isset($_SESSION["x"])) {
+    $id = $_SESSION["x"];
 
-if (isset($_POST["edit"])) {
-    $id = $_POST["id"];
-
-    $sql = "SELECT * FROM pokemon WHERE id = ?";
+    $sql = "SELECT * FROM Pokedex1 WHERE id = ?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -30,7 +30,9 @@ if (isset($_POST["edit"])) {
         echo '<input type="text" name="size" value="' . $row["size"] . '"><br>';
         echo '<label>weakTo:</label>';
         echo '<input type="text" name="weakTo" value="' . $row["weakTo"] . '"><br>';
-        
+        echo '<label>image:</label>';
+        echo '<input type="file" name="image" accept="image/* value = "'.$row["image"]. '"><br>';
+
         echo '<input type="submit" name="save" value="Save">';
         echo '</form>';
     }

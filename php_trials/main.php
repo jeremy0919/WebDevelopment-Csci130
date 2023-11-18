@@ -1,6 +1,11 @@
-<?php // change to calling javascript for table creation treat database as object
-// use path to picture
-// hardcode in database creation and what not
+<?php 
+session_start();
+    if (!isset($_SESSION['x'])) {
+        $_SESSION['x'] = 1; // Initial value
+    }
+   include("databaseT.php");
+//need to display image and rework image stuff
+// liekly need to rework sort options to not just sort table but sort data
 
 ?>
 
@@ -10,107 +15,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .table-with-border {
-            border: 2px solid black;
-            }
-        </style>
-  <script>
-
-function display1(){
-    alert("check1")
-    fetch('databaseT.php')
-    .then(response => response.json())
-    .then(data => {
-    // Create a table element
-    const table = document.createElement('table');
-    table.border = '1';
-
-    // Create table header
-    const headerRow = table.insertRow();
-    const columns = ['ID', 'Name', 'Type', 'Shiny Color', 'Stage', 'Can Evolve', 'Size', 'Weak To'];
-
-    columns.forEach(columnName => {
-      const th = document.createElement('th');
-      th.innerHTML = columnName;
-      headerRow.appendChild(th);
-    });
-
-    // Create table rows
-    data.forEach(rowData => {
-      const row = table.insertRow();
-      const columnNames = ['id', 'name', 'type', 'ShinyColor', 'stage', 'CanEvolve', 'size', 'weakTo'];
-
-      columnNames.forEach(columnName => {
-        const cell = row.insertCell();
-        cell.innerHTML = rowData[columnName];
-      });
-    });
-
-    // Append the table to the body or another HTML element
-    document.body.appendChild(table);
-  })
-  .catch(error => console.error('Error:', error));
-}
-  
-    </script>
+         <link rel="stylesheet" type="text/css" href="style1.css">
+ <script src="script4.js">
+       
+       </script>
 </head>
 <body>
-    <form action="mysql.php" method="post">
+  
+    <form>
     <label>Pokemon:</label>
-        <input type="text" name="Pokemon"> <br>
+        <input type="text" name="Pokemon" id="InsPokemon"> <br>
         <label>evolution:</label>
-        <input type="text" name="evolution"> <br>
+        <input type="text" name="evolution" id="InsEvolution"> <br>
         <label>shinyColor:</label>
-        <input type="text" name="shinyColor"> <br>
+        <input type="text" name="shinyColor" id="insShinyColor"> <br>
         <label>averageSize:</label>
-        <input type="text" name="averageSize"> <br>
+        <input type="text" name="averageSize" id="InsAverageSize"> <br>
         <label>type:</label>
-        <input type="text" name="type"> <br>
+        <input type="text" name="type" id="InsType"> <br>
         <label>weakTo:</label>
-        <input type="text" name="weakTo"> <br>
+        <input type="text" name="weakTo" id="InsWeakTo"> <br>
         <label>canEvolve:</label>
-        <input type="text" name="canEvolve"> <br>
-        <input type="submit" name="submit" value="Insert new pokemon"><br>
-       
+        <input type="text" name="canEvolve" id="InsCanEvolve"> <br>
+        <label>image:</label>
+        <li><input type="file" name="fileup" id="fileup"></li>
+        <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
      
     </form>
+ 
 
-    <form action="mysql.php" method="post" class = "form2">
-    <label>Find pokemon</label>
-        <input type="text" name="Find"><br>
-        <input type="submit" name="submit1" value="Find pokemon"><br>
-    </form>
+    <div id="image-section">
+    <div id="table-container"></div>
+        <img src="uploads/mon.jpg" id="displayIMG">
+        
+        <form action="delete.php" method="post" class="form3">
+            <input type="text" name="delname"><br>
+            <input type="submit" name="delete" value="delete"><br>
+        </form>
+    </div>
+    <form>
+        <input type="button" name="first" value="first" onclick="first1()"><br>
+   
+        <input type="button" name="submit2" value="outputDatabase" onclick="display1()"><br>
+ 
+        <input type="button" name="previous" value="previous" onclick="previous1()"><br>
+    
+        <input type="button"  value="next" onclick="next1()"><br>
+    
+        <input  type="button" name="last" value="last" onclick="last1()"><br>
 
-    <form >
-        <input type="button" name="submit2" value="outputDatabase" onclick="dispaly1()"><br>
+        <input type="button" name="display" value="display" onclick="displayIND1()"><br>
+
+        <input type="button" name="sort1" value="Sort by name" onclick="sortN()"><br>
+
+        <input type="button" name="sort2" value="Sort by id" onclick="sortI()"><br>
     </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="previous" value="previous"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="next" value="next"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="first" value="first"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="last" value="last"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="display" value="display"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="text" name="delname"><br>
-        <input type="submit" name="delete" value="delete"><br>
-    </form>
+    
+   
 
 
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="sort1" value="Sort by name"><br>
-    </form>
-    <form action="mysql.php" method="post" class = "form3">
-        <input type="submit" name="sort2" value="Sort by id"><br>
-    </form>
 </body>
 </html>
