@@ -136,8 +136,8 @@ echo $mycar->getModel();
 $instance = new SimpleClass();
 $instance->myvar=20;
 
-$assigned   =  $instance;
-$reference  =& $instance;
+$assigned   =  $instance; //copy
+$reference  =& $instance; // reference to locations
 // $assigned isn't a reference but a copy of $instance.
 
 echo $instance->myvar .'<br>';
