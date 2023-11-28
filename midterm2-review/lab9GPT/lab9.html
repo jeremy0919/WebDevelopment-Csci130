@@ -11,14 +11,14 @@
 
 
 
-<form id="numberForm">
+  <form id="numberForm" method="post" action="traditional.php">
     <label for="numbers">Enter numbers (comma-separated):</label>
     <input type="text" id="numbers" name="numbers" placeholder="1,2,3,4,5">
     <button type="button" onclick="generateRandomNumbers()">Generate Random Numbers</button>
     <button type="button" onclick="sendData('GET')">Calculate (SPA - GET)</button>
     <button type="button" onclick="sendData('POST')">Calculate (SPA - POST)</button>
     <a href="traditional.php" target="_blank">Calculate (Traditional - GET)</a>
-    <button type="submit" formaction="traditional.php">Calculate (Traditional - POST)</button>
+    <button type="submit">Calculate (Traditional - POST)</button>
   </form>
 
 

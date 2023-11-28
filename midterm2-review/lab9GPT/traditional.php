@@ -1,24 +1,37 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'GET' || $_SERVER['REQUEST_METHOD'] === 'POST') {
-  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $jsonData = $_GET['numbers'];
-  } else {
-    $jsonData = $_POST['numbers'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $numbersString = $_POST['numbers'];
+
+  // Ensure $numbersString is not empty
+  if (empty($numbersString)) {
+    echo "Input is empty.";
+    exit;
   }
 
-  $data = json_decode($jsonData, true);
+  // Explode the comma-separated string into an array of numbers
+  $numbers = array_map('intval', explode(',', $numbersString));
 
-  $numbers = $data['numbers'];
+  // Ensure $numbers is an array before performing operations
+  if (!is_array($numbers)) {
+    echo "Invalid input data. 'numbers' must be an array.";
+    exit;
+  }
 
-  $average = array_sum($numbers) / count($numbers);
-  sort($numbers);
   $count = count($numbers);
+
+  if ($count === 0) {
+    echo "Array is empty.";
+    exit;
+  }
+
+  $average = array_sum($numbers) / $count;
+  sort($numbers);
   $middle = floor(($count - 1) / 2);
   $median = ($numbers[$middle] + $numbers[$middle + 1 - $count % 2]) / 2;
   $standardDeviation = sqrt(array_sum(array_map('squareDiff', $numbers, array_fill(0, $count, $average))) / $count);
   $min = min($numbers);
   $max = max($numbers);
-
+  echo "lab9.html";
   echo "<h1>Traditional PHP Page</h1>";
   echo "<p>Average: $average</p>";
   echo "<p>Median: $median</p>";
