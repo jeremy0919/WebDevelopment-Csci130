@@ -51,7 +51,7 @@ class SimpleClass {
         echo $this->myvar .'<br>'; // this : when we call a variable or method WITHIN the object
     }
 	public function displayVar1() {
-        echo $myvar .'<br>'; // undefined variable myvar !
+   //     echo $myvar .'<br>'; // undefined variable myvar !
     }
 }
 
@@ -326,8 +326,8 @@ class Cruiser extends Motorbike{
   }
   
   public function DisplayInfo() {
-	  // This function overides the function described at the parent level
-	echo 'Child '. __CLASS__ .' '. $this->brand . $this->model .'<br>';
+	  // This function overides the function described at the parent level // liar
+	  //echo 'Child '. __CLASS__ .' '. $this->brand . $this->model .'<br>';
   }
   
 }
@@ -349,11 +349,6 @@ $cbike ->DisplayInfo();
 
 
 // Abstract classes are declared with the abstract keyword, and contain abstract methods.
-abstract class Car {
-	// Contains both abtract and non abstract methods/properties
-  abstract public function calcNumMilesOnFullTank(); // just the definition of the header, the body is defined at the child
-  // this method must be set in the child
-}
 
 // The child classes that inherit from abstract classes must add bodies to the abstract methods.
 
