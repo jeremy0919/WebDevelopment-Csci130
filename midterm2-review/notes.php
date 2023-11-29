@@ -12,7 +12,7 @@ For example, if you're sending JSON data, you would set 'Content-Type': 'applica
 
 
 
-//browser side JS to json
+//bBROWSER SIDE JS TO JSON
 /*
 // Assume data is an object you want to write to the JSON file
 var data = {
@@ -36,6 +36,33 @@ xhr.onreadystatechange = function() {
 
 xhr.send(jsonData);
 */
+//WRITETOFILE.php
+/*<?php
+// Get the JSON data from the POST request
+$jsonData = file_get_contents('php://input');
+
+// Decode the JSON data
+$decodedData = json_decode($jsonData, true);
+
+// Check if decoding was successful
+if ($decodedData === null) {
+    // Handle the error, e.g., JSON syntax error
+    echo 'Error decoding JSON';
+} else {
+    // Do something with the decoded data
+    // For example, you can write it to a file
+    $filename = 'output.json';
+    file_put_contents($filename, json_encode($decodedData));
+
+    // Respond with a success message
+    echo 'Data written to ' . $filename;
+}
+?>
+*/
+
+
+
+
 
 
 //Server side JAVASCRIPT TO JSON
