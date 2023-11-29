@@ -12,8 +12,8 @@ else
 }
 
 // Overwrite the previous file
-$f = fopen("mydatabase.json","w");
-fwrite($f,$data);
+$f = fopen("mydatabase.json","w"); //overwrite sprevious file and rewrites it with $data
+fwrite($f,$data); // use a^ to append to end of file
 fclose($f);
 
 /*

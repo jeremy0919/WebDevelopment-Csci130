@@ -12,10 +12,10 @@ if ($decodedData === null) {
     echo 'Error decoding JSON';
 } else {
     // Access the data as a PHP array
-    $employees = $decodedData['employees'];
+    $employees = $decodedData['employees']; // pulls employee array {employee[{name:john,age:10}{name:bob,age:20}]}
 
     // Do something with the data
-    foreach ($employees as $employee) {
+    foreach ($employees as $employee) {  // pulls data from each object
         echo 'Name: ' . $employee['name'] . ', Age: ' . $employee['age'] . '<br>';
     }
 }

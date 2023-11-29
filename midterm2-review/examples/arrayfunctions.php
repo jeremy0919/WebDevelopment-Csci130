@@ -18,10 +18,10 @@ function ArrayRand($n) {
 function ArraySortedRand($n) {
 	// create an array of size n
 	$some_data=0;
-	$array = array_fill(0,$n,$some_data);
+	$array = array_fill(0,$n,$some_data); //array_fill(start_index, final_index, value_to_fill)
 	$array[0]=rand(0,10);
 	for ($i=1;$i<$n;$i++) {
-		$array[$i]=$array[$i-1]+rand(0,10);
+		$array[$i]=$array[$i-1]+rand(0,10); //adds random value between 1 and 10 to previous value
 	}
 	return $array;
 }
