@@ -61,11 +61,11 @@ echo $wweJSON;
 
 class ArrayValue implements JsonSerializable {
     public function __construct(array $array) {
-        $this->array = $array;
+        $this->$array = $array;
     }
 
     public function jsonSerialize() {
-        return $this->array;
+    //    return $this->$array;
     }
 }
 
@@ -118,7 +118,7 @@ class Fruit implements JsonSerializable {
         }
 }
 echo json_encode(new Fruit()); //which outputs:
-{"category":"Apple","EatenTime":"2013-01-31T11:17:07-0500"}
+//{"category":"Apple","EatenTime":"2013-01-31T11:17:07-0500"}
 
 ///////////////////////////////////////////////
 
