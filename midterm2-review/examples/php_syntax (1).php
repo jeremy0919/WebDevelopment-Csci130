@@ -322,20 +322,23 @@ try {
 
 // Class
 class Car {
-    function Car() {
+    public $brand;  // Declare properties
+    public $model;
+    public $color;
+
+    public function __construct() {
         $this->brand = "Ford";
-		$this->model = "Focus";
-		$this->color = "red";
+        $this->model = "Focus";
+        $this->color = "red";
     }
 }
+
 
 // Create an object (instance of the class Car)
 $mycar = new Car();
 
-// show object properties
+// Show object properties
 echo $mycar->model;
-
-
 
 class Foo
 {

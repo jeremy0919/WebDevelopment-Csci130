@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Collection</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="carInfo">
+        <!-- Display car information here -->
+    </div>
+
+    <div id="presentationOptions">
+        <h3>Presentation Options</h3>
+        <form>
+            <label for="radioButton">Radio Button:</label>
+            <input type="radio" name="presentation" id="radioButton">
+
+            <label for="checkBox">Checkbox:</label>
+            <input type="checkbox" name="presentation" id="checkBox">
+
+            <label for="textBox">Text Box:</label>
+            <input type="text" id="textBox" placeholder="Enter text">
+
+            <label for="comboBox">Combo Box:</label>
+            <select id="comboBox">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </form>
+    </div>
+
+    <button onclick="previousCar()">Previous</button>
+    <button onclick="nextCar()">Next</button>
+</body>
+</html>

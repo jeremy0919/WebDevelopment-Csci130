@@ -5,7 +5,12 @@ include 'arrayfunctions.php';
 // Solution for the POST and GET
 
 // If there is no variable myarray in POST, we consider an array [0].
+
 $myarray = (isset($_POST['myarray'])) ? json_decode($_POST['myarray']) : ['0'];
+/*So, in summary, this line of code initializes the $myarray variable based on the presence of $_POST['myarray']. 
+If it exists and is a valid JSON string, it decodes it into a PHP variable.
+ If it doesn't exist, it defaults to an array with the element '0'. */
+
 
 // If we get nothing from the POST, let's see if we can get something from the GET
 if (count($myarray)==1 && $myarray[0]==0) 
