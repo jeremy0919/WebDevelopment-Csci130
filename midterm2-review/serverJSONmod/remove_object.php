@@ -15,7 +15,7 @@ foreach ($objects as $key => $object) {
 }
 
 // Save the updated list of objects to the JSON file
-file_put_contents('objects.json', json_encode($objects));
+file_put_contents('objects.json', json_encode($objects)); // overwrites existing data in file with new information
 
 // Return a response indicating success
 header('Content-Type: application/json');

@@ -35,7 +35,7 @@ function DisplayArray($a) {
  
 // Example of the binary search in PHP
 // search the value x in the array list
-function iterative_binary_search($x, $list) {
+function iterative_binary_search($x, $list) { // search, looks like basic version of mergesort
 	$left = 0;
 	$right = count($list)-1;
 	while ($left <= $right) {
