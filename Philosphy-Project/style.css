@@ -1,0 +1,98 @@
+
+.pages {
+	color: white;
+	font-size: 10px;
+	background-color: white;
+	width: 52%;
+	
+}
+* {
+	font-family: sans-serif;
+/*	background-color: dodgerblue;*/
+
+}
+
+li{
+	font: size 10px;
+	list-style-position: inside
+}
+.pages li{
+	display:inline;
+	padding-right: 2%;
+}
+.header {
+	font-size: 10px;
+	color: white;
+	background-color: #b1102b;
+}
+body {
+	position: relative;
+	
+	background-color: #13284c;
+}
+h1{
+	color: #c0c0c0;
+}
+p{
+	background-color:white;
+}
+.p1{
+	column-gap: 10px;
+	column-count: 1;
+	align-items: center;
+	text-align: center;
+}
+.p2 p{
+	margin: 0;
+}
+.p2{
+	column-gap: 10px;
+	text-align: center;
+	align-items: left;
+	column-count: 2;
+
+}
+.p4 p{
+	margin: 0;
+}
+.p4{
+	column-gap: 10px;
+
+	text-align: center;
+	column-count: 2;
+	
+}
+
+img.Bull {
+	width: 100px;
+	height: auto;
+	float: right;
+	aspect-ratio: 0;
+}
+
+img{
+	width: 500px;
+	height:auto;
+	padding: 3px;
+	aspect-ratio: 3/2;
+}
+
+img.wire{
+
+		width: 500px;
+		height:auto;
+		padding: 3px;
+		aspect-ratio: 3/2;
+
+}
+img.graphic {
+	width: 250px;
+	height: auto;
+	padding: 3px;
+	aspect-ratio: 3/2;
+	max-width: 100%; /* Ensures the image won't exceed its natural size */
+  }
+
+a{
+	color:red
+}
