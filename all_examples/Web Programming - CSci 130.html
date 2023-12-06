@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0212)https://a13199-11536297.cluster88.canvas-user-content.com/courses/13199~75067/files/13199~11536297/course%20files/index_v0.html?context_id=13199~75067&context_type=Course&download=1&id=131990000011536297&inline=1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Web Programming - CSci 130</title>
+</head>
+<body>
+<script>
+
+let index=0;
+let indexmax=0;
+var mydata; // contains only a single object of the array !
+
+function goPrevious() {
+    if (index!=-1) {
+		if (index==0)
+			index=0;
+		else
+			index--;
+		GetObject(index); 
+	}	
+}
+
+function goNext() {
+	if (index!=-1) {
+		if (index==indexmax-1)
+			index=indexmax-1;
+		else
+			index++;
+		GetObject(index);
+	}	
+}
+
+function Saverecord() {
+	mydata['first_name']=document.getElementById("first_name").value;
+	mydata['last_name']=document.getElementById("last_name").value;
+	mydata['address']=document.getElementById("address").value;
+	mydata['dob']=document.getElementById("dob").value;
+	mydata['id']=document.getElementById("idnum").value;
+	mydata['current_gpa']=document.getElementById("gpa").value;
+	mydata['current_units']=document.getElementById("units").value;
+	Savefile(index);
+}
+
+
+var saverequest;
+function Savefile(index) {
+    saverequest = new XMLHttpRequest();
+    var requestURL = "saveObject.php";
+    saverequest = new XMLHttpRequest();
+	saverequest.onreadystatechange = alertContents_savefile; 	
+	saverequest.open('POST',requestURL);
+	mydatatxt=JSON.stringify(mydata);
+	saverequest.setRequestHeader('Content-Type','application/x-www-form-urlencoded');  
+    saverequest.send('index=' + index + '&newdata=' + mydatatxt); // send multiple values !
+}
+
+function alertContents_savefile() {
+  try {
+    if (saverequest.readyState === XMLHttpRequest.DONE) {
+      if (saverequest.status === 200) {
+		alert(saverequest.responseText);
+	  } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+  catch( e ) {
+    alert('Caught Exception: ' + e.description);
+  }
+}
+
+function EmptyForm() {
+	document.getElementById("first_name").value="";
+	document.getElementById("last_name").value="";
+	document.getElementById("address").value="";
+	document.getElementById("dob").value="";;
+	document.getElementById("idnum").value="";;
+	document.getElementById("gpa").value="";;
+	document.getElementById("units").value="";;
+	document.getElementById("vindex").value=index;
+}
+
+function FillForm(jsonObj) {
+	document.getElementById("first_name").value=jsonObj['first_name'];
+	document.getElementById("last_name").value=jsonObj['last_name'];
+	document.getElementById("address").value=jsonObj['address'];
+	document.getElementById("dob").value=jsonObj['dob'];
+	document.getElementById("idnum").value=jsonObj['id'];
+	document.getElementById("gpa").value=jsonObj['current_gpa'];
+	document.getElementById("units").value=jsonObj['current_units'];
+	document.getElementById("vindex").value=index;
+}
+
+   
+ // Main part related to AJAX to retrieve an object at position index
+ var httpRequest;
+ function GetObject(index) {
+    var requestURL = "getObject.php";
+    httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = alertContents_getobject; 	
+	httpRequest.open('POST',requestURL);
+	httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send('index='+encodeURIComponent(index));
+}
+	
+function alertContents_getobject() {
+  try {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+		var response = JSON.parse(httpRequest.responseText);  
+		mydata=JSON.parse(JSON.stringify(response));
+		if (mydata.hasOwnProperty('first_name')) { // check the bad case
+			FillForm(mydata);
+		}
+		else
+		{
+			index--;
+		}
+	  } else {
+        alert('There was a problem with the request.');
+      }
+    }
+	return 1;
+  }
+  catch(e) { // Always deal with what can happen badly, client-server applications --> there is always something that can go wrong on one end of the connection
+    alert('Caught Exception: ' + e.description);
+  }
+}
+
+// Get indexmax
+var httpRequest_indexmax;
+ function GetIndexmax() {
+    var requestURL = "getIndexmax.php";
+    httpRequest_indexmax = new XMLHttpRequest();
+	httpRequest_indexmax.onreadystatechange = alertContents_getindexmax; 	
+	httpRequest_indexmax.open('GET',requestURL);
+	httpRequest_indexmax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest_indexmax.send();
+}
+	
+function alertContents_getindexmax() {
+  try {
+    if (httpRequest_indexmax.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest_indexmax.status === 200) {
+		indexmax=httpRequest_indexmax.responseText; 		
+	  } else {
+        alert('There was a problem with the request.');
+      }
+    }
+	return 1;
+  }
+  catch(e) { // Always deal with what can happen badly, client-server applications --> there is always something that can go wrong on one end of the connection
+    alert('Caught Exception: ' + e.description);
+  }
+}
+
+
+// Get the first object in the collection 
+GetObject(0);
+indexmax=GetIndexmax();
+		 
+</script>
+
+<h1>Student</h1>
+
+<!-- the main form -->
+<section>
+<table>
+<tbody><tr><td>First Name: <input type="text" id="first_name" value=""></td></tr><tr>
+</tr><tr><td>Last Name: <input type="text" id="last_name"></td></tr><tr>
+</tr><tr><td>Address: <input type="text" id="address"></td></tr><tr>
+</tr><tr><td>DOB: <input type="text" id="dob"></td></tr><tr>
+</tr><tr><td>ID number: <input type="text" id="idnum"></td></tr><tr>
+</tr><tr><td>GPA: <input type="text" id="gpa"></td></tr><tr>
+</tr><tr><td>Units: <input type="text" id="units"></td></tr><tr>
+</tr><tr><td>Index: <input type="text" id="vindex"></td></tr><tr>
+</tr></tbody></table>
+</section>
+
+<!-- navigation button -->
+<section>
+<button onclick="goPrevious()">Previous object</button>
+<button onclick="goNext()">Next object</button>
+<button onclick="Saverecord()">Save record</button>
+</section>
+
+
+</body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0219)https://a13199-11536175.cluster88.canvas-user-content.com/courses/13199~75067/files/13199~11536175/course%20files/example_cookie1.html?context_id=13199~75067&context_type=Course&download=1&id=131990000011536175&inline=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Web Programming CSci 130 - Cookies</title>
+<script>
+
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+   // document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+   
+   document.cookie = "csci=130;" + cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user=getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+		setCookie("something","a value",1);
+    } else {
+       user = prompt("Please enter your name:","");
+       if (user != "" && user != null) {
+           setCookie("username", user, 30);
+		   
+       }
+    }
+}
+
+</script>
+</head>
+<body onload="checkCookie()">
+
+
+</body></html>

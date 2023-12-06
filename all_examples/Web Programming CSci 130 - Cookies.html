@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- saved from url=(0221)https://a13199-11536167.cluster88.canvas-user-content.com/courses/13199~75067/files/13199~11536167/course%20files/example_cookie_01.html?context_id=13199~75067&context_type=Course&download=1&id=131990000011536167&inline=1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Web Programming CSci 130 - Cookies</title>
+</head>
+<!-- each time we load the page - the body - we call check cookie -->
+<body>
+<!--  xx="checkCookie()">  -->
+
+<section>
+<button xx="removeCookie()">Remove cookie</button>
+<button xx="displayCookie()">Display cookie</button>
+</section>
+
+
+<p id="mypara">   </p><p>
+
+<xxxx>
+
+// Example of a simple cookie:
+// document.cookie = "key1=value1;key2=value2;expires=date";
+
+// Set a cookie
+function setCookie(cname, cvalue, exdays) {
+// cname = name of the cookie
+// cvalue = value of the cookie
+// exdays = number of days after which the cookie should expire
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "Cookie expires="+ d.toUTCString();
+	document.write("<br>" +  expires  +"<br>");  
+	
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+// Get a cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookiearray = decodedCookie.split(';');
+    for(var i = 0; i <cookiearray.length; i++)="" {="" var="" c="cookiearray[i];" while="" (c.charat(0)="=" '="" ')="" }="" if="" (c.indexof(name)="=" 0)="" return="" c.substring(name.length,="" c.length);="" "";="" function="" displaycookie()="" mypara="document.getElementById(&quot;mypara&quot;);" allcookies="document.cookie;" str="All Cookies : " +="" "<br="">";
+    // Get all the cookies pairs in an array
+    cookiearray = allcookies.split(';');
+    for(var i = 0; i <cookiearray.length; i++)="" {="" name="cookiearray[i].split(&#39;=&#39;)[0];" value="cookiearray[i].split(&#39;=&#39;)[1];" str+="(&quot;Key" is="" :="" "="" +="" and="" "<br="">");
+    }
+	mypara.innerHTML=str;
+}
+
+
+   
+// Check the cookie
+function checkCookie() {
+    var user=getCookie("username");
+	// there is already a value for user
+    if (user != "") {
+        alert("Welcome back: " + user);
+		setCookie("smurf", 52, 1);
+		setCookie("secretname","alf", 1);
+    } else {
+       user = prompt("Please enter your name:","");
+       if (user != "" &amp;&amp; user != null) {
+           setCookie("username", user, 30);
+       }
+    }
+}
+
+// Set the path in the past
+function deleteCookie(name) {
+	document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function removeCookie() {
+	deleteCookie("username");
+}
+
+
+</cookiearray.length;></cookiearray.length;></xxxx>
+
+
+
+</p></body></html>

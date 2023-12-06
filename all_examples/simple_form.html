@@ -1,0 +1,40 @@
+
+<!-- saved from url=(0215)https://a13199-11536218.cluster88.canvas-user-content.com/courses/13199~75067/files/13199~11536218/course%20files/simple_form.html?context_id=13199~75067&context_type=Course&download=1&id=131990000011536218&inline=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>
+<form action="https://a13199-11536218.cluster88.canvas-user-content.com/courses/13199~75067/files/13199~11536218/course%20files/simple_form.php" method="post">
+<p>Name: <input type="text" name="yourname"><br>
+E-mail: <input type="text" name="email"></p>
+
+<p>Do you like web programming?
+<input type="radio" name="likeit" value="Yes" checked="checked"> Yes
+<input type="radio" name="likeit" value="No"> No
+<input type="radio" name="likeit" value="Not sure"> Not sure</p>
+
+<p>Your comments:<br>
+<textarea name="comments" rows="10" cols="40"></textarea></p>
+
+<p><input type="submit" value="Send it!"></p>
+<!-- when submitted data is sent to the "myform.php" file using POST HTTP method ! -->
+
+
+<!--
+All the variables that are passed to the current script via the HTTP POST method are stored in associative array $_POST.
+With PHP, you can access data from each field using $_POST['NAME'], where  NAME is the actual field name (in HTML).
+Therefore, if you submit the form you would have access to a number of $_POST array values inside the myform.php file:
+
+Variable				Holds value of
+
+$_POST['yourname']		the text field "yourname"
+$_POST['email']			the text field "email"
+$_POST['likeit']		the selected radio box group "likeit"
+$_POST['comments']		the textarea "comments"
+
+-->
+</form>
+
+
+
+
+
+
+</body></html>
