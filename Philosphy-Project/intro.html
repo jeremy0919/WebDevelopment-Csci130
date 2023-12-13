@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .wire {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+
+button{
+	width: 200px;
+	padding: 15px 0;
+	text-align: center;
+	margin: 20px 10px;
+	border-radius: 25px;
+	font-weight: bold;
+	border: 2px solid #009668;
+	background: transparent;
+	color: #fff;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+
+}
+span{
+	background: #009688;
+	height: 100%;
+	width: 0;
+	border-radius: 25px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: 0.5s;
+}
+button:hover span{
+	width: 100%;
+
+}
+button:hover {
+	border: none;
+}
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="image-container">
+        <img src="img/wire.png" class="wire">
+        <img src="img/wire.png" class="wire">
+        <img src="img/wire.png" class="wire">
+        <img src="img/wire.png" class="wire">
+        <a href="main.html">
+            <button><span></span>Main</button>
+        </a>
+        <img src="img/wire.png" class="wire">
+        <img src="img/wire.png" class="wire">
+        <img src="img/wire.png" class="wire">
+        <img src="img/wire.png" class="wire">
+    </div>
+</body>
+</html>
