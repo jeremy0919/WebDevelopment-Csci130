@@ -1,0 +1,234 @@
+PHP classes
+	<?php
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+	$this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function set_color($color) {
+	$this->color = $color;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit();
+$apple->set_name('Apple');
+$apple->set_color('Red');
+echo "Name: " . $apple->get_name();
+echo "<br>";
+echo "Color: " . $apple->get_color();
+?>
+
+PHP constructors
+A constructor allows you to initialize an object's properties upon creation of the object.
+	<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name, $color) {
+	$this->name = $name;
+	$this->color = $color;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit("Apple", "red");
+echo $apple->get_name();
+echo "<br>";
+echo $apple->get_color();
+?>
+
+PHP inheritance
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+	$this->color = $color;
+  }
+  protected function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? ";
+    // Call protected method from within derived class - OK
+	$this -> intro();
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red"); // OK. __construct() is public
+$strawberry->message(); // OK. message() is public and it calls intro() (which is protected) from within the derived class
+?>
+PHP AJAX
+<html>
+<head>
+<script>
+function showHint(str) {
+  if (str.length == 0) {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("txtHint").innerHTML = this.responseText;
+	  }
+    };
+	xmlhttp.open("GET", "gethint.php?q=" + str, true);
+    xmlhttp.send();
+  }
+}
+</script>
+</head>
+<body>
+
+<p><b>Start typing a name in the input field below:</b></p>
+<form action="">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname" onkeyup="showHint(this.value)">
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+</body>
+</html>
+
+<?php
+// Array with names
+$a[] = "Anna";
+$a[] = "Brittany";
+$a[] = "Cinderella";
+$a[] = "Diana";
+$a[] = "Eva";
+$a[] = "Fiona";
+$a[] = "Gunda";
+$a[] = "Hege";
+$a[] = "Inga";
+$a[] = "Johanna";
+$a[] = "Kitty";
+$a[] = "Linda";
+$a[] = "Nina";
+$a[] = "Ophelia";
+$a[] = "Petunia";
+$a[] = "Amanda";
+$a[] = "Raquel";
+$a[] = "Cindy";
+$a[] = "Doris";
+$a[] = "Eve";
+$a[] = "Evita";
+$a[] = "Sunniva";
+$a[] = "Tove";
+$a[] = "Unni";
+$a[] = "Violet";
+$a[] = "Liza";
+$a[] = "Elizabeth";
+$a[] = "Ellen";
+$a[] = "Wenche";
+$a[] = "Vicky";
+
+// get the q parameter from URL
+$q = $_REQUEST["q"];
+
+$hint = "";
+
+// lookup all hints from array if $q is different from ""
+if ($q !== "") {
+  $q = strtolower($q);
+  $len=strlen($q);
+  foreach($a as $name) {
+    if (stristr($q, substr($name, 0, $len))) {
+      if ($hint === "") {
+    	$hint = $name;
+      } else {
+    	$hint .= ", $name";
+      }
+    }
+  }
+}
+
+// Output "no suggestion" if no hint was found or output correct values
+echo $hint === "" ? "no suggestion" : $hint;
+?>
+
+TABLE AJAX
+
+<html>
+<head>
+<script>
+function showCD(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","getcd.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<form>
+Select a CD:
+<select name="cds" onchange="showCD(this.value)">
+  <option value="">Select a CD:</option>
+  <option value="Bob Dylan">Bob Dylan</option>
+  <option value="Bee Gees">Bee Gees</option>
+  <option value="Cat Stevens">Cat Stevens</option>
+</select>
+</form>
+<div id="txtHint"><b>CD info will be listed here...</b></div>
+
+</body>
+</html>
+
+<?php
+$q=$_GET["q"];
+
+$xmlDoc = new DOMDocument();
+$xmlDoc->load("cd_catalog.xml");
+
+$x=$xmlDoc->getElementsByTagName('ARTIST');
+
+for ($i=0; $i<=$x->length-1; $i++) {
+  //Process only element nodes
+  if ($x->item($i)->nodeType==1) {
+    if ($x->item($i)->childNodes->item(0)->nodeValue == $q) {
+      $y=($x->item($i)->parentNode);
+    }
+  }
+}
+
+$cd=($y->childNodes);
+
+for ($i=0;$i<$cd->length;$i++) {
+  //Process only element nodes
+  if ($cd->item($i)->nodeType==1) {
+    echo("<b>" . $cd->item($i)->nodeName . ":</b> ");
+    echo($cd->item($i)->childNodes->item(0)->nodeValue);
+    echo("<br>");
+  }
+}
+?>

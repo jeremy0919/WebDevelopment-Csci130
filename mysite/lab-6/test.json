@@ -1,0 +1,24 @@
+{
+    "pokemon": [
+        {
+            "name": "char",
+            "evolution": "char",
+            "shinyColor": "char",
+            "averageSize": "21",
+            "type": "char",
+            "weakTo": "char",
+            "canEvolve": "true",
+            "img": "mon.jpg"
+        },
+        {
+            "name": "char",
+            "evolution": "char",
+            "shinyColor": "char",
+            "averageSize": "21",
+            "type": "char",
+            "weakTo": "char",
+            "canEvolve": "true",
+            "img": "mon.img"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+table {
+	text-align: center;
+	background-color: #b1102b;
+}
+* {
+	font-family: sans-serif;
+	color: white;
+	
+}
+body {
+	background-color: #ced1d4;
+}
+tr {
+	background-color: #13284c;
+}
+/*px means pixel*/

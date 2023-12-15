@@ -1,0 +1,51 @@
+<html5> 
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title> part 4</title>
+    </head>
+    <body>
+        
+        <script>
+            let Numb = prompt("Enter a number: ")
+            let x= 0;
+            let y =0;
+            arr = new Array(Numb)
+            arr[1] = 2;
+            arr[2] = 3;
+            
+
+            for(let i=1; i<Numb;++i){
+                arr[i+2+x] = 6*i-1
+                arr[i+3+x] = 6*i+1
+                x++
+            }
+            function tableCreate() {
+                const body = document.body,
+                tbl1 = document.createElement('table');
+                tbl1.style.width = '100px';
+         
+                tbl1.style.borderCollapse = 'collapse';
+                tbl1.style.border = '1px solid black';
+                for (let i = 0; i < Numb; i++) {
+                    const tr = tbl1.insertRow();
+                    for (let j = 0; j < 2; j++) {
+                        const td = tr.insertCell();
+                        if(j ==0){  
+                            td.appendChild(document.createTextNode(i+1));
+                            td.style.border = '1px solid black';
+                        }
+                        else{
+                            td.appendChild(document.createTextNode(arr[i+1]));
+                            td.style.border = '1px solid black';
+                        }
+                    }
+                }
+            body.appendChild(tbl1);
+            }
+
+tableCreate();
+        </script>
+
+    
+    </body>
+</html5>

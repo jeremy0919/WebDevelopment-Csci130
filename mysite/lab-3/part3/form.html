@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title> part 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="/action_page.php">
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" pattern = "\w"><br><br>
+        
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" pattern = "\w"><br><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" placeholder= "City" pattern = "\w"><br><br>
+
+        <label for="State">State:</label>
+        <select name="State" id = state>
+            <option value = "california">California</option>
+            <option value = "flordia">Flordia</option>
+            <option value = "Washington"> Washington</option>
+            <option value = "Texas"> Texas</option>
+            <option value = "Arizona"> Arizona</option>
+        </select><br><br>
+
+        <label for="Zip Code">Zip:</label>
+        <input type="text" id="Zip" name="Zip" pattern = "\d{5}" placeholder="xxxxx"><br><br>
+        
+        <label for="DOB">Date of birth:</label>
+        <input type="text" id="DOB" name="DOB" placeholder="mm/dd/yyyy" pattern="([1-9]|0[1-9]|1[1,2])\/([1-9]|1[0-9]|2[1-9]|3[01])\/((20)\d{2}|(19)\d{2})" required><br><br>
+        
+        <label for="Pnumb">Phone Number:</label>
+        <input type="text" id="Pnumb" name="Pnumb" placeholder="x-xxx-xxx-xxxx" pattern="\d{10}"><br>
+
+        <p>Credit Card Information</p>
+        <label for="CCN">Credit Card Number:</label>
+        <input type="text" id="CCN" name="CCN" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="\d{16}" required><br><br>
+
+        <label for="M-Y">Experiation Date:</label>
+        <input type="text" id="M-Y" name="M-Y"  pattern="\d{1,2}[1-12]\/\d{1,2}" placeholder="MM\YY" required><br><br>
+
+        <label for="SecNumb">Security Number:</label>
+        <input type="text" id="SecNumb" name="SecNumb" pattern="\d{1,3}" placeholder="xxx" required><br><br>
+       
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function display() {
+    var id = document.getElementById('index').value;
+
+    $.ajax({
+        type: 'POST', // grabs id from textbox and outputs to document using spa
+        url: 'outputInd.php',
+        data: { id },
+        dataType: 'json',
+        success: function(response) {
+          
+            document.getElementById('output').innerHTML = '<p>id: ' + response.Index + 'id: ' +  response.Year + 'id: ' + response.Age +  'id: ' + response.Name + 'id: ' + response.Movie + '</p>';
+        }
+    });
+}
+    </script>
+</head>
+<body>
+    <form method="post" action="outputInd.php">
+        <input type="text" name="index">
+        <input type ="button" name="ok" value="ok" onclick="display()"> 
+    </form>
+    <p id="output"></p>
+
+
+    <P>note: for database use makeDatabase file, then makeTable file, then insertToDb</P>
+</body>
+</html>
