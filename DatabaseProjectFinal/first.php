@@ -2,18 +2,18 @@
    include("databaseT.php");
    session_start();
    if (!isset($_SESSION['x'])) {
-       $_SESSION['x'] = 1; // Initial value
+       $_SESSION['x'] = 1; 
    }
    if (!isset($_SESSION['y'])) {
-       $_SESSION['y'] = 1; // Initial value
+       $_SESSION['y'] = 1; 
    }
    if (!isset($_SESSION['z'])) {
-       $_SESSION['z'] = 1; // Initial value
+       $_SESSION['z'] = 1; 
    }
 $find = 1;
 $_SESSION['x'] = $find;
 $alphaLoc = 1;
-// Try to establish a connection
+
 
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
@@ -39,7 +39,7 @@ if ($stmt === false) {
        
         $stmt->close();
         if($_SESSION['y'] == 1) {
-        if ($result->num_rows > 0) {// should work
+        if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
             }

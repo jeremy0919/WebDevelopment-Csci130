@@ -1,10 +1,7 @@
-<?php // change to calling javascript for table creation treat database as object
-// use path to picture
-// hardcode in database creation and what not
-// use bit/ binary for bool
+<?php 
 session_start();
     if (!isset($_SESSION['x'])) {
-        $_SESSION['x'] = 0; // Initial value
+        $_SESSION['x'] = 0;
     }
     include("databaseT.php");
 
@@ -60,7 +57,7 @@ session_start();
     
     }
     if (isset($_FILES["fileup"])) {
-    $target_dir = "uploads/"; // you must create this directory in the folder where you have the PHP file
+    $target_dir = "uploads/"; 
     $target_file = $target_dir . basename($_FILES["fileup"]["name"]);
     
     $uploadOk = 1;
@@ -78,10 +75,10 @@ session_start();
     }
     
     // Verify if file already exists
-    if (file_exists($target_file)) {
+/*    if (file_exists($target_file)) {
         echo "<li>The file already exists.</li>";
         $uploadOk = 0;
-    }
+    }*/
     
     // Verify the file size
     if ($_FILES["fileup"]["size"] > 5000000) {
@@ -103,7 +100,7 @@ session_start();
         if (move_uploaded_file($tempFile, $destination)) {
             echo "<li>The file " . basename($_FILES["fileup"]["name"]) . " has been uploaded.</li>";
     
-            // Set $img to the uploaded filename
+            
             $img = $uniqueFileName;
         } else {
             echo "<li>Error uploading your file.</li>";
@@ -124,12 +121,12 @@ session_start();
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
-        // Name found in the database, do something
+        // Name found in the database update
         $updateSql = "UPDATE `Pokedex1` SET `type`='$type', `ShinyColor`='$shinyColor', `stage`='$evolution', `CanEvolve`='$canEvolve', `size`='$averageSize', `weakTo`='$weakTo', `image`='$img' WHERE `name`='$pokemon'";
         mysqli_query($connection, $updateSql);
 
     } else {
-        // Name not found in the database, do something else
+        // Name not found in the database insert
             $sql = "INSERT INTO `Pokedex1` (`id`, `name`, `type`, `ShinyColor`, `stage`, `CanEvolve`, `size`, `weakTo`, `image`) 
             VALUES (NULL, '$pokemon', '$type', '$shinyColor', '$evolution', '$canEvolve', '$averageSize', '$weakTo', '$img')";
             mysqli_query($connection,$sql);

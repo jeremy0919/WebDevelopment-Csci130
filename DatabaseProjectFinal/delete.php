@@ -1,6 +1,14 @@
 <?php
 
 
+$numDelete = isset($_COOKIE['numDelete']) ? $_COOKIE['numDelete'] : 0;
+
+// Increment the value of numDelete
+$numDelete++;
+
+// Set the updated value of numDelete in the cookie
+setcookie('numDelete', $numDelete, time() + 36000); // Expiring in 10 hours
+
 
 include("databaseT.php");
 if ($connection->connect_error) {

@@ -2,13 +2,13 @@
 
 session_start();
 if (!isset($_SESSION['x'])) {
-    $_SESSION['x'] = 1; // Initial value
+    $_SESSION['x'] = 1; 
 }
 if (!isset($_SESSION['y'])) {
-    $_SESSION['y'] = 1; // Initial value
+    $_SESSION['y'] = 1; 
 }
 if (!isset($_SESSION['z'])) {
-    $_SESSION['z'] = 1; // Initial value
+    $_SESSION['z'] = 1; 
 }
 
 include("databaseT.php");
@@ -24,14 +24,12 @@ if ($stmt === false) {
     die("Error in preparing statement: " . $connection->error);
 }
 
-// Execute query
 $stmt->execute();
 
-// Get the result
 $result = $stmt->get_result();
 $data = array();
 
-// Close statement
+
 $stmt->close();
 
 if ($result->num_rows > 0) {
@@ -50,14 +48,12 @@ if($_SESSION['y'] == 1) {
         die("Error in preparing statement: " . $connection->error);
     }
 
-    // Execute query
+   
     $stmt->execute();
 
-    // Get the result
     $result = $stmt->get_result();
     $data = array();
 
-    // Close statement
     $stmt->close();
 
     if ($result->num_rows > 0) {

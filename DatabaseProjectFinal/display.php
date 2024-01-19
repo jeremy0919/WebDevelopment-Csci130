@@ -2,18 +2,18 @@
 include ("databaseT.php");
 session_start();
 if (!isset($_SESSION['x'])) {
-    $_SESSION['x'] = 1; // Initial value
-} // need to update session to last
+    $_SESSION['x'] = 1; 
+}
 
 
 $sql = "SELECT COUNT(*) AS row_count FROM pokedex1";
 
 $stmt = $connection->prepare($sql);
 
-// Execute the query
+
 $stmt->execute();
 
-// Get the result
+
 $result = $stmt->get_result();
 $data = array();
 if ($result->num_rows > 0) {

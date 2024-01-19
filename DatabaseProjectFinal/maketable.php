@@ -1,7 +1,7 @@
 <?php
    include("databaseT.php");
 
-$sql = "CREATE TABLE Pokedex1 (
+$sql = "CREATE TABLE Pokedex4 (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(20) NOT NULL,
   type VARCHAR(20) NOT NULL,

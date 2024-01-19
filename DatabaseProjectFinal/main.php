@@ -1,12 +1,10 @@
 <?php 
 session_start();
     if (!isset($_SESSION['x'])) {
-        $_SESSION['x'] = 1; // Initial value
+        $_SESSION['x'] = 1; 
     }
    include("databaseT.php");
-//need to display image and rework image stuff
-// liekly need to rework sort options to not just sort table but sort data
-
+ 
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
          <link rel="stylesheet" type="text/css" href="style1.css">
- <script src="script4.js">
+ <script src="script.js">
        
        </script>
 </head>
@@ -24,29 +22,29 @@ session_start();
   
     <form>
     <label>Pokemon:</label>
-        <input type="text" name="Pokemon" id="InsPokemon"> <br>
+        <input type="text" name="Pokemon" id="InsPokemon" readonly=true> <br>
         <label>evolution:</label>
-        <input type="text" name="evolution" id="InsEvolution"> <br>
+        <input type="text" name="evolution" id="InsEvolution" readonly=true> <br>
         <label>shinyColor:</label>
-        <input type="text" name="shinyColor" id="insShinyColor"> <br>
+        <input type="text" name="shinyColor" id="insShinyColor"readonly=true > <br>
         <label>averageSize:</label>
-        <input type="text" name="averageSize" id="InsAverageSize"> <br>
+        <input type="text" name="averageSize" id="InsAverageSize"readonly=true> <br>
         <label>type:</label>
-        <input type="text" name="type" id="InsType"> <br>
+        <input type="text" name="type" id="InsType"readonly=true> <br>
         <label>weakTo:</label>
-        <input type="text" name="weakTo" id="InsWeakTo"> <br>
+        <input type="text" name="weakTo" id="InsWeakTo"readonly=true> <br>
         <label>canEvolve:</label>
-        <input type="text" name="canEvolve" id="InsCanEvolve"> <br>
+        <input type="text" name="canEvolve" id="InsCanEvolve"readonly=true> <br>
         <label>image:</label>
-        <li><input type="file" name="fileup" id="fileup"></li>
+        <li><input type="file" name="fileup" id="fileup" readonly=true></li>
         <input type="button" name="submit" value="Insert new pokemon" onclick = "insert1()"><br>
-     
+        <input type = "button" name = "edit" value = "edit" onclick = "edit1()"><br>
     </form>
  
 
     <div id="image-section">
     <div id="table-container"></div>
-        <img src="uploads/mon.jpg" id="displayIMG">
+        <img src="uploads/main.png" id="displayIMG">
         
         <form action="delete.php" method="post" class="form3">
             <input type="text" name="delname"><br>

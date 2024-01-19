@@ -14,6 +14,7 @@ if (!isset($_SESSION['y'])) {
 if (!isset($_SESSION['z'])) {
     $_SESSION['z'] = 1; // Initial value
 }
+$numDel = isset($_COOKIE['numDelete']) ? $_COOKIE['numDelete'] : 0;
 $alphaLoc = 1;
 $sql = "SELECT * FROM Pokedex1 ORDER BY id DESC LIMIT 1";
 
@@ -63,15 +64,27 @@ do {
         }
     } else {
         $x--;
+      
         if($x<1){
             $x = $temp;// doesn't let it go out of bounds
         }
+        $_SESSION['x'] = $x;
     }
 } while ($result->num_rows == 0); // allows for removal of data but since ID is used to incriment doesnt display empty
     echo json_encode($data);
 }
 else{
+    $z = $_SESSION['z'];
+$z = $z-1;
+
+if($z<1){
+    $z = $temp-$numDel ;
+}
+$_SESSION['z'] = $z;
+
     do{
+        $z = $_SESSION['z'];
+        $alphaLoc =1;
         $sql = "SELECT * FROM Pokedex1 ORDER BY name"; 
         $result = $connection->query($sql);
         
@@ -80,17 +93,23 @@ else{
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 
-                if($alphaLoc == $_SESSION['z']){
+                if($alphaLoc == $z){
                     $data[] = $row;
                     break;
                 }
                 $alphaLoc++;
             }
+        }else{
+            $z--;
+                    
+        if($z<1){
+            $z = $temp-$numDel ;
         }
-        $_SESSION['z']--;
-        if($_SESSION['z']<1){
-            $_SESSION['z'] = $temp;
         }
+      
+    
+
+        $_SESSION['z'] = $z;
     }while ($result->num_rows == 0); 
         echo json_encode($data);
         
