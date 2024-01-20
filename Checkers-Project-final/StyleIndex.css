@@ -1,0 +1,63 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: blue;
+    height: 50px;
+}
+
+.Bull {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#colors {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #333;
+}
+
+#colors label {
+    color: white;
+    margin-bottom: 5px;
+}
+
+#colors input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.bgstyle {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+img.Bull {
+	width: 100px;
+	height: auto;
+	float: right;
+	aspect-ratio: 0;
+}
+
+
