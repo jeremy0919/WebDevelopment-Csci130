@@ -1,6 +1,11 @@
 .header {
 	color: white;
-	background-color: #b1102b;
+	align-items: center;
+ 
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+    height: 100%;
 }
 body {
 	position: relative;
@@ -9,7 +14,7 @@ body {
 }
 * {
 	font-family: sans-serif;
-	
+
 }
 img.Bull {
 	width: 100px;
@@ -26,4 +31,22 @@ a:visited{
 }
 a{
 	color:green;
+}
+.links {
+	background-color: #b1102b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.links li {
+    list-style: none;
+    margin: 0 10px; /* Adjust margin as needed */
+}
+
+.links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px; /* Adjust font size as needed */
 }
