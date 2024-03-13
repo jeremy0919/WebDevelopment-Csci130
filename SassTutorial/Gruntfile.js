@@ -1,45 +1,37 @@
-//Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 module.exports = function(grunt) {
    
-    grunt.initConfig({// grunt object ie config
-      pkg: grunt.file.readJSON('package.json'), // grunt object
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
   
-      // Sass compilation
-      sass: {
-        options: {
-          sourceMap: true,
-          outputStyle: 'expanded'
-        },
-        dist: {
-          files: {
-            'css/styles.css': 'final/reset.scss'
-          }
+    sass: {
+      dist: {
+        files: {
+          'css/styles.css': 'final/styles.scss' // Compile all SCSS files to a single CSS file
         }
-      },
+      }
+    },
   
-      // Watch task
-      watch: {
-        css: {
-          files: 'src/**/*.scss',
-          tasks: ['sass'],
-          options: {
-            livereload: true,
-          },
+    watch: {
+      css: {
+        files: 'final/**/*.scss', // Watch all SCSS files within 'final' directory and its subdirectories
+        tasks: ['sass'],
+        options: {
+          livereload: true,
         },
       },
-    });
+    },
+  });
   
-    // Load plugins
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+  // Load plugins
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   
-    // Default task
-   // grunt.registerTask('default', ['sass', 'watch']); // task to be run
-   grunt.registerTask('run', function(){
+  // Default task
+  // grunt.registerTask('default', ['sass', 'watch']); // task to be run
+  grunt.registerTask('run', function(){
     console.log("I am running")
-   })
-   grunt.registerTask('sleep', function(){
+  })
+  grunt.registerTask('sleep', function(){
     console.log("I am sleeping")
-   })
-  };
-  
+  })
+};
